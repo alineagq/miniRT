@@ -6,7 +6,7 @@
 #    By: aqueiroz <aqueiroz@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/11 12:04:54 by aqueiroz          #+#    #+#              #
-#    Updated: 2023/10/12 21:42:58 by aqueiroz         ###   ########.fr        #
+#    Updated: 2023/10/12 22:09:51 by aqueiroz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,7 @@ _color-test:
 
 # MANDATORY FILES
 
-NAME = minirt
+NAME = miniRT
 
 SRC_PATH = srcs
 LIB_PATH = libs
@@ -58,28 +58,30 @@ all: $(NAME)
 
 $(NAME): $(OBJS)
 	@echo "$(purple)Compiling project...$(reset)"
-	@echo "$(purple)Compiling MLX42...$(reset)" 
+	@echo "$(purple)Compiling Libft...$(reset)"
+	@$(MAKE) -C libs/libft > /dev/null && \
+	echo "$(purple)Compiling MLX42...$(reset)" 
 	@cmake -B libs/MLX42/build -S libs/MLX42  > /dev/null && \
 	echo "$(purple)Building MLX42...$(reset)" && \
 	cmake --build libs/MLX42/build -j4 > /dev/null && \
 	$(CC) $(OBJS) -o $@ -Llibs/MLX42/build -lmlx42 $(LIBFLAGS) && \
 	echo "$(purple)Project compiled. Run './$(NAME)' to start.$(reset)"
 
-
-
 %.o: %.c
 	@$(CC) $(CFLAGS) -I$(PATH_INC) -c $< -o $@
 
 valgrind:
 	valgrind --trace-children=yes --track-fds=yes --track-origins=yes \
-	--leak-check=full --show-leak-kinds=all --quiet ./minirt
+	--leak-check=full --show-leak-kinds=all --quiet ./miniRT
 clean:
 	@rm -f $(OBJS)
+	@$(MAKE) -C libs/libft clean > /dev/null
 	@rm -rf libs/MLX42/build
 	$(info $(yellow)All object files were removed.$(reset))
 
 fclean: clean
 	@rm -f $(NAME)
+	@$(MAKE) -C libs/libft fclean > /dev/null
 	$(info $(yellow)Executables files were removed.$(reset))
 
 re: fclean all
