@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: aqueiroz <aqueiroz@student.42sp.org.br>    +#+  +:+       +#+         #
+#    By: aqueiroz <aqueiroz@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/11 12:04:54 by aqueiroz          #+#    #+#              #
-#    Updated: 2023/10/11 14:48:19 by aqueiroz         ###   ########.fr        #
+#    Updated: 2023/10/12 21:42:58 by aqueiroz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,26 +52,34 @@ OBJS = $(SRCS:.c=.o)
 
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -g3
-LIBFLAGS = libs/MLX42/build/libmlx42.a -Iinclude -ldl -lglfw -pthread -lm
+LIBFLAGS = -Llibs/MLX42/build -lmlx42 -Iinclude -ldl -lglfw -pthread -lm
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	# @$(MAKE) -s -k -C $(LIB_PATH)
-	@$(CC) $(OBJS) $(INCLUDE) $(LIBFLAGS) -o $@
-	$(info $(purple)Project compiled. Run './$(NAME)' to start.$(reset))
+	@echo "$(purple)Compiling project...$(reset)"
+	@echo "$(purple)Compiling MLX42...$(reset)" 
+	@cmake -B libs/MLX42/build -S libs/MLX42  > /dev/null && \
+	echo "$(purple)Building MLX42...$(reset)" && \
+	cmake --build libs/MLX42/build -j4 > /dev/null && \
+	$(CC) $(OBJS) -o $@ -Llibs/MLX42/build -lmlx42 $(LIBFLAGS) && \
+	echo "$(purple)Project compiled. Run './$(NAME)' to start.$(reset)"
+
+
+
+%.o: %.c
+	@$(CC) $(CFLAGS) -I$(PATH_INC) -c $< -o $@
 
 valgrind:
 	valgrind --trace-children=yes --track-fds=yes --track-origins=yes \
 	--leak-check=full --show-leak-kinds=all --quiet ./minirt
 clean:
 	@rm -f $(OBJS)
-	# @$(MAKE) -C $(LIB_PATH) --silent clean
+	@rm -rf libs/MLX42/build
 	$(info $(yellow)All object files were removed.$(reset))
 
 fclean: clean
 	@rm -f $(NAME)
-	# @$(MAKE) -C $(LIB_PATH) --silent fclean
 	$(info $(yellow)Executables files were removed.$(reset))
 
 re: fclean all
