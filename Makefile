@@ -6,7 +6,7 @@
 #    By: aqueiroz <aqueiroz@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/11 12:04:54 by aqueiroz          #+#    #+#              #
-#    Updated: 2023/10/12 22:09:51 by aqueiroz         ###   ########.fr        #
+#    Updated: 2023/10/14 19:35:27 by aqueiroz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -64,7 +64,7 @@ $(NAME): $(OBJS)
 	@cmake -B libs/MLX42/build -S libs/MLX42  > /dev/null && \
 	echo "$(purple)Building MLX42...$(reset)" && \
 	cmake --build libs/MLX42/build -j4 > /dev/null && \
-	$(CC) $(OBJS) -o $@ -Llibs/MLX42/build -lmlx42 $(LIBFLAGS) && \
+	$(CC) $(OBJS) -o $@ $(LIBFLAGS) && \
 	echo "$(purple)Project compiled. Run './$(NAME)' to start.$(reset)"
 
 %.o: %.c
