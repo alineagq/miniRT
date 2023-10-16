@@ -6,7 +6,7 @@
 /*   By: fsuomins <fsuomins@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 11:21:39 by fsuomins          #+#    #+#             */
-/*   Updated: 2023/10/16 11:22:20 by fsuomins         ###   ########.fr       */
+/*   Updated: 2023/10/16 11:57:12 by fsuomins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ t_data	*parse_scene(const char *scene_file)
 	char	identifier;
 
 	// Open the scene file
-	file = fopen(scene_file, "r");
+	file = open(scene_file, "r");
 	if (file == NULL)
 	{
 		perror("Error opening file");
@@ -29,7 +29,7 @@ t_data	*parse_scene(const char *scene_file)
 	data = (t_data *)malloc(sizeof(t_data));
 	if (data == NULL)
 	{
-		fclose(file);
+		close(file);
 		perror("Memory allocation failed");
 		return (NULL);
 	}
