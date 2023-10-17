@@ -3,37 +3,38 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fsuomins <fsuomins@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: aqueiroz <aqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 11:08:29 by fsuomins          #+#    #+#             */
-/*   Updated: 2023/10/16 11:57:14 by fsuomins         ###   ########.fr       */
+/*   Updated: 2023/10/17 00:01:57 by aqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minirt.h"
 
-int main(int argc, char **argv) 
+static void	validate_args(int argc, char **argv)
 {
-    if (argc != 2) {
-        printf("Usage: %s <scene.rt>\n", argv[0]);
-        return 1;
-    }
-    char *scene_file = argv[1];
-    t_data *data = parse_scene(scene_file);  // Implement this function
+	int	i;
 
-    if (data == NULL) 
+	i = 0;
+	if (argc != 2)
 	{
-        printf("Error: Unable to parse the scene file.\n");
-        return 1;
-    }
+		printf("Usage: %s <scene.rt>\n", argv[0]);
+		exit(0);
+	}
+	while (argv[1][i])
+		i++;
+	if (argv[1][i - 1] != 't' || argv[1][i - 2] != 'r' || argv[1][i - 3] != '.')
+	{
+		printf("Error\n");
+		exit(0);
+	}
+}
 
-    // Initialize MiniLibX and set up the window (not shown here)
-
-    // Render the scene
-    render_scene(data);  // Implement this function
-
-    // Clean up and exit
-    free_data(data);  // Implement this function
-
-    return 0;
+int	main(int argc, char **argv)
+{
+	validate_args(argc, argv);
+	validate_scene(argv[1]);
+	parse_scene(argv[1]);
+	return (0);
 }
