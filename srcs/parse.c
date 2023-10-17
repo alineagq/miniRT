@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fsuomins <fsuomins@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: fsuomins <fsuomins@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 11:21:39 by fsuomins          #+#    #+#             */
-/*   Updated: 2023/10/16 11:57:12 by fsuomins         ###   ########.fr       */
+/*   Updated: 2023/10/17 11:14:12 by fsuomins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ t_data	*parse_scene(const char *scene_file)
 	char	line[256];
 	char	identifier;
 
-	// Open the scene file
 	file = open(scene_file, "r");
 	if (file == NULL)
 	{

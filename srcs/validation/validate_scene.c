@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_scene.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aqueiroz <aqueiroz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fsuomins <fsuomins@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 00:02:15 by aqueiroz          #+#    #+#             */
-/*   Updated: 2023/10/17 10:39:49 by aqueiroz         ###   ########.fr       */
+/*   Updated: 2023/10/17 11:39:08 by fsuomins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ static int	valid_fd(char *file)
 
 static void	validate_line(char *line)
 {
+	if (line == NULL || *line == NULL || *line == '\n')
+		return ;
 	if (line[0] == 'A')
 		validate_ambient(line);
 	else if (line[0] == 'C')
