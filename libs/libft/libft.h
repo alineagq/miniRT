@@ -6,7 +6,7 @@
 /*   By: fsuomins <fsuomins@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 02:57:01 by aqueiroz          #+#    #+#             */
-/*   Updated: 2023/08/19 00:03:43 by fsuomins         ###   ########.fr       */
+/*   Updated: 2023/10/17 11:58:53 by fsuomins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # ifndef SIZE_MAX
 #  define SIZE_MAX 2147483647
 # endif
+# define BUFFER_SIZE 1
 
 size_t	ft_strlcat(char *dst, const char *src, size_t dstsize);
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);

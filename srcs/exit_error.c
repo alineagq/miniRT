@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit_error.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aqueiroz <aqueiroz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fsuomins <fsuomins@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 10:34:42 by aqueiroz          #+#    #+#             */
-/*   Updated: 2023/10/17 10:36:02 by aqueiroz         ###   ########.fr       */
+/*   Updated: 2023/10/18 10:19:39 by fsuomins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	exit_error(char *message)
 {
-	printf("Error\n %s\n", message);
+	ft_putstr_fd("Error\n", 2);
+	ft_putstr_fd(message, 2);
 	exit(0);
 }

@@ -6,7 +6,7 @@
 /*   By: fsuomins <fsuomins@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 00:02:15 by aqueiroz          #+#    #+#             */
-/*   Updated: 2023/10/17 11:39:08 by fsuomins         ###   ########.fr       */
+/*   Updated: 2023/10/18 10:23:44 by fsuomins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static void	validate_line(char *line)
 	else
 	{
 		free(line);
-		exit_error("Invalid scene file.");
+		exit_error("Invalid scene file.\n");
 	}
 }
 

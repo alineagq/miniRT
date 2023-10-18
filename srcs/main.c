@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aqueiroz <aqueiroz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fsuomins <fsuomins@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 11:08:29 by fsuomins          #+#    #+#             */
-/*   Updated: 2023/10/17 10:36:37 by aqueiroz         ###   ########.fr       */
+/*   Updated: 2023/10/18 10:24:43 by fsuomins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,18 @@ static void	validate_args(int argc, char **argv)
 	while (argv[1][i])
 		i++;
 	if (argv[1][i - 1] != 't' || argv[1][i - 2] != 'r' || argv[1][i - 3] != '.')
-		exit_error("Invalid scene file");
+		exit_error("Invalid scene file\n");
+}
+
+static void	check_validate(int argc, char **argv)
+{
+	validate_args(argc, argv);
+	//validate_scene(argv[1]);
 }
 
 int	main(int argc, char **argv)
 {
-	validate_args(argc, argv);
-	validate_scene(argv[1]);
-	parse_scene(argv[1]);
+	check_validate(argc, argv);
+	//parse_scene(argv[1]);
 	return (0);
 }

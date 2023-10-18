@@ -6,74 +6,52 @@
 /*   By: fsuomins <fsuomins@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 11:21:39 by fsuomins          #+#    #+#             */
-/*   Updated: 2023/10/17 11:14:12 by fsuomins         ###   ########.fr       */
+/*   Updated: 2023/10/18 10:15:12 by fsuomins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minirt.h"
 
-t_data	*parse_scene(const char *scene_file)
+void	*parse_scene(const char *scene_file)
 {
-	FILE	*file;
 	t_data	*data;
-	char	line[256];
-	char	identifier;
+	char	*line;
+	int		fd;
 
-	file = open(scene_file, "r");
-	if (file == NULL)
+	data = malloc(sizeof(t_data));
+	if (!data)
+		exit_error("Malloc error");
+	fd = open(scene_file, O_RDONLY);
+	if (fd == -1)
+		exit_error("File not found");\z
+	line = get_next_line(fd);
+	while (line)
 	{
-		perror("Error opening file");
-		return (NULL);
-	}
-	data = (t_data *)malloc(sizeof(t_data));
-	if (data == NULL)
-	{
-		close(file);
-		perror("Memory allocation failed");
-		return (NULL);
-	}
-	// Initialize data members to NULL or default values
-	data->camera = NULL;
-	data->ambient = NULL;
-	data->lights = NULL;
-	data->objects = NULL;
-	// Parse the scene file line by line
-	while (fgets(line, sizeof(line), file))
-	{
-		if (sscanf(line, " %c", &identifier) != 1)
-			continue ; // Skip empty lines or lines without an identifier
-		switch (identifier)
-		{
-		case 'A':
+		if (line[0] == 'A')
 			parse_ambient(line, data);
-			break ;
-		case 'C':
+		else if (line[0] == 'C')
 			parse_camera(line, data);
-			break ;
-		case 'L':
+		else if (line[0] == 'L')
 			parse_light(line, data);
-			break ;
-		case 's':
+		else if (strcmp(line, "sp") == 0)
 			parse_sphere(line, data);
-			break ;
-		case 'p':
+		else if (strcmp(line, "pl") == 0)
 			parse_plane(line, data);
-			break ;
-		case 'c':
+		else if (strcmp(line, "cy") == 0)
 			parse_cylinder(line, data);
-			break ;
-		default:
-			break ; // Ignore unknown identifiers
-		}
+		else
+			exit_error("Invalid scene file.");
+		free(line);
+		line = get_next_line(fd);
 	}
-	fclose(file);
+	close(fd);
 	return (data);
+
 }
 
 void	parse_ambient(const char *line, t_data *data)
 {
-	// Parse ambient lighting information and update data structure
-	// Implementation not provided in this example
+
 }
 
 void	parse_camera(const char *line, t_data *data)
