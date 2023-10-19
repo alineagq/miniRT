@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   validade_camera.c                                  :+:      :+:    :+:   */
+/*   validate_camera.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fsuomins <fsuomins@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 11:13:39 by fsuomins          #+#    #+#             */
-/*   Updated: 2023/10/18 09:54:49 by fsuomins         ###   ########.fr       */
+/*   Updated: 2023/10/18 22:23:04 by fsuomins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 
 void	validate_camera(const char *line)
 {
-    // Validate camera information
-    // Implementation not provided in this example
+	char	*str;
+	
+	str = ft_strtok(line, " ");
+	if (st
 }
+

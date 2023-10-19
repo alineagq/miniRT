@@ -6,7 +6,7 @@
 /*   By: fsuomins <fsuomins@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 00:02:15 by aqueiroz          #+#    #+#             */
-/*   Updated: 2023/10/18 10:23:44 by fsuomins         ###   ########.fr       */
+/*   Updated: 2023/10/18 22:11:15 by fsuomins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,29 +18,26 @@ static int	valid_fd(char *file)
 
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
-	{
-		printf("Error\n File not found\n");
-		exit(0);
-	}
+		exit_error("Invalid scene file.\n");
 	return (fd);
 }
 
 static void	validate_line(char *line)
 {
-	if (line == NULL || *line == NULL || *line == '\n')
+	if (line == NULL || *line == '\0' || *line == '\n')
 		return ;
 	if (line[0] == 'A')
 		validate_ambient(line);
 	else if (line[0] == 'C')
 		validate_camera(line);
-	else if (line[0] == 'L')
-		validate_light(line);
-	else if (strcmp(line, "sp") == 0)
-		validate_sphere(line);
-	else if (strcmp(line, "pl") == 0)
-		validate_plane(line);
-	else if (strcmp(line, "cy") == 0)
-		validate_cylinder(line);
+	// else if (line[0] == 'L')
+	// 	validate_light(line);
+	// else if (strcmp(line, "sp") == 0)
+	// 	validate_sphere(line);
+	// else if (strcmp(line, "pl") == 0)
+	// 	validate_plane(line);
+	// else if (strcmp(line, "cy") == 0)
+	// 	validate_cylinder(line);
 	else
 	{
 		free(line);
@@ -57,6 +54,7 @@ void	validate_scene(char *file)
 	line = get_next_line(fd);
 	while (line)
 	{
+		printf("%s\n", line);
 		validate_line(line);
 		free(line);
 		line = get_next_line(fd);

@@ -6,7 +6,7 @@
 /*   By: fsuomins <fsuomins@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 11:08:29 by fsuomins          #+#    #+#             */
-/*   Updated: 2023/10/18 10:24:43 by fsuomins         ###   ########.fr       */
+/*   Updated: 2023/10/18 21:22:36 by fsuomins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,12 @@ static void	validate_args(int argc, char **argv)
 static void	check_validate(int argc, char **argv)
 {
 	validate_args(argc, argv);
-	//validate_scene(argv[1]);
+	validate_scene(argv[1]);
 }
 
 int	main(int argc, char **argv)
 {
 	check_validate(argc, argv);
-	//parse_scene(argv[1]);
+	// parse_scene(argv[1]);
 	return (0);
 }

@@ -6,7 +6,7 @@
 #    By: fsuomins <fsuomins@student.42sp.org.br     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/11 12:04:54 by aqueiroz          #+#    #+#              #
-#    Updated: 2023/10/18 10:22:48 by fsuomins         ###   ########.fr        #
+#    Updated: 2023/10/18 22:12:58 by fsuomins         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,7 +43,8 @@ SRC_PATH = srcs
 LIB_PATH = libs
 PATH_INC = includes
 
-FILES  = main exit_error
+FILES  =	main exit_error validation/validate_scene validation/validate_ambient \
+			validation/validate_camera
 
 SRCS = $(addprefix $(SRC_PATH)/, $(addsuffix .c, $(FILES)))
 OBJS = $(SRCS:.c=.o)

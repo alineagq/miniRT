@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fsuomins <fsuomins@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: fsuomins <fsuomins@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 02:57:01 by aqueiroz          #+#    #+#             */
-/*   Updated: 2023/10/17 11:58:53 by fsuomins         ###   ########.fr       */
+/*   Updated: 2023/10/18 21:39:37 by fsuomins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # ifndef SIZE_MAX
 #  define SIZE_MAX 2147483647
 # endif
-# define BUFFER_SIZE 1
+# define BUFFER_SIZE 42
 
 size_t	ft_strlcat(char *dst, const char *src, size_t dstsize);
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
@@ -59,5 +59,6 @@ int		ft_islower(int c);
 char	*ft_strtok(char *str, const char *c);
 int		ft_strcmp(char *str, char *str2);
 void	ft_putstr_fd(char *s, int fd);
+char	*get_next_line(int fd); 
 
 #endif
