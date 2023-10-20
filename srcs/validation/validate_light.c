@@ -6,7 +6,7 @@
 /*   By: fsuomins <fsuomins@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 11:15:12 by fsuomins          #+#    #+#             */
-/*   Updated: 2023/10/19 12:02:51 by fsuomins         ###   ########.fr       */
+/*   Updated: 2023/10/19 20:25:39 by fsuomins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,7 @@ void	validate_light(char *line)
 {
 	char	*str;
 	int		count;
-	int		value;
 	double	value;
-	int		value;
 
 	count = 0;
 	while ((str = ft_strtok(line, " ")) != NULL)

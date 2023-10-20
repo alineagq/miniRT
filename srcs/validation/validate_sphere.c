@@ -6,7 +6,7 @@
 /*   By: fsuomins <fsuomins@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 11:15:52 by fsuomins          #+#    #+#             */
-/*   Updated: 2023/10/19 12:00:56 by fsuomins         ###   ########.fr       */
+/*   Updated: 2023/10/19 20:25:50 by fsuomins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@ void	validate_sphere(char *line)
 {
 	char	*str;
 	int		count;
-	int		value;
-	int		value;
 	int		value;
 
 	count = 0;

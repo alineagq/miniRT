@@ -6,7 +6,7 @@
 /*   By: fsuomins <fsuomins@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 00:02:15 by aqueiroz          #+#    #+#             */
-/*   Updated: 2023/10/18 22:11:15 by fsuomins         ###   ########.fr       */
+/*   Updated: 2023/10/19 20:53:24 by fsuomins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static void	validate_line(char *line)
 	if (line[0] == 'A')
 		validate_ambient(line);
 	else if (line[0] == 'C')
-		validate_camera(line);
+		validate_camera(line + 1);
 	// else if (line[0] == 'L')
 	// 	validate_light(line);
 	// else if (strcmp(line, "sp") == 0)

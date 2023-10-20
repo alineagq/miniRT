@@ -6,7 +6,7 @@
 /*   By: fsuomins <fsuomins@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 12:24:08 by aqueiroz          #+#    #+#             */
-/*   Updated: 2023/10/19 11:52:18 by fsuomins         ###   ########.fr       */
+/*   Updated: 2023/10/19 20:26:25 by fsuomins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void	validate_scene(char *file);
 void	validate_ambient(char *line);
 void	validate_camera(char *line);
 void	validate_light(char *line);
+
 void	validate_sphere(char *line);
 void	validate_plane(char *line);
 void	validate_cylinder(char *line);
