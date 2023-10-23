@@ -6,7 +6,7 @@
 /*   By: fsuomins <fsuomins@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 11:08:29 by fsuomins          #+#    #+#             */
-/*   Updated: 2023/10/18 21:22:36 by fsuomins         ###   ########.fr       */
+/*   Updated: 2023/10/22 20:51:12 by fsuomins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,22 @@ static void	check_validate(int argc, char **argv)
 	validate_scene(argv[1]);
 }
 
+void	print_header(void)
+{
+	printf("\n");
+	printf("\033[1;35m");
+	printf("************************************\n");
+	printf("*                                  *\n");
+	printf("*          Welcome to miniRT       *\n");
+	printf("*                                  *\n");
+	printf("************************************\n");
+	printf("\033[0m");
+	printf("\n");
+}
+
 int	main(int argc, char **argv)
 {
+	print_header();
 	check_validate(argc, argv);
 	// parse_scene(argv[1]);
 	return (0);

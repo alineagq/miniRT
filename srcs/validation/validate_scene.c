@@ -6,7 +6,7 @@
 /*   By: fsuomins <fsuomins@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 00:02:15 by aqueiroz          #+#    #+#             */
-/*   Updated: 2023/10/20 11:07:54 by fsuomins         ###   ########.fr       */
+/*   Updated: 2023/10/23 09:21:46 by fsuomins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,4 +59,5 @@ void	validate_scene(char *file)
 		free(line);
 		line = get_next_line(fd);
 	}
+
 }
