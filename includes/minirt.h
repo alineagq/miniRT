@@ -6,7 +6,7 @@
 /*   By: fsuomins <fsuomins@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 12:24:08 by aqueiroz          #+#    #+#             */
-/*   Updated: 2023/10/23 09:23:00 by fsuomins         ###   ########.fr       */
+/*   Updated: 2023/10/23 10:36:57 by fsuomins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,6 @@
 # include "structs.h"
 # include "../libs/MLX42/include/MLX42/MLX42.h"
 # include "../libs/libft/libft.h"
-# include <float.h>
-
 
 # define COLOR_NO "\033[m"
 # define COLOR_RE "\033[0;31m"
