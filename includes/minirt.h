@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fsuomins <fsuomins@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: fsuomins <fsuomins@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 12:24:08 by aqueiroz          #+#    #+#             */
-/*   Updated: 2023/10/23 10:36:57 by fsuomins         ###   ########.fr       */
+/*   Updated: 2023/10/23 22:50:13 by fsuomins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,6 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
-# include "structs.h"
-# include "../libs/MLX42/include/MLX42/MLX42.h"
-# include "../libs/libft/libft.h"
 
 # define COLOR_NO "\033[m"
 # define COLOR_RE "\033[0;31m"
@@ -45,7 +42,7 @@ void	validate_scene(char *file);
 void	validate_ambient(char *line);
 void	validate_camera(char *line);
 void	validate_light(char *line);
-
+int		is_numeric_string(const char *str);
 void	validate_sphere(char *line);
 void	validate_plane(char *line);
 void	validate_cylinder(char *line);

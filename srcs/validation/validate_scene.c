@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_scene.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fsuomins <fsuomins@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: fsuomins <fsuomins@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 00:02:15 by aqueiroz          #+#    #+#             */
-/*   Updated: 2023/10/23 10:36:33 by fsuomins         ###   ########.fr       */
+/*   Updated: 2023/10/23 22:40:04 by fsuomins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ static void	validate_line(char *line)
 		validate_ambient(line);
 	else if (line[0] == 'C')
 		validate_camera(line + 1);
-	// else if (line[0] == 'L')
-	// 	validate_light(line);
+	else if (line[0] == 'L')
+		validate_light(line);
 	// else if (strcmp(line, "sp") == 0)
 	// 	validate_sphere(line);
 	// else if (strcmp(line, "pl") == 0)

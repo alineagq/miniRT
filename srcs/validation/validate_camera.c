@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_camera.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fsuomins <fsuomins@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: fsuomins <fsuomins@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 11:13:39 by fsuomins          #+#    #+#             */
-/*   Updated: 2023/10/23 10:51:19 by fsuomins         ###   ########.fr       */
+/*   Updated: 2023/10/23 23:01:16 by fsuomins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
