@@ -6,7 +6,7 @@
 /*   By: fsuomins <fsuomins@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 11:13:39 by fsuomins          #+#    #+#             */
-/*   Updated: 2023/10/23 23:01:16 by fsuomins         ###   ########.fr       */
+/*   Updated: 2023/10/24 10:59:13 by fsuomins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	is_numeric_string(const char *str)
 	if (*str == '-')
 		str++;
 	dot_found = 0;
-	while (*str != '\0')
+	while (*str)
 	{
 		if (ft_isdigit(*str))
 			str++;

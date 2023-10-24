@@ -6,7 +6,7 @@
 /*   By: fsuomins <fsuomins@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 12:24:08 by aqueiroz          #+#    #+#             */
-/*   Updated: 2023/10/23 22:50:13 by fsuomins         ###   ########.fr       */
+/*   Updated: 2023/10/24 10:53:23 by fsuomins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ void	validate_light(char *line);
 int		is_numeric_string(const char *str);
 void	validate_sphere(char *line);
 void	validate_plane(char *line);
+void	validate_color(char *line);
 void	validate_cylinder(char *line);
 
 #endif

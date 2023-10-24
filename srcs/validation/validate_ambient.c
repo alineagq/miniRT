@@ -6,13 +6,13 @@
 /*   By: fsuomins <fsuomins@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 11:14:05 by fsuomins          #+#    #+#             */
-/*   Updated: 2023/10/18 22:21:31 by fsuomins         ###   ########.fr       */
+/*   Updated: 2023/10/24 10:55:59 by fsuomins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minirt.h"
 
-void	validate_ambient_color(char *line)
+void	validate_color(char *line)
 {
 	char	*str;
 
@@ -30,13 +30,13 @@ void	validate_ambient_color(char *line)
 					return ;
 			}
 			else
-				exit_error("Invalid ambient color.\n");
+				exit_error("Invalid color.\n");
 		}
 		else
-			exit_error("Invalid ambient color.\n");
+			exit_error("Invalid color.\n");
 	}
 	else
-		exit_error("Invalid ambient color.\n");
+		exit_error("Invalid color.\n");
 }
 
 void	validate_ambient_light(char *line)
@@ -70,7 +70,7 @@ void	validate_ambient(char *line)
 		while (line[i] >= '0' && line[i] <= '9')
 			i++;
 		if (line[i] == ' ' || line[i] == '\0')
-			validate_ambient_color(line + i);
+			validate_color(line + i);
 		else
 			exit_error("Invalid ambient.\n");
 	}
