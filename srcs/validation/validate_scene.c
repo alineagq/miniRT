@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_scene.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fsuomins <fsuomins@student.42sp.org.br     +#+  +:+       +#+        */
+/*   By: fsuomins <fsuomins@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 00:02:15 by aqueiroz          #+#    #+#             */
-/*   Updated: 2023/10/24 20:52:13 by fsuomins         ###   ########.fr       */
+/*   Updated: 2023/10/25 15:51:05 by fsuomins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,16 +32,16 @@ static void	validate_line(char *line)
 		validate_camera(line + 1);
 	else if (line[0] == 'L')
 		validate_light(line);
-	else if (strcmp(line, "sp") == 0)
+	else if (!strncmp(line, "sp", 2))
 		validate_sphere(line);
-	// else if (strcmp(line, "pl") == 0)
-	// 	validate_plane(line);
-	// else if (strcmp(line, "cy") == 0)
-	// 	validate_cylinder(line);
+	else if (!strncmp(line, "pl", 2))
+		validate_plane(line);
+	else if (!strncmp(line, "cy", 2))
+		validate_cylinder(line);
 	else
 	{
 		free(line);
-		exit_error("Invalid scene file.\n");
+		exit_error("Invalid scene file oioi.\n");
 	}
 }
 
@@ -54,7 +54,6 @@ void	validate_scene(char *file)
 	line = get_next_line(fd);
 	while (line)
 	{
-		printf("%s\n", line);
 		validate_line(line);
 		free(line);
 		line = get_next_line(fd);

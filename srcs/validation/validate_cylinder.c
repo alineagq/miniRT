@@ -3,55 +3,73 @@
 /*                                                        :::      ::::::::   */
 /*   validate_cylinder.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fsuomins <fsuomins@student.42sp.org.br     +#+  +:+       +#+        */
+/*   By: fsuomins <fsuomins@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 11:42:10 by fsuomins          #+#    #+#             */
-/*   Updated: 2023/10/19 11:59:55 by fsuomins         ###   ########.fr       */
+/*   Updated: 2023/10/25 15:50:27 by fsuomins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minirt.h"
 
+static void	validate_cylinder_orientation(char *line)
+{
+	char	**split;
+
+	split = ft_split(line, ',');
+	if (!split[0] || (ft_atof(split[0]) < -1.0 && ft_atof(split[0]) > 1.0))
+		exit_error("Invalid cylinder orientation.\n");
+	if (!split[1] || (ft_atof(split[1]) < -1.0 && ft_atof(split[1]) > 1.0))
+		exit_error("Invalid cylinder orientation.\n");
+	if (!split[2] || (ft_atof(split[2]) < -1.0 && ft_atof(split[2]) > 1.0))
+		exit_error("Invalid cylinder orientation.\n");
+}
+
+static void	validate_cylinder_radius(char *line)
+{
+	char	**split;
+
+	split = ft_split(line, ' ');
+	if ((ft_atof(split[0]) < 0.0))
+		exit_error("Invalid cylinder radius.\n");
+}
+
+static void	validate_cylinder_position(char *line)
+{
+	char	**split;
+
+	split = ft_split(line, ',');
+	if (!split[0])
+		exit_error("Invalid cylinder position1.\n");
+	if (!split[1])
+		exit_error("Invalid cylinder position2.\n");
+	if (!split[2])
+		exit_error("Invalid cylinder position3.\n");
+}
+
+static void	validate_cylinder_height(char *line)
+{
+	char	**split;
+
+	split = ft_split(line, ' ');
+	if ((ft_atof(split[0]) < 0.0))
+		exit_error("Invalid cylinder height.\n");
+}
+
 void	validate_cylinder(char *line)
 {
-	char	*str;
-	int		count;
-	int		value;
-	int		value;
-	double	value;
-	int		value;
+	char	**split;
 
-	count = 0;
-	while ((str = ft_strtok(line, " ")) != NULL)
-	{
-		if (count == 0 || count == 1 || count == 2)
-		{
-			value = ft_atoi(str);
-			if (value < -180 || value > 180)
-				exit_error("Invalid cylinder position.\n");
-		}
-		else if (count == 3)
-		{
-			value = ft_atoi(str);
-			if (value < 0)
-				exit_error("Invalid cylinder radius.\n");
-		}
-		else if (count == 4)
-		{
-			value = atof(str);
-			if (value < 0.0 || value > 1.0)
-				exit_error("Invalid cylinder color intensity.\n");
-		}
-		else if (count == 5)
-		{
-			value = ft_atoi(str);
-			if (value < 0 || value > 255)
-				exit_error("Invalid cylinder color.\n");
-		}
-		str = NULL;
-		count++;
-	}
-	if (count != 6)
-		exit_error("Invalid cylinder definition.\n");
+	line++;
+	while (*line == ' ')
+		line++;
+	split = ft_split(line, ' ');
+	if (*line == '\0' || *line == '\n')
+		exit_error("Invalid cylinder.\n");
+	validate_cylinder_position(split[1]);
+	validate_cylinder_orientation(split[2]);
+	validate_cylinder_radius(split[3]);
+	validate_cylinder_height(split[4]);
+	validate_color(split[5]);
 }
 
