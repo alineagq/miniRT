@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fsuomins <fsuomins@student.42sp.org.br     +#+  +:+       +#+        */
+/*   By: fsuomins <fsuomins@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 11:08:29 by fsuomins          #+#    #+#             */
-/*   Updated: 2023/10/22 20:51:12 by fsuomins         ###   ########.fr       */
+/*   Updated: 2023/10/26 22:55:36 by fsuomins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,9 @@ void	print_header(void)
 {
 	printf("\n");
 	printf("\033[1;35m");
-	printf("************************************\n");
-	printf("*                                  *\n");
-	printf("*          Welcome to miniRT       *\n");
-	printf("*                                  *\n");
-	printf("************************************\n");
+	printf("        _)  _    _)  _ \\ __ __|\n");
+	printf("   ` \\   |    \\   |    /    |\n");
+	printf(" _|_|_| _| _| _| _| _|\\_   _|\n");
 	printf("\033[0m");
 	printf("\n");
 }

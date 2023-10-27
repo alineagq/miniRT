@@ -6,7 +6,7 @@
 /*   By: fsuomins <fsuomins@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 11:42:10 by fsuomins          #+#    #+#             */
-/*   Updated: 2023/10/25 15:50:27 by fsuomins         ###   ########.fr       */
+/*   Updated: 2023/10/25 16:14:34 by fsuomins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,11 @@ static void	validate_cylinder_position(char *line)
 
 	split = ft_split(line, ',');
 	if (!split[0])
-		exit_error("Invalid cylinder position1.\n");
+		exit_error("Invalid cylinder position.\n");
 	if (!split[1])
-		exit_error("Invalid cylinder position2.\n");
+		exit_error("Invalid cylinder position.\n");
 	if (!split[2])
-		exit_error("Invalid cylinder position3.\n");
+		exit_error("Invalid cylinder position.\n");
 }
 
 static void	validate_cylinder_height(char *line)

@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fsuomins <fsuomins@student.42sp.org.br     +#+  +:+       +#+        */
+/*   By: fsuomins <fsuomins@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 11:21:39 by fsuomins          #+#    #+#             */
-/*   Updated: 2023/10/18 10:15:12 by fsuomins         ###   ########.fr       */
+/*   Updated: 2023/10/26 20:29:40 by fsuomins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minirt.h"
+#include "../includes/structs.h"
 
 void	*parse_scene(const char *scene_file)
 {
@@ -23,7 +24,7 @@ void	*parse_scene(const char *scene_file)
 		exit_error("Malloc error");
 	fd = open(scene_file, O_RDONLY);
 	if (fd == -1)
-		exit_error("File not found");\z
+		exit_error("File not found");
 	line = get_next_line(fd);
 	while (line)
 	{
@@ -46,52 +47,13 @@ void	*parse_scene(const char *scene_file)
 	}
 	close(fd);
 	return (data);
-
 }
-
-void	parse_ambient(const char *line, t_data *data)
-{
-
-}
-
-void	parse_camera(const char *line, t_data *data)
-{
-	// Parse camera information and update data structure
-	// Implementation not provided in this example
-}
-
-void	parse_light(const char *line, t_data *data)
-{
-	// Parse light information and update data structure
-	// Implementation not provided in this example
-}
-
-void	parse_sphere(const char *line, t_data *data)
-{
-	// Parse sphere information and update data structure
-	// Implementation not provided in this example
-}
-
-void	parse_plane(const char *line, t_data *data)
-{
-	// Parse plane information and update data structure
-	// Implementation not provided in this example
-}
-
-void	parse_cylinder(const char *line, t_data *data)
-{
-	// Parse cylinder information and update data structure
-	// Implementation not provided in this example
-}
-
 void	render_scene(t_data *data)
 {
-	// Implement ray tracing logic to render the scene
-	// This involves casting rays, calculating intersections, and shading
-	// Update the MiniLibX window accordingly
+	return ;
 }
 
 void	free_data(t_data *data)
 {
-	// Implement logic to free allocated memory for t_data structure
+return ;
 }
