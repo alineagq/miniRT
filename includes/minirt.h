@@ -6,7 +6,7 @@
 /*   By: fsuomins <fsuomins@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 12:24:08 by aqueiroz          #+#    #+#             */
-/*   Updated: 2023/10/26 20:31:32 by fsuomins         ###   ########.fr       */
+/*   Updated: 2023/10/26 23:22:30 by fsuomins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@
 # define COLOR_CY_1 "\033[1;36m"
 # define COLOR_WH "\033[0;37m"
 
-void	exit_error(char *message);
+void	exit_error(char *message, char **split);
 void	validate_scene(char *file);
 void	validate_ambient(char *line);
 void	validate_camera(char *line);
@@ -58,5 +58,6 @@ void	parse_sphere(const char *line, t_data *data);
 void	parse_plane(const char *line, t_data *data);
 void	parse_cylinder(const char *line, t_data *data);
 
+void free_split(char **split);
 
 #endif

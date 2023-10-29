@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_camera.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fsuomins <fsuomins@student.42sp.org.br     +#+  +:+       +#+        */
+/*   By: fsuomins <fsuomins@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 11:13:39 by fsuomins          #+#    #+#             */
-/*   Updated: 2023/10/24 10:59:13 by fsuomins         ###   ########.fr       */
+/*   Updated: 2023/10/26 23:25:56 by fsuomins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,9 @@ static void	validate_viewport(char *line)
 	view_port = ft_atoi(line);
 	line[ft_strlen(line) - 2] = '\0';
 	if (!is_numeric_string(line))
-		exit_error("Invalide FOV.\n");
+		exit_error("Invalide FOV.\n", NULL);
 	if (view_port < 0 || view_port > 180)
-		exit_error("Invalide FOV.\n");
+		exit_error("Invalide FOV.\n", NULL);
 }
 
 static void	validate_camera_orientation(char *line)
@@ -54,11 +54,12 @@ static void	validate_camera_orientation(char *line)
 
 	split = ft_split(line, ',');
 	if (!split[0] || (ft_atof(split[0]) < -1.0 && ft_atof(split[0]) > 1.0))
-		exit_error("Invalid camera orientation.\n");
+		exit_error("Invalid camera orientation.\n", split);
 	if (!split[1] || (ft_atof(split[1]) < -1.0 && ft_atof(split[1]) > 1.0))
-		exit_error("Invalid camera orientation.\n");
+		exit_error("Invalid camera orientation.\n", split);
 	if (!split[2] || (ft_atof(split[2]) < -1.0 && ft_atof(split[2]) > 1.0))
-		exit_error("Invalid camera orientation.\n");
+		exit_error("Invalid camera orientation.\n", split);
+	free_split(split);
 }
 
 static void	validate_camera_position(char *line)
@@ -67,11 +68,12 @@ static void	validate_camera_position(char *line)
 
 	split = ft_split(line, ',');
 	if (!split[0])
-		exit_error("Invalid camera position.\n");
+		exit_error("Invalid camera position.\n", split);
 	if (!split[1])
-		exit_error("Invalid camera position.\n");
+		exit_error("Invalid camera position.\n", split);
 	if (!split[2])
-		exit_error("Invalid camera position.\n");
+		exit_error("Invalid camera position.\n", split);
+	free_split(split);
 }
 
 void	validate_camera(char *line)
@@ -82,8 +84,9 @@ void	validate_camera(char *line)
 		line++;
 	split = ft_split(line, ' ');
 	if (*line == '\0' || *line == '\n')
-		exit_error("Invalid camera.\n");
+		exit_error("Invalid camera.\n", split);
 	validate_camera_position(split[0]);
 	validate_camera_orientation(split[1]);
 	validate_viewport(split[2]);
+	free_split(split);
 }

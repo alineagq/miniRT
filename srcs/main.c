@@ -6,7 +6,7 @@
 /*   By: fsuomins <fsuomins@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 11:08:29 by fsuomins          #+#    #+#             */
-/*   Updated: 2023/10/26 22:55:36 by fsuomins         ###   ########.fr       */
+/*   Updated: 2023/10/29 15:50:51 by fsuomins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static void	validate_args(int argc, char **argv)
 	while (argv[1][i])
 		i++;
 	if (argv[1][i - 1] != 't' || argv[1][i - 2] != 'r' || argv[1][i - 3] != '.')
-		exit_error("Invalid scene file\n");
+		exit_error("Invalid scene file\n", NULL);
 }
 
 static void	check_validate(int argc, char **argv)

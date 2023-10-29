@@ -6,7 +6,7 @@
 /*   By: fsuomins <fsuomins@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 11:21:39 by fsuomins          #+#    #+#             */
-/*   Updated: 2023/10/26 20:29:40 by fsuomins         ###   ########.fr       */
+/*   Updated: 2023/10/29 15:47:23 by fsuomins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@ void	*parse_scene(const char *scene_file)
 
 	data = malloc(sizeof(t_data));
 	if (!data)
-		exit_error("Malloc error");
+		exit_error("Malloc error", NULL);
 	fd = open(scene_file, O_RDONLY);
 	if (fd == -1)
-		exit_error("File not found");
+		exit_error("File not found", NULL);
 	line = get_next_line(fd);
 	while (line)
 	{
@@ -41,7 +41,7 @@ void	*parse_scene(const char *scene_file)
 		else if (strcmp(line, "cy") == 0)
 			parse_cylinder(line, data);
 		else
-			exit_error("Invalid scene file.");
+			exit_error("Invalid scene file.", &line);
 		free(line);
 		line = get_next_line(fd);
 	}
@@ -50,10 +50,12 @@ void	*parse_scene(const char *scene_file)
 }
 void	render_scene(t_data *data)
 {
+	(void)data;
 	return ;
 }
 
 void	free_data(t_data *data)
 {
-return ;
+	(void)data;
+	return ;
 }

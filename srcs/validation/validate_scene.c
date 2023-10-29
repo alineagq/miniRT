@@ -6,7 +6,7 @@
 /*   By: fsuomins <fsuomins@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 00:02:15 by aqueiroz          #+#    #+#             */
-/*   Updated: 2023/10/25 15:51:05 by fsuomins         ###   ########.fr       */
+/*   Updated: 2023/10/27 11:17:10 by fsuomins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static int	valid_fd(char *file)
 
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
-		exit_error("Invalid scene file.\n");
+		exit_error("Invalid scene file.\n", NULL);
 	return (fd);
 }
 
@@ -41,7 +41,7 @@ static void	validate_line(char *line)
 	else
 	{
 		free(line);
-		exit_error("Invalid scene file oioi.\n");
+		exit_error("Invalid scene file oioi.\n", NULL);
 	}
 }
 
@@ -58,5 +58,5 @@ void	validate_scene(char *file)
 		free(line);
 		line = get_next_line(fd);
 	}
-
+	free(line);
 }

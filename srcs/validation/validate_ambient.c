@@ -6,7 +6,7 @@
 /*   By: fsuomins <fsuomins@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 11:14:05 by fsuomins          #+#    #+#             */
-/*   Updated: 2023/10/25 15:59:13 by fsuomins         ###   ########.fr       */
+/*   Updated: 2023/10/26 23:24:16 by fsuomins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	validate_ambient_light(char *line)
 		if (line[i] == ' ' || line[i] == '\0')
 			return ;
 	}
-	exit_error("Invalid ambient light.\n");
+	exit_error("Invalid ambient light.\n", NULL);
 }
 
 void	validate_ambient(char *line)
@@ -45,8 +45,8 @@ void	validate_ambient(char *line)
 		if (line[i] == ' ' || line[i] == '\0')
 			validate_color(line + i);
 		else
-			exit_error("Invalid ambient.\n");
+			exit_error("Invalid ambient.\n", NULL);
 	}
 	else
-		exit_error("Invalid ambient.\n");
+		exit_error("Invalid ambient.\n", NULL);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_light.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fsuomins <fsuomins@student.42sp.org.br     +#+  +:+       +#+        */
+/*   By: fsuomins <fsuomins@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 11:15:12 by fsuomins          #+#    #+#             */
-/*   Updated: 2023/10/24 10:59:10 by fsuomins         ###   ########.fr       */
+/*   Updated: 2023/10/27 11:19:09 by fsuomins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ static void	validate_light_brightness(char *line)
 
 	split = ft_split(line, ' ');
 	if ((ft_atof(split[0]) < 0.0 && ft_atof(split[0]) > 1.0))
-		exit_error("Invalid light.\n");
+		exit_error("Invalid light.\n", split);
+	free_split(split);
 }
 
 static void	validate_light_position(char *line)
@@ -27,11 +28,12 @@ static void	validate_light_position(char *line)
 
 	split = ft_split(line, ',');
 	if (!split[0])
-		exit_error("Invalid light position.\n");
+		exit_error("Invalid light position.\n", split);
 	if (!split[1])
-		exit_error("Invalid light position.\n");
+		exit_error("Invalid light position.\n", split);
 	if (!split[2])
-		exit_error("Invalid light position.\n");
+		exit_error("Invalid light position.\n", split);
+	free_split(split);
 }
 
 void	validate_light(char *line)
@@ -43,8 +45,9 @@ void	validate_light(char *line)
 		line++;
 	split = ft_split(line, ' ');
 	if (*line == '\0' || *line == '\n')
-		exit_error("Invalid light.\n");
+		exit_error("Invalid light.\n", split);
 	validate_light_position(split[0]);
 	validate_light_brightness(split[1]);
 	validate_color(split[2]);
+	free_split(split);
 }
