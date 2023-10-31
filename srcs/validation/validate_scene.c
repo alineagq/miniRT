@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_scene.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fsuomins <fsuomins@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: aqueiroz <aqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 00:02:15 by aqueiroz          #+#    #+#             */
-/*   Updated: 2023/10/27 11:17:10 by fsuomins         ###   ########.fr       */
+/*   Updated: 2023/10/30 22:27:00 by aqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static void	validate_line(char *line)
 	if (line == NULL || *line == '\0' || *line == '\n')
 		return ;
 	if (line[0] == 'A')
-		validate_ambient(line);
+		validate_ambient(++line);
 	else if (line[0] == 'C')
 		validate_camera(line + 1);
 	else if (line[0] == 'L')

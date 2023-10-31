@@ -1,22 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exit_error.c                                       :+:      :+:    :+:   */
+/*   data.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aqueiroz <aqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/17 10:34:42 by aqueiroz          #+#    #+#             */
-/*   Updated: 2023/10/30 20:45:29 by aqueiroz         ###   ########.fr       */
+/*   Created: 2023/10/30 20:20:00 by aqueiroz          #+#    #+#             */
+/*   Updated: 2023/10/30 20:35:25 by aqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minirt.h"
 
-void	exit_error(char *message, char **split)
+t_data	*get_data(void)
 {
-	ft_putstr_fd("Error\n", 2);
-	ft_putstr_fd(message, 2);
-	if (split)
-		free_split(split);
-	exit(1);
+	static t_data	data;
+
+	return (&data);
+}
+
+void	free_data(void)
+{
+	// t_data	*data;
+
+	// data = get_data();
 }

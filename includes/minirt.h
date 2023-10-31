@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fsuomins <fsuomins@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: aqueiroz <aqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 12:24:08 by aqueiroz          #+#    #+#             */
-/*   Updated: 2023/10/26 23:22:30 by fsuomins         ###   ########.fr       */
+/*   Updated: 2023/10/30 22:50:22 by aqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	validate_light(char *line);
 int		is_numeric_string(const char *str);
 void	validate_sphere(char *line);
 void	validate_plane(char *line);
-void	validate_color(char *line);
+void	validate_color(char **split, char *message);
 void	validate_cylinder(char *line);
 
 //////////////****** parse *******/////////////////////
@@ -58,6 +58,9 @@ void	parse_sphere(const char *line, t_data *data);
 void	parse_plane(const char *line, t_data *data);
 void	parse_cylinder(const char *line, t_data *data);
 
-void free_split(char **split);
+void	free_split(char **split);
+
+t_data	*get_data(void);
+void	free_data(void);
 
 #endif

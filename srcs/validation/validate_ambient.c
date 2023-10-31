@@ -3,50 +3,39 @@
 /*                                                        :::      ::::::::   */
 /*   validate_ambient.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fsuomins <fsuomins@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: aqueiroz <aqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 11:14:05 by fsuomins          #+#    #+#             */
-/*   Updated: 2023/10/26 23:24:16 by fsuomins         ###   ########.fr       */
+/*   Updated: 2023/10/30 22:49:35 by aqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minirt.h"
 
-void	validate_ambient_light(char *line)
+void	validate_ambient_light(char **split)
 {
-	int	i;
+	t_data	*data;
+	double	ambient_light;
 
-	i = 1;
-	while (line[i] == ' ')
-		i++;
-	if (line[i] == '0' && line[i + 1] == '.')
-	{
-		i += 2;
-		while (line[i] >= '0' && line[i] <= '9')
-			i++;
-		if (line[i] == ' ' || line[i] == '\0')
-			return ;
-	}
-	exit_error("Invalid ambient light.\n", NULL);
+	data = get_data();
+	ambient_light = ft_atof(split[0]);
+	if (ambient_light < 0 || ambient_light > 1)
+		exit_error("Invalid ambient light.\n", split);
+	data->ambient.ratio = ambient_light;
+	printf("Ambient light: %f\n", data->ambient.ratio);
 }
 
 void	validate_ambient(char *line)
 {
-	int	i;
+	char	**split;
 
-	i = 1;
-	while (line[i] == ' ')
-		i++;
-	if ((line[i] == '0' || line[i] == 1) && line[i + 1] == '.')
-	{
-		i += 2;
-		while (line[i] >= '0' && line[i] <= '9')
-			i++;
-		if (line[i] == ' ' || line[i] == '\0')
-			validate_color(line + i);
-		else
-			exit_error("Invalid ambient.\n", NULL);
-	}
-	else
-		exit_error("Invalid ambient.\n", NULL);
+	while (*line == ' ')
+		line++;
+	split = ft_split(line, ' ');
+	if (split[0] == NULL || split[1] == NULL)
+		exit_error("Invalid ambient light.\n", split);
+	if (split[2] != NULL)
+		exit_error("Invalid ambient light.\n", split);
+	validate_ambient_light(split);
+	validate_color(split, "Invalid ambient light.\n");
 }

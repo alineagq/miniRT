@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fsuomins <fsuomins@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: aqueiroz <aqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 11:21:39 by fsuomins          #+#    #+#             */
-/*   Updated: 2023/10/29 15:47:23 by fsuomins         ###   ########.fr       */
+/*   Updated: 2023/10/30 20:34:41 by aqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,8 @@ void	render_scene(t_data *data)
 	return ;
 }
 
-void	free_data(t_data *data)
-{
-	(void)data;
-	return ;
-}
+// void	free_data(t_data *data)
+// {
+// 	(void)data;
+// 	return ;
+// }

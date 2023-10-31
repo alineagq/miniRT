@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fsuomins <fsuomins@student.42sp.org.br     +#+  +:+       +#+        */
+/*   By: aqueiroz <aqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 17:05:52 by fsuomins          #+#    #+#             */
-/*   Updated: 2023/10/18 09:36:10 by fsuomins         ###   ########.fr       */
+/*   Updated: 2023/10/30 22:39:20 by aqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ typedef struct s_data
 	void		*mlx;
 	void		*mlx_win;
 	t_camera	*camera;
-	t_ambient	*ambient;
+	t_ambient	ambient;
 	t_list		*lights;
 	t_list		*objects;
 }	t_data;
