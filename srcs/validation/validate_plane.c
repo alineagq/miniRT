@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_plane.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fsuomins <fsuomins@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: fsuomins <fsuomins@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 11:39:39 by fsuomins          #+#    #+#             */
-/*   Updated: 2023/10/27 11:18:14 by fsuomins         ###   ########.fr       */
+/*   Updated: 2023/10/31 21:52:07 by fsuomins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static void	validate_plane_position(char *line)
 	free_split(split);
 }
 
-void	validate_plane(char *line)
+int	validate_plane(char *line)
 {
 	char	**split;
 
@@ -54,4 +54,5 @@ void	validate_plane(char *line)
 	validate_plane_orientation(split[2]);
 	validate_color(split[3]);
 	free_split(split);
+	return (1);
 }

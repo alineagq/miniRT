@@ -6,7 +6,7 @@
 /*   By: fsuomins <fsuomins@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 12:24:08 by aqueiroz          #+#    #+#             */
-/*   Updated: 2023/10/31 21:13:28 by fsuomins         ###   ########.fr       */
+/*   Updated: 2023/10/31 21:56:42 by fsuomins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,14 +39,14 @@
 
 void	exit_error(char *message, char **split);
 int		validate_scene(char *file);
-void	validate_ambient(char *line);
-void	validate_camera(char *line);
-void	validate_light(char *line);
+int		validate_ambient(char *line);
+int		validate_camera(char *line);
+int		validate_light(char *line);
 int		is_numeric_string(const char *str);
-void	validate_sphere(char *line);
-void	validate_plane(char *line);
+int		validate_sphere(char *line);
+int		validate_plane(char *line);
 void	validate_color(char *line);
-void	validate_cylinder(char *line);
+int		validate_cylinder(char *line);
 
 //////////////****** parse *******/////////////////////
 
@@ -59,5 +59,7 @@ void	parse_plane(const char *line, t_data *data);
 void	parse_cylinder(const char *line, t_data *data);
 
 void free_split(char **split);
+int	print_line_error(char *line);
+
 
 #endif

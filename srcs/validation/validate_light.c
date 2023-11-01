@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_light.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fsuomins <fsuomins@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: fsuomins <fsuomins@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 11:15:12 by fsuomins          #+#    #+#             */
-/*   Updated: 2023/10/27 11:19:09 by fsuomins         ###   ########.fr       */
+/*   Updated: 2023/10/31 21:51:31 by fsuomins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static void	validate_light_position(char *line)
 	free_split(split);
 }
 
-void	validate_light(char *line)
+int	validate_light(char *line)
 {
 	char	**split;
 
@@ -50,4 +50,5 @@ void	validate_light(char *line)
 	validate_light_brightness(split[1]);
 	validate_color(split[2]);
 	free_split(split);
+	return (1);
 }

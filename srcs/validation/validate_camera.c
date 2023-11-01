@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_camera.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fsuomins <fsuomins@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: fsuomins <fsuomins@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 11:13:39 by fsuomins          #+#    #+#             */
-/*   Updated: 2023/10/26 23:25:56 by fsuomins         ###   ########.fr       */
+/*   Updated: 2023/10/31 21:51:02 by fsuomins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ static void	validate_camera_position(char *line)
 	free_split(split);
 }
 
-void	validate_camera(char *line)
+int	validate_camera(char *line)
 {
 	char	**split;
 
@@ -89,4 +89,5 @@ void	validate_camera(char *line)
 	validate_camera_orientation(split[1]);
 	validate_viewport(split[2]);
 	free_split(split);
+	return (1);
 }

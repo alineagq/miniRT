@@ -6,7 +6,7 @@
 /*   By: fsuomins <fsuomins@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 17:05:52 by fsuomins          #+#    #+#             */
-/*   Updated: 2023/10/31 21:13:46 by fsuomins         ###   ########.fr       */
+/*   Updated: 2023/10/31 22:00:29 by fsuomins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,13 @@
 # define STRUCTS_H
 # include "minirt.h"
 
+typedef struct s_parse
+{
+	char	*id;
+	int		(*validate)(char *);
+}	t_parse;
+
+// Utils
 typedef struct s_file
 {
 	char	*line;

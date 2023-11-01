@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_ambient.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fsuomins <fsuomins@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: fsuomins <fsuomins@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 11:14:05 by fsuomins          #+#    #+#             */
-/*   Updated: 2023/10/26 23:24:16 by fsuomins         ###   ########.fr       */
+/*   Updated: 2023/10/31 21:50:42 by fsuomins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	validate_ambient_light(char *line)
 	exit_error("Invalid ambient light.\n", NULL);
 }
 
-void	validate_ambient(char *line)
+int	validate_ambient(char *line)
 {
 	int	i;
 
@@ -49,4 +49,5 @@ void	validate_ambient(char *line)
 	}
 	else
 		exit_error("Invalid ambient.\n", NULL);
+	return (1);
 }

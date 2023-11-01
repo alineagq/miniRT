@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_sphere.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fsuomins <fsuomins@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: fsuomins <fsuomins@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 11:15:52 by fsuomins          #+#    #+#             */
-/*   Updated: 2023/10/27 11:16:30 by fsuomins         ###   ########.fr       */
+/*   Updated: 2023/10/31 21:53:25 by fsuomins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,10 @@ static void	validate_sphere_position(char *line)
 	free_split(split);
 }
 
-void	validate_sphere(char *line)
+int	validate_sphere(char *line)
 {
 	char	**split;
+
 	while (*line == ' ')
 		line++;
 	split = ft_split(line, ' ');
@@ -48,4 +49,5 @@ void	validate_sphere(char *line)
 	validate_sphere_radius(split[2]);
 	validate_color(split[3]);
 	free_split(split);
+	return (1);
 }

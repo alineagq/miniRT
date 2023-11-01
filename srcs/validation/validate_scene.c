@@ -6,7 +6,7 @@
 /*   By: fsuomins <fsuomins@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 00:02:15 by aqueiroz          #+#    #+#             */
-/*   Updated: 2023/10/31 21:28:59 by fsuomins         ###   ########.fr       */
+/*   Updated: 2023/10/31 22:02:15 by fsuomins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,29 +24,26 @@ static int	valid_fd(char *file)
 
 static int	validate_line(char *line)
 {
-	if (line == NULL || *line == '\0' || *line == '\n')
+	int				i;
+	char			*id;
+	const t_parse	parse[] = {{"R", NULL}, {"A", validate_ambient}, {"C",
+		validate_camera}, {"L", validate_light}, {"sp", validate_sphere}, {"pl",
+		validate_plane}, {"cy", validate_cylinder}, {"sq", NULL}, {"tr", NULL},
+	{NULL, NULL}};
+
+	id = ft_strtok(line, " ");
+	if (!id)
 		return (0);
-	if (line[0] == 'A')
-		validate_ambient(line);
-	else if (line[0] == 'C')
-		validate_camera(line + 1);
-	else if (line[0] == 'L')
-		validate_light(line);
-	else if (!strncmp(line, "sp", 2))
-		validate_sphere(line);
-	else if (!strncmp(line, "pl", 2))
-		validate_plane(line);
-	else if (!strncmp(line, "cy", 2))
-		validate_cylinder(line);
-	else
-	{
-		free(line);
-		exit_error("Invalid scene file oioi.\n", NULL);
-	}
-	return (1);
+	i = 0;
+	while (parse[i].id && !ft_strncmp(id, parse[i].id, 2))
+		i++;
+	free(id);
+	if (parse[i].id)
+		return (print_line_error(line));
+	return (parse[i].validate(line));
 }
 
-static int print_line_error(char *line)
+int	print_line_error(char *line)
 {
 	ft_putstr_fd("Error\n", 2);
 	ft_putstr_fd("Invalid line: ", 2);
@@ -62,7 +59,7 @@ int	validate_scene(char *file)
 	file_scene.valid = 1;
 	file_scene.fd = valid_fd(file);
 	file_scene.line = get_next_line(file_scene.fd);
-	while (file_scene.line)
+	while (file_scene.line && file_scene.valid == 1 && file_scene.line[0] != '\0')
 	{
 		if (!validate_line(file_scene.line))
 			file_scene.valid = print_line_error(file_scene.line);
