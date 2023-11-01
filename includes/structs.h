@@ -6,7 +6,7 @@
 /*   By: fsuomins <fsuomins@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 17:05:52 by fsuomins          #+#    #+#             */
-/*   Updated: 2023/11/01 16:30:39 by fsuomins         ###   ########.fr       */
+/*   Updated: 2023/11/01 20:05:00 by fsuomins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,8 @@ typedef struct s_ambient
 
 typedef struct s_camera
 {
-	t_vector	*origin;
-	t_vector	*direction;
+	t_vector	origin;
+	t_vector	direction;
 	double		fov;
 }	t_camera;
 
@@ -101,7 +101,7 @@ typedef struct s_data
 {
 	void		*mlx;
 	void		*mlx_win;
-	t_camera	*camera;
+	t_camera	camera;
 	t_ambient	ambient;
 	t_light		light;
 	t_sphere	sphere;

@@ -6,11 +6,12 @@
 /*   By: fsuomins <fsuomins@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 11:13:39 by fsuomins          #+#    #+#             */
-/*   Updated: 2023/11/01 13:52:23 by fsuomins         ###   ########.fr       */
+/*   Updated: 2023/11/01 20:46:09 by fsuomins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minirt.h"
+
 
 int	is_numeric_string(const char *str)
 {
@@ -36,59 +37,89 @@ int	is_numeric_string(const char *str)
 	return (1);
 }
 
-static void	validate_viewport(char *line)
-{
-	int	view_port;
 
-	view_port = ft_atoi(line);
-	line[ft_strlen(line) - 2] = '\0';
-	if (!is_numeric_string(line))
-		exit_error("Invalide FOV.\n", NULL);
-	if (view_port < 0 || view_port > 180)
-		exit_error("Invalide FOV.\n", NULL);
+static int	validate_camera_fov(char *line)
+{
+	t_data	*data;
+	double	fov;
+
+	data = get_data();
+	fov = ft_atoi(line);
+	if (fov < 0 || fov > 180 || errno == ERANGE)
+		return (0);
+	data->camera.fov = fov;
+	return (1);
 }
 
-static void	validate_camera_orientation(char *line)
+static int	validate_camera_orientation(char *line)
 {
+	t_data	*data;
 	char	**split;
 
+	data = get_data();
 	split = ft_split(line, ',');
-	if (!split[0] || (ft_atof(split[0]) < -1.0 && ft_atof(split[0]) > 1.0))
-		exit_error("Invalid camera orientation.\n", split);
-	if (!split[1] || (ft_atof(split[1]) < -1.0 && ft_atof(split[1]) > 1.0))
-		exit_error("Invalid camera orientation.\n", split);
-	if (!split[2] || (ft_atof(split[2]) < -1.0 && ft_atof(split[2]) > 1.0))
-		exit_error("Invalid camera orientation.\n", split);
+	if (!split[0] || ft_atof(split[0]) < -1.0 || ft_atof(split[0]) > 1.0
+		|| !split[1] || ft_atof(split[1]) < -1.0 || ft_atof(split[1]) > 1.0
+		|| !split[2] || ft_atof(split[2]) < -1.0 || ft_atof(split[2]) > 1.0)
+	{
+		free_split(split);
+		return (0);
+	}
+	data->camera.direction.x = ft_atof(split[0]);
+	data->camera.direction.y = ft_atof(split[1]);
+	data->camera.direction.z = ft_atof(split[2]);
 	free_split(split);
+	return (1);
 }
 
-static void	validate_camera_position(char *line)
+static int	validate_camera_position(char *line)
 {
+	t_data	*data;
 	char	**split;
 
+	data = get_data();
 	split = ft_split(line, ',');
-	if (!split[0])
-		exit_error("Invalid camera position.\n", split);
-	if (!split[1])
-		exit_error("Invalid camera position.\n", split);
-	if (!split[2])
-		exit_error("Invalid camera position.\n", split);
+	if (!is_numeric_string(split[0]) || !is_numeric_string(split[1])
+		|| !is_numeric_string(split[2]))
+	{
+		free_split(split);
+		return (0);
+	}
+	data->camera.origin.x = ft_atof(split[0]);
+	data->camera.origin.y = ft_atof(split[1]);
+	data->camera.origin.z = ft_atof(split[2]);
 	free_split(split);
+	return (1);
 }
 
 int	validate_camera(char *line)
 {
-	char	**split;
+	char 	**split;
 
+	line++;
 	while (*line == ' ')
 		line++;
-	printf("line: %s\n", line);
 	split = ft_split(line, ' ');
-	if (*line == '\0' || *line == '\n')
-		exit_error("Invalid camera.\n", split);
-	validate_camera_position(split[0]);
-	validate_camera_orientation(split[1]);
-	validate_viewport(split[2]);
+	if (!split[0] || !split[1] || !split[2] || split[3] != NULL)
+	{
+		free_split(split);
+		return (0);
+	}
+	if (validate_camera_position(split[0]) == 0)
+	{
+		free_split(split);
+		return (0);
+	}
+	if (validate_camera_orientation(split[1]) == 0)
+	{
+		free_split(split);
+		return (0);
+	}
+	if (validate_camera_fov(split[2]) == 0)
+	{
+		free_split(split);
+		return (0);
+	}
 	free_split(split);
 	return (1);
 }
