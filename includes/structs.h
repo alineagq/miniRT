@@ -6,7 +6,7 @@
 /*   By: fsuomins <fsuomins@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 17:05:52 by fsuomins          #+#    #+#             */
-/*   Updated: 2023/11/01 15:43:41 by fsuomins         ###   ########.fr       */
+/*   Updated: 2023/11/01 16:30:39 by fsuomins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ typedef struct s_light
 {
 	t_vector	*origin;
 	double		ratio;
-	t_color		*color;
+	t_color		color;
 }	t_light;
 
 // objects
@@ -76,14 +76,14 @@ typedef struct s_sphere
 {
 	t_vector	*origin;
 	double		diameter;
-	t_color		*color;
+	t_color		color;
 }	t_sphere;
 
 typedef struct s_plane
 {
 	t_vector	*origin;
 	t_vector	*direction;
-	t_color		*color;
+	t_color		color;
 }	t_plane;
 
 typedef struct s_cylinder
@@ -92,7 +92,7 @@ typedef struct s_cylinder
 	t_vector	*direction;
 	double		diameter;
 	double		height;
-	t_color		*color;
+	t_color		color;
 }	t_cylinder;
 
 // data
@@ -103,7 +103,10 @@ typedef struct s_data
 	void		*mlx_win;
 	t_camera	*camera;
 	t_ambient	ambient;
-	t_list		*lights;
+	t_light		light;
+	t_sphere	sphere;
+	t_plane		plane;
+	t_cylinder	cylinder;
 	t_list		*objects;
 }	t_data;
 

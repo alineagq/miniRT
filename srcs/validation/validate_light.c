@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_light.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fsuomins <fsuomins@student.42sp.org.br     +#+  +:+       +#+        */
+/*   By: fsuomins <fsuomins@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 11:15:12 by fsuomins          #+#    #+#             */
-/*   Updated: 2023/10/31 21:51:31 by fsuomins         ###   ########.fr       */
+/*   Updated: 2023/11/01 16:27:24 by fsuomins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,11 @@ int	validate_light(char *line)
 		exit_error("Invalid light.\n", split);
 	validate_light_position(split[0]);
 	validate_light_brightness(split[1]);
-	validate_color(split[2]);
+	if (validate_color(split[2], &get_data()->light.color) == 0)
+	{
+		free_split(split);
+		return (0);
+	}
 	free_split(split);
 	return (1);
 }

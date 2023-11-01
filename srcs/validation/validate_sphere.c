@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_sphere.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fsuomins <fsuomins@student.42sp.org.br     +#+  +:+       +#+        */
+/*   By: fsuomins <fsuomins@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 11:15:52 by fsuomins          #+#    #+#             */
-/*   Updated: 2023/10/31 21:53:25 by fsuomins         ###   ########.fr       */
+/*   Updated: 2023/11/01 16:28:01 by fsuomins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,11 @@ int	validate_sphere(char *line)
 		exit_error("Invalid sphere.\n", split);
 	validate_sphere_position(split[1]);
 	validate_sphere_radius(split[2]);
-	validate_color(split[3]);
+	if (validate_color(split[3], &get_data()->sphere.color) == 0)
+	{
+		free_split(split);
+		return (0);
+	}
 	free_split(split);
 	return (1);
 }

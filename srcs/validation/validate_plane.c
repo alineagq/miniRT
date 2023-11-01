@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_plane.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fsuomins <fsuomins@student.42sp.org.br     +#+  +:+       +#+        */
+/*   By: fsuomins <fsuomins@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 11:39:39 by fsuomins          #+#    #+#             */
-/*   Updated: 2023/10/31 21:52:07 by fsuomins         ###   ########.fr       */
+/*   Updated: 2023/11/01 16:29:14 by fsuomins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,11 @@ int	validate_plane(char *line)
 		exit_error("Invalid plane.\n", split);
 	validate_plane_position(split[1]);
 	validate_plane_orientation(split[2]);
-	validate_color(split[3]);
+	if (validate_color(split[3], &get_data()->plane.color) == 0)
+	{
+		free_split(split);
+		return (0);
+	}
 	free_split(split);
 	return (1);
 }

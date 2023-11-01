@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_cylinder.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fsuomins <fsuomins@student.42sp.org.br     +#+  +:+       +#+        */
+/*   By: fsuomins <fsuomins@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 11:42:10 by fsuomins          #+#    #+#             */
-/*   Updated: 2023/10/31 21:52:51 by fsuomins         ###   ########.fr       */
+/*   Updated: 2023/11/01 16:30:56 by fsuomins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,11 @@ int	validate_cylinder(char *line)
 	validate_cylinder_orientation(split[2]);
 	validate_cylinder_radius(split[3]);
 	validate_cylinder_height(split[4]);
-	validate_color(split[5]);
+	if (validate_color(split[5], &get_data()->cylinder.color) == 0)
+	{
+		free_split(split);
+		return (0);
+	}
 	free_split(split);
 	return (1);
 }
