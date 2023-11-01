@@ -6,33 +6,41 @@
 /*   By: fsuomins <fsuomins@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 09:43:05 by fsuomins          #+#    #+#             */
-/*   Updated: 2023/10/20 09:43:32 by fsuomins         ###   ########.fr       */
+/*   Updated: 2023/11/01 15:24:13 by fsuomins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-double	ft_atof(const char *nptr)
+long double	ft_atof(char *str)
 {
-	double	result;
-	int		sign;
-	int		i;
+	long double	result;
+	long double	decimal;
+	int			sign;
+	int			i;
 
 	result = 0;
+	decimal = 0;
 	sign = 1;
 	i = 0;
-	while (nptr[i] == ' ' || nptr[i] == '\t' || nptr[i] == '\n'
-		|| nptr[i] == '\v' || nptr[i] == '\f' || nptr[i] == '\r')
+	while (str[i] == ' ' || str[i] == '\t' || str[i] == '\n' || str[i] == '\v'
+		|| str[i] == '\r' || str[i] == '\f')
 		i++;
-	if (nptr[i] == '-')
+	if (str[i] == '-')
 		sign = -1;
-	if (nptr[i] == '-' || nptr[i] == '+')
+	if (str[i] == '-' || str[i] == '+')
+		str++;
+	while (*str && *str != '.')
+		result = result * 10 + (*str++ - '0');
+	if (*str == '.')
+		str++;
+	while (*str)
+	{
+		decimal = decimal * 10 + (*str++ - '0');
 		i++;
-	while (nptr[i] >= '0' && nptr[i] <= '9')
-		result = result * 10 + (nptr[i++] - '0');
-	if (nptr[i] == '.')
-		i++;
-	while (nptr[i] >= '0' && nptr[i] <= '9')
-		result = result * 10 + (nptr[i++] - '0');
+	}
+	while (i-- > 0)
+		decimal /= 10;
+	result += decimal;
 	return (result * sign);
 }

@@ -6,7 +6,7 @@
 /*   By: fsuomins <fsuomins@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 12:24:08 by aqueiroz          #+#    #+#             */
-/*   Updated: 2023/11/01 13:19:14 by fsuomins         ###   ########.fr       */
+/*   Updated: 2023/11/01 15:48:38 by fsuomins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include <errno.h>
 
 # define COLOR_NO "\033[m"
 # define COLOR_RE "\033[0;31m"
@@ -45,7 +46,7 @@ int		is_numeric_string(const char *str);
 int		validate_sphere(char *line);
 int		validate_plane(char *line);
 int		validate_cylinder(char *line);
-int		validate_color(char *line);
+int		validate_color(char *line, t_color *color);
 void	exit_error(char *message, char **split);
 
 //////////////****** parse *******/////////////////////
@@ -60,5 +61,6 @@ void	parse_cylinder(const char *line, t_data *data);
 
 void	free_split(char **split);
 int		print_line_error(char *line);
+t_data	*get_data(void);
 
 #endif

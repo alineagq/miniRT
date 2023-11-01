@@ -6,7 +6,7 @@
 /*   By: fsuomins <fsuomins@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 00:02:15 by aqueiroz          #+#    #+#             */
-/*   Updated: 2023/11/01 13:15:02 by fsuomins         ###   ########.fr       */
+/*   Updated: 2023/11/01 15:42:13 by fsuomins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,23 +24,23 @@ static int	valid_fd(char *file)
 
 static int	validate_line(char *line)
 {
-	int				i;
-	char			*id;
-	const t_parse	parse[] = {{"R", NULL}, {"A", validate_ambient}, {"C",
-		validate_camera}, {"L", validate_light}, {"sp", validate_sphere}, {"pl",
-		validate_plane}, {"cy", validate_cylinder}, {"sq", NULL}, {"tr", NULL},
-	{NULL, NULL}};
+	int		i;
+	char	*id;
 
-	id = ft_strtok(line, " ");
+	const t_parse parse[] = {{"R ", NULL}, {"A ", validate_ambient}, {"C ",
+		validate_camera}, {"L ", validate_light}, {"sp", validate_sphere},
+		{"pl", validate_plane}, {"cy", validate_cylinder}, {"sq", NULL}, {"tr",
+		NULL}, {NULL, NULL}};
+	id = ft_substr(line, 0, 2);
 	if (!id)
 		return (0);
 	i = 0;
-	while (parse[i].id && !ft_strncmp(id, parse[i].id, 2))
+	while (parse[i].id && ft_strncmp(id, parse[i].id, 2) != 0)
 		i++;
 	free(id);
-	if (parse[i].id)
+	if (!parse[i].id)
 		return (print_line_error(line));
-	return (parse[i].validate(line));
+	return (parse[i].validate(++line));
 }
 
 int	print_line_error(char *line)

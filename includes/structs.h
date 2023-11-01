@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fsuomins <fsuomins@student.42sp.org.br     +#+  +:+       +#+        */
+/*   By: fsuomins <fsuomins@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 17:05:52 by fsuomins          #+#    #+#             */
-/*   Updated: 2023/10/31 22:00:29 by fsuomins         ###   ########.fr       */
+/*   Updated: 2023/11/01 15:43:41 by fsuomins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ typedef struct s_color
 typedef struct s_ambient
 {
 	double	ratio;
-	t_color	*color;
+	t_color	color;
 }	t_ambient;
 
 typedef struct s_camera
@@ -102,7 +102,7 @@ typedef struct s_data
 	void		*mlx;
 	void		*mlx_win;
 	t_camera	*camera;
-	t_ambient	*ambient;
+	t_ambient	ambient;
 	t_list		*lights;
 	t_list		*objects;
 }	t_data;

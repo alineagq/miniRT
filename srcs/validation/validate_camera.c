@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_camera.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fsuomins <fsuomins@student.42sp.org.br     +#+  +:+       +#+        */
+/*   By: fsuomins <fsuomins@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 11:13:39 by fsuomins          #+#    #+#             */
-/*   Updated: 2023/10/31 21:51:02 by fsuomins         ###   ########.fr       */
+/*   Updated: 2023/11/01 13:52:23 by fsuomins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,7 @@ int	validate_camera(char *line)
 
 	while (*line == ' ')
 		line++;
+	printf("line: %s\n", line);
 	split = ft_split(line, ' ');
 	if (*line == '\0' || *line == '\n')
 		exit_error("Invalid camera.\n", split);

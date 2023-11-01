@@ -3,51 +3,51 @@
 /*                                                        :::      ::::::::   */
 /*   validate_ambient.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fsuomins <fsuomins@student.42sp.org.br     +#+  +:+       +#+        */
+/*   By: fsuomins <fsuomins@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 11:14:05 by fsuomins          #+#    #+#             */
-/*   Updated: 2023/10/31 21:50:42 by fsuomins         ###   ########.fr       */
+/*   Updated: 2023/11/01 15:49:49 by fsuomins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minirt.h"
 
-void	validate_ambient_light(char *line)
-{
-	int	i;
 
-	i = 1;
-	while (line[i] == ' ')
-		i++;
-	if (line[i] == '0' && line[i + 1] == '.')
-	{
-		i += 2;
-		while (line[i] >= '0' && line[i] <= '9')
-			i++;
-		if (line[i] == ' ' || line[i] == '\0')
-			return ;
-	}
-	exit_error("Invalid ambient light.\n", NULL);
+int	validate_ambient_light(char *line)
+{
+	t_data	*data;
+	double	ambient_light;
+
+	data = get_data();
+	ambient_light = ft_atof(line);
+	if (ambient_light < 0 || ambient_light > 1 || errno == ERANGE)
+		return (0);
+	data->ambient.ratio = ambient_light;
+	return (1);
 }
 
 int	validate_ambient(char *line)
 {
-	int	i;
+	char	**split;
 
-	i = 1;
-	while (line[i] == ' ')
-		i++;
-	if ((line[i] == '0' || line[i] == 1) && line[i + 1] == '.')
+	while (*line == ' ')
+		line++;
+	split = ft_split(line, ' ');
+	if (split[0] == NULL || split[1] == NULL || split[2] != NULL)
 	{
-		i += 2;
-		while (line[i] >= '0' && line[i] <= '9')
-			i++;
-		if (line[i] == ' ' || line[i] == '\0')
-			validate_color(line + i);
-		else
-			exit_error("Invalid ambient.\n", NULL);
+		free_split(split);
+		return (0);
 	}
-	else
-		exit_error("Invalid ambient.\n", NULL);
+	if (validate_ambient_light(split[0]) == 0)
+	{
+		free_split(split);
+		return (0);
+	}
+	if (validate_color(split[1], &get_data()->ambient.color) == 0)
+	{
+		free_split(split);
+		return (0);
+	}
+	free_split(split);
 	return (1);
 }
