@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_scene.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fsuomins <fsuomins@student.42sp.org.br     +#+  +:+       +#+        */
+/*   By: fsuomins <fsuomins@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 00:02:15 by aqueiroz          #+#    #+#             */
-/*   Updated: 2023/10/31 22:02:15 by fsuomins         ###   ########.fr       */
+/*   Updated: 2023/11/01 13:15:02 by fsuomins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,8 @@ int	validate_scene(char *file)
 	file_scene.valid = 1;
 	file_scene.fd = valid_fd(file);
 	file_scene.line = get_next_line(file_scene.fd);
-	while (file_scene.line && file_scene.valid == 1 && file_scene.line[0] != '\0')
+	while (file_scene.line && file_scene.valid == 1
+		&& file_scene.line[0] != '\0')
 	{
 		if (!validate_line(file_scene.line))
 			file_scene.valid = print_line_error(file_scene.line);

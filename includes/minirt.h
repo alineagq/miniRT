@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fsuomins <fsuomins@student.42sp.org.br     +#+  +:+       +#+        */
+/*   By: fsuomins <fsuomins@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 12:24:08 by aqueiroz          #+#    #+#             */
-/*   Updated: 2023/10/31 21:56:42 by fsuomins         ###   ########.fr       */
+/*   Updated: 2023/11/01 13:19:14 by fsuomins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@
 # define COLOR_CY_1 "\033[1;36m"
 # define COLOR_WH "\033[0;37m"
 
-void	exit_error(char *message, char **split);
 int		validate_scene(char *file);
 int		validate_ambient(char *line);
 int		validate_camera(char *line);
@@ -45,8 +44,9 @@ int		validate_light(char *line);
 int		is_numeric_string(const char *str);
 int		validate_sphere(char *line);
 int		validate_plane(char *line);
-void	validate_color(char *line);
 int		validate_cylinder(char *line);
+int		validate_color(char *line);
+void	exit_error(char *message, char **split);
 
 //////////////****** parse *******/////////////////////
 
@@ -58,8 +58,7 @@ void	parse_sphere(const char *line, t_data *data);
 void	parse_plane(const char *line, t_data *data);
 void	parse_cylinder(const char *line, t_data *data);
 
-void free_split(char **split);
-int	print_line_error(char *line);
-
+void	free_split(char **split);
+int		print_line_error(char *line);
 
 #endif

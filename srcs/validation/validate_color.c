@@ -6,15 +6,15 @@
 /*   By: fsuomins <fsuomins@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 15:58:49 by fsuomins          #+#    #+#             */
-/*   Updated: 2023/10/27 11:21:38 by fsuomins         ###   ########.fr       */
+/*   Updated: 2023/11/01 13:19:05 by fsuomins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minirt.h"
 
-void free_split(char **split)
+void	free_split(char **split)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (split[i])
@@ -22,7 +22,7 @@ void free_split(char **split)
 	free(split);
 }
 
-void	validate_color(char *line)
+int	validate_color(char *line)
 {
 	char	**split;
 
@@ -34,4 +34,5 @@ void	validate_color(char *line)
 	if (!split[2] || (ft_atoi(split[2]) < 0 && ft_atoi(split[2]) > 255))
 		exit_error("Invalid color.\n", split);
 	free_split(split);
+	return (1);
 }
