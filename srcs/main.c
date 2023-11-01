@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fsuomins <fsuomins@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: fsuomins <fsuomins@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 11:08:29 by fsuomins          #+#    #+#             */
-/*   Updated: 2023/10/29 15:50:51 by fsuomins         ###   ########.fr       */
+/*   Updated: 2023/10/31 21:17:00 by fsuomins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,6 @@ static void	validate_args(int argc, char **argv)
 		exit_error("Invalid scene file\n", NULL);
 }
 
-static void	check_validate(int argc, char **argv)
-{
-	validate_args(argc, argv);
-	validate_scene(argv[1]);
-}
-
 void	print_header(void)
 {
 	printf("\n");
@@ -48,7 +42,9 @@ void	print_header(void)
 int	main(int argc, char **argv)
 {
 	print_header();
-	check_validate(argc, argv);
+	validate_args(argc, argv);
+	if (!validate_scene(argv[1]))
+		return (1);
 	// parse_scene(argv[1]);
 	return (0);
 }
