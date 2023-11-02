@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: fsuomins <fsuomins@student.42sp.org.br>    +#+  +:+       +#+         #
+#    By: aqueiroz <aqueiroz@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/11 12:04:54 by aqueiroz          #+#    #+#              #
-#    Updated: 2023/11/01 14:09:55 by fsuomins         ###   ########.fr        #
+#    Updated: 2023/11/02 19:30:09 by aqueiroz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,6 +59,8 @@ OBJS = $(SRCS:.c=.o)
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -g3
 LIBFLAGS = -Llibs/MLX42/build -Llibs/libft -lmlx42 -lft -Iinclude -ldl -lglfw -pthread -lm
+VALGRIND_ARGS = --trace-children=yes --track-origins=yes \
+	--leak-check=full --show-leak-kinds=all --quiet
 
 all: $(NAME)
 
@@ -76,9 +78,9 @@ $(NAME): $(OBJS)
 %.o: %.c
 	@$(CC) $(CFLAGS) -I$(PATH_INC) -c $< -o $@
 
-valgrind:
-	valgrind --trace-children=yes --track-fds=yes --track-origins=yes \
-	--leak-check=full --show-leak-kinds=all --quiet ./miniRT
+valgrind: $(NAME)
+	valgrind $(VALGRIND_ARGS) ./$(NAME) $(filter-out $@,$(MAKECMDGOALS))
+
 clean:
 	@rm -f $(OBJS)
 	@$(MAKE) -C libs/libft clean > /dev/null

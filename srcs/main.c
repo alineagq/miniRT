@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fsuomins <fsuomins@student.42sp.org.br     +#+  +:+       +#+        */
+/*   By: aqueiroz <aqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 11:08:29 by fsuomins          #+#    #+#             */
-/*   Updated: 2023/10/31 21:17:00 by fsuomins         ###   ########.fr       */
+/*   Updated: 2023/11/02 11:46:04 by aqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,23 +19,33 @@ static void	validate_args(int argc, char **argv)
 	i = 0;
 	if (argc != 2)
 	{
-		printf("Usage: %s <scene.rt>\n", argv[0]);
-		exit(0);
+		ft_putstr_fd("Error\n", 1);
+		ft_putstr_fd("Usage: ./miniRT <*.rt>\n", 1);
+		exit(1);
 	}
 	while (argv[1][i])
 		i++;
 	if (argv[1][i - 1] != 't' || argv[1][i - 2] != 'r' || argv[1][i - 3] != '.')
-		exit_error("Invalid scene file\n", NULL);
+	{
+		printf("Error\n");
+		printf("File extension must be <*.rt>.\n");
+		exit(1);
+	}
 }
 
-void	print_header(void)
+static void	print_header(void)
 {
 	printf("\n");
-	printf("\033[1;35m");
-	printf("        _)  _    _)  _ \\ __ __|\n");
-	printf("   ` \\   |    \\   |    /    |\n");
-	printf(" _|_|_| _| _| _| _| _|\\_   _|\n");
-	printf("\033[0m");
+	printf(COLOR_PL_1);
+	printf("___________________________________________________________\n");
+	printf("|                                                         |\n");
+	printf("|                                           Created by:   |\n");
+	printf("|          _)  _    _)  _ \\ __ __|             fsuomins   |\n");
+	printf("|     ` \\   |    \\   |    /    |               aqueiroz   |\n");
+	printf("|   _|_|_| _| _| _| _| _|\\_   _|                          |\n");
+	printf("|                                                         |\n");
+	printf("|_________________________________________________________|\n");
+	printf(COLOR_NO);
 	printf("\n");
 }
 
