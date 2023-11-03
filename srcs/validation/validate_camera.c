@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   validate_camera.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fsuomins <fsuomins@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: aqueiroz <aqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 11:13:39 by fsuomins          #+#    #+#             */
-/*   Updated: 2023/11/01 20:46:09 by fsuomins         ###   ########.fr       */
+/*   Updated: 2023/11/03 15:29:20 by aqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minirt.h"
-
 
 int	is_numeric_string(const char *str)
 {
@@ -31,12 +30,13 @@ int	is_numeric_string(const char *str)
 			dot_found = 1;
 			str++;
 		}
+		else if (*str == '\n')
+			return (1);
 		else
 			return (0);
 	}
 	return (1);
 }
-
 
 static int	validate_camera_fov(char *line)
 {
@@ -94,7 +94,7 @@ static int	validate_camera_position(char *line)
 
 int	validate_camera(char *line)
 {
-	char 	**split;
+	char	**split;
 
 	line++;
 	while (*line == ' ')
@@ -105,17 +105,8 @@ int	validate_camera(char *line)
 		free_split(split);
 		return (0);
 	}
-	if (validate_camera_position(split[0]) == 0)
-	{
-		free_split(split);
-		return (0);
-	}
-	if (validate_camera_orientation(split[1]) == 0)
-	{
-		free_split(split);
-		return (0);
-	}
-	if (validate_camera_fov(split[2]) == 0)
+	if (!validate_camera_position(split[0]) || !validate_camera_orientation(
+			split[1]) || !validate_camera_fov(split[2]))
 	{
 		free_split(split);
 		return (0);

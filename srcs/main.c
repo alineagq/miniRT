@@ -6,7 +6,7 @@
 /*   By: aqueiroz <aqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 11:08:29 by fsuomins          #+#    #+#             */
-/*   Updated: 2023/11/02 11:46:04 by aqueiroz         ###   ########.fr       */
+/*   Updated: 2023/11/03 14:43:27 by aqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,5 +56,16 @@ int	main(int argc, char **argv)
 	if (!validate_scene(argv[1]))
 		return (1);
 	// parse_scene(argv[1]);
+	printf("Data.ambient.ratio: %f\n", get_data()->ambient.ratio);
+	printf("Data.ambient.color.r: %d\n", get_data()->ambient.color.r);
+	printf("Data.ambient.color.g: %d\n", get_data()->ambient.color.g);
+	printf("Data.ambient.color.b: %d\n", get_data()->ambient.color.b);
+	printf("Data.camera.fov: %f\n", get_data()->camera.fov);
+	printf("Data.camera.origin.x: %f\n", get_data()->camera.origin.x);
+	printf("Data.camera.origin.y: %f\n", get_data()->camera.origin.y);
+	printf("Data.camera.origin.z: %f\n", get_data()->camera.origin.z);
+	printf("Data.camera.direction.x: %f\n", get_data()->camera.direction.x);
+	printf("Data.camera.direction.y: %f\n", get_data()->camera.direction.y);
+	printf("Data.camera.direction.z: %f\n", get_data()->camera.direction.z);
 	return (0);
 }

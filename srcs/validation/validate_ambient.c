@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   validate_ambient.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fsuomins <fsuomins@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: aqueiroz <aqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 11:14:05 by fsuomins          #+#    #+#             */
-/*   Updated: 2023/11/01 15:49:49 by fsuomins         ###   ########.fr       */
+/*   Updated: 2023/11/03 14:34:01 by aqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minirt.h"
-
 
 int	validate_ambient_light(char *line)
 {
@@ -38,12 +37,8 @@ int	validate_ambient(char *line)
 		free_split(split);
 		return (0);
 	}
-	if (validate_ambient_light(split[0]) == 0)
-	{
-		free_split(split);
-		return (0);
-	}
-	if (validate_color(split[1], &get_data()->ambient.color) == 0)
+	if (!validate_ambient_light(split[0]) || !validate_color(split[1],
+			&get_data()->ambient.color))
 	{
 		free_split(split);
 		return (0);

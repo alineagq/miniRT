@@ -6,7 +6,7 @@
 /*   By: aqueiroz <aqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 00:02:15 by aqueiroz          #+#    #+#             */
-/*   Updated: 2023/11/02 11:52:17 by aqueiroz         ###   ########.fr       */
+/*   Updated: 2023/11/03 14:20:15 by aqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,26 +22,26 @@ static int	valid_fd(char *file)
 	return (fd);
 }
 
-// static int	validate_line(char *line)
-// {
-// 	int		i;
-// 	char	*id;
+static int	validate_line(char *line)
+{
+	int				i;
+	char			*id;
+	const t_parse	parse[] = {{"R ", NULL}, {"A ", validate_ambient},
+	{"C ", validate_camera}, {"L ", validate_light}, {"sp", validate_sphere},
+	{"pl", validate_plane}, {"cy", validate_cylinder}, {"sq", NULL}, {"tr",
+		NULL}, {NULL, NULL}};
 
-// 	const t_parse parse[] = {{"R ", NULL}, {"A ", validate_ambient}, {"C ",
-// 		validate_camera}, {"L ", validate_light}, {"sp", validate_sphere},
-// 		{"pl", validate_plane}, {"cy", validate_cylinder}, {"sq", NULL}, {"tr",
-// 		NULL}, {NULL, NULL}};
-// 	id = ft_substr(line, 0, 2);
-// 	if (!id)
-// 		return (0);
-// 	i = 0;
-// 	while (parse[i].id && ft_strncmp(id, parse[i].id, 2) != 0)
-// 		i++;
-// 	free(id);
-// 	if (!parse[i].id)
-// 		return (print_line_error(line));
-// 	return (parse[i].validate(++line));
-// }
+	id = ft_substr(line, 0, 2);
+	if (!id)
+		return (0);
+	i = 0;
+	while (parse[i].id && ft_strncmp(id, parse[i].id, 2) != 0)
+		i++;
+	free(id);
+	if (!parse[i].id)
+		return (print_line_error(line));
+	return (parse[i].validate(++line));
+}
 
 int	print_line_error(char *line)
 {
@@ -62,8 +62,8 @@ int	validate_scene(char *file)
 	while (file_scene.line && file_scene.valid == 1
 		&& file_scene.line[0] != '\0')
 	{
-		// if (!validate_line(file_scene.line))
-		// 	file_scene.valid = print_line_error(file_scene.line);
+		if (!validate_line(file_scene.line))
+			file_scene.valid = print_line_error(file_scene.line);
 		free(file_scene.line);
 		file_scene.line = get_next_line(file_scene.fd);
 	}
