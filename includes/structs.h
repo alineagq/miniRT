@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aqueiroz <aqueiroz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fsuomins <fsuomins@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 17:05:52 by fsuomins          #+#    #+#             */
-/*   Updated: 2023/11/02 20:25:34 by aqueiroz         ###   ########.fr       */
+/*   Updated: 2023/11/03 20:36:30 by fsuomins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,12 @@
 # define STRUCTS_H
 # include "minirt.h"
 
+
 typedef struct s_parse
 {
 	char	*id;
 	int		(*validate)(char *);
+	int		flag;
 }	t_parse;
 
 // Utils

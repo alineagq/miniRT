@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aqueiroz <aqueiroz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fsuomins <fsuomins@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 11:08:29 by fsuomins          #+#    #+#             */
-/*   Updated: 2023/11/03 15:53:16 by aqueiroz         ###   ########.fr       */
+/*   Updated: 2023/11/03 20:21:51 by fsuomins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ int	main(int argc, char **argv)
 	if (!validate_scene(argv[1]))
 		return (1);
 	// parse_scene(argv[1]);
+	// Dont need free
 	printf("Data.ambient.ratio: %f\n", get_data()->ambient.ratio);
 	printf("Data.ambient.color.r: %d\n", get_data()->ambient.color.r);
 	printf("Data.ambient.color.g: %d\n", get_data()->ambient.color.g);
@@ -74,5 +75,6 @@ int	main(int argc, char **argv)
 	printf("Data.light.color.r: %d\n", get_data()->light.color.r);
 	printf("Data.light.color.g: %d\n", get_data()->light.color.g);
 	printf("Data.light.color.b: %d\n", get_data()->light.color.b);
+	// Need free
 	return (0);
 }

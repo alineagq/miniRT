@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_scene.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aqueiroz <aqueiroz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fsuomins <fsuomins@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 00:02:15 by aqueiroz          #+#    #+#             */
-/*   Updated: 2023/11/03 14:20:15 by aqueiroz         ###   ########.fr       */
+/*   Updated: 2023/11/03 20:40:34 by fsuomins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,12 @@ static int	validate_line(char *line)
 {
 	int				i;
 	char			*id;
-	const t_parse	parse[] = {{"R ", NULL}, {"A ", validate_ambient},
-	{"C ", validate_camera}, {"L ", validate_light}, {"sp", validate_sphere},
-	{"pl", validate_plane}, {"cy", validate_cylinder}, {"sq", NULL}, {"tr",
-		NULL}, {NULL, NULL}};
+	static t_parse	parse[] = {
+	{"R ", NULL, 0}, {"A ", validate_ambient, 0},
+	{"C ", validate_camera, 0}, {"L ", validate_light, 0},
+	{"sp", validate_sphere, 0}, {"pl", validate_plane, 0},
+	{"cy", validate_cylinder, 0}, {"sq", NULL, 0}, {"tr", NULL, 0},
+	{NULL, NULL, 0}};
 
 	id = ft_substr(line, 0, 2);
 	if (!id)
@@ -38,8 +40,9 @@ static int	validate_line(char *line)
 	while (parse[i].id && ft_strncmp(id, parse[i].id, 2) != 0)
 		i++;
 	free(id);
-	if (!parse[i].id)
-		return (print_line_error(line));
+	if (!parse[i].id || parse[i].flag)
+		return (0);
+	parse[i].flag = 1;
 	return (parse[i].validate(++line));
 }
 
