@@ -6,7 +6,7 @@
 /*   By: aqueiroz <aqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 11:08:29 by fsuomins          #+#    #+#             */
-/*   Updated: 2023/11/03 14:43:27 by aqueiroz         ###   ########.fr       */
+/*   Updated: 2023/11/03 15:53:16 by aqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,5 +67,12 @@ int	main(int argc, char **argv)
 	printf("Data.camera.direction.x: %f\n", get_data()->camera.direction.x);
 	printf("Data.camera.direction.y: %f\n", get_data()->camera.direction.y);
 	printf("Data.camera.direction.z: %f\n", get_data()->camera.direction.z);
+	printf("Data.light.origin.x: %f\n", get_data()->light.origin.x);
+	printf("Data.light.origin.y: %f\n", get_data()->light.origin.y);
+	printf("Data.light.origin.z: %f\n", get_data()->light.origin.z);
+	printf("Data.light.ratio: %f\n", get_data()->light.ratio);
+	printf("Data.light.color.r: %d\n", get_data()->light.color.r);
+	printf("Data.light.color.g: %d\n", get_data()->light.color.g);
+	printf("Data.light.color.b: %d\n", get_data()->light.color.b);
 	return (0);
 }
