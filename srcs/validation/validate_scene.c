@@ -6,7 +6,7 @@
 /*   By: fsuomins <fsuomins@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 00:02:15 by aqueiroz          #+#    #+#             */
-/*   Updated: 2023/11/03 20:40:34 by fsuomins         ###   ########.fr       */
+/*   Updated: 2023/11/03 22:06:37 by fsuomins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,8 @@ static int	validate_line(char *line)
 	free(id);
 	if (!parse[i].id || parse[i].flag)
 		return (0);
-	parse[i].flag = 1;
+	if (ft_strncmp(parse[i].id, "pl", 2))
+		parse[i].flag = 1;
 	return (parse[i].validate(++line));
 }
 

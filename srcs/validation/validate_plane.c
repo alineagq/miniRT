@@ -3,60 +3,75 @@
 /*                                                        :::      ::::::::   */
 /*   validate_plane.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fsuomins <fsuomins@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: fsuomins <fsuomins@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 11:39:39 by fsuomins          #+#    #+#             */
-/*   Updated: 2023/11/01 16:29:14 by fsuomins         ###   ########.fr       */
+/*   Updated: 2023/11/03 22:09:07 by fsuomins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minirt.h"
 
-static void	validate_plane_orientation(char *line)
+static int	validate_plane_orientation(char *line)
 {
+	t_data	*data;
 	char	**split;
 
+	data = get_data();
 	split = ft_split(line, ',');
-	if (!split[0] || (ft_atof(split[0]) < -1.0 && ft_atof(split[0]) > 1.0))
-		exit_error("Invalid plane orientation.\n", split);
-	if (!split[1] || (ft_atof(split[1]) < -1.0 && ft_atof(split[1]) > 1.0))
-		exit_error("Invalid plane orientation.\n", split);
-	if (!split[2] || (ft_atof(split[2]) < -1.0 && ft_atof(split[2]) > 1.0))
-		exit_error("Invalid plane orientation.\n", split);
+	if (!validate_orientation(split[0], split[1], split[2]))
+	{
+		free_split(split);
+		return (0);
+	}
+	data->plane.direction.x = ft_atof(split[0]);
+	data->plane.direction.y = ft_atof(split[1]);
+	data->plane.direction.z = ft_atof(split[2]);
 	free_split(split);
+	return (1);
 }
 
-static void	validate_plane_position(char *line)
+static int	validate_plane_position(char *line)
 {
+	t_data	*data;
 	char	**split;
 
+	data = get_data();
 	split = ft_split(line, ',');
-	if (!split[0])
-		exit_error("Invalid plane position.\n", split);
-	if (!split[1])
-		exit_error("Invalid plane position.\n", split);
-	if (!split[2])
-		exit_error("Invalid plane position.\n", split);
+	if (!is_numeric_string(split[0]) || !is_numeric_string(split[1])
+		|| !is_numeric_string(split[2]))
+	{
+		free_split(split);
+		return (0);
+	}
+	data->plane.origin.x = ft_atof(split[0]);
+	data->plane.origin.y = ft_atof(split[1]);
+	data->plane.origin.z = ft_atof(split[2]);
 	free_split(split);
+	return (1);
 }
 
 int	validate_plane(char *line)
 {
-	char	**split;
+	char		**split;
 
 	line++;
 	while (*line == ' ')
 		line++;
 	split = ft_split(line, ' ');
-	if (*line == '\0' || *line == '\n')
-		exit_error("Invalid plane.\n", split);
-	validate_plane_position(split[1]);
-	validate_plane_orientation(split[2]);
-	if (validate_color(split[3], &get_data()->plane.color) == 0)
+	if (!split[0] || !split[1] || !split[2] || split[3] != NULL)
 	{
 		free_split(split);
 		return (0);
 	}
+	if (!validate_plane_position(split[0])
+		|| !validate_plane_orientation(split[1]) || !validate_color(split[2],
+			&get_data()->plane.color))
+	{
+		free_split(split);
+		return (0);
+	}
+	add_object(pl, &get_data()->plane);
 	free_split(split);
 	return (1);
 }

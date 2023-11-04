@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_camera.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aqueiroz <aqueiroz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fsuomins <fsuomins@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 11:13:39 by fsuomins          #+#    #+#             */
-/*   Updated: 2023/11/03 15:29:20 by aqueiroz         ###   ########.fr       */
+/*   Updated: 2023/11/03 20:58:01 by fsuomins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,20 @@ static int	validate_camera_fov(char *line)
 	return (1);
 }
 
+int	validate_orientation(char *str1, char *str2, char *str3)
+{
+	if (!str1 || !str2 || !str3)
+		return (0);
+	if (!is_numeric_string(str1) || !is_numeric_string(str2)
+		|| !is_numeric_string(str3))
+		return (0);
+	if (ft_atof(str1) < -1.0 || ft_atof(str1) > 1.0
+		|| ft_atof(str2) < -1.0 || ft_atof(str2) > 1.0
+		|| ft_atof(str3) < -1.0 || ft_atof(str3) > 1.0)
+		return (0);
+	return (1);
+}
+
 static int	validate_camera_orientation(char *line)
 {
 	t_data	*data;
@@ -58,9 +72,7 @@ static int	validate_camera_orientation(char *line)
 
 	data = get_data();
 	split = ft_split(line, ',');
-	if (!split[0] || ft_atof(split[0]) < -1.0 || ft_atof(split[0]) > 1.0
-		|| !split[1] || ft_atof(split[1]) < -1.0 || ft_atof(split[1]) > 1.0
-		|| !split[2] || ft_atof(split[2]) < -1.0 || ft_atof(split[2]) > 1.0)
+	if (!validate_orientation(split[0], split[1], split[2]))
 	{
 		free_split(split);
 		return (0);

@@ -6,7 +6,7 @@
 /*   By: fsuomins <fsuomins@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 17:05:52 by fsuomins          #+#    #+#             */
-/*   Updated: 2023/11/03 20:36:30 by fsuomins         ###   ########.fr       */
+/*   Updated: 2023/11/03 21:37:01 by fsuomins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,18 @@
 # define STRUCTS_H
 # include "minirt.h"
 
+typedef enum e_id
+{
+	R,
+	A,
+	c,
+	l,
+	sp,
+	pl,
+	cy,
+	sq,
+	tr
+}	t_id;
 
 typedef struct s_parse
 {
@@ -30,11 +42,12 @@ typedef struct s_file
 	int		valid;
 }	t_file;
 
-typedef struct s_list
+typedef struct s_object
 {
-	void			*content;
-	struct s_list	*next;
-}	t_list;
+	t_id	id;
+	void	*object;
+	struct s_object	*next;
+}	t_object;
 
 // Scene
 
@@ -83,8 +96,8 @@ typedef struct s_sphere
 
 typedef struct s_plane
 {
-	t_vector	*origin;
-	t_vector	*direction;
+	t_vector	origin;
+	t_vector	direction;
 	t_color		color;
 }	t_plane;
 
@@ -109,7 +122,7 @@ typedef struct s_data
 	t_sphere	sphere;
 	t_plane		plane;
 	t_cylinder	cylinder;
-	t_list		*objects;
+	t_object	*objects;
 }	t_data;
 
 #endif

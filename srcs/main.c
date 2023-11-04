@@ -6,7 +6,7 @@
 /*   By: fsuomins <fsuomins@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 11:08:29 by fsuomins          #+#    #+#             */
-/*   Updated: 2023/11/03 20:21:51 by fsuomins         ###   ########.fr       */
+/*   Updated: 2023/11/03 22:00:01 by fsuomins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,16 @@ static void	print_header(void)
 
 int	main(int argc, char **argv)
 {
+	int			i;
+	t_object	*tmp;
+
 	print_header();
 	validate_args(argc, argv);
 	if (!validate_scene(argv[1]))
+	{
+		clear_objects();
 		return (1);
+	}
 	// parse_scene(argv[1]);
 	// Dont need free
 	printf("Data.ambient.ratio: %f\n", get_data()->ambient.ratio);
@@ -76,5 +82,46 @@ int	main(int argc, char **argv)
 	printf("Data.light.color.g: %d\n", get_data()->light.color.g);
 	printf("Data.light.color.b: %d\n", get_data()->light.color.b);
 	// Need free
+	printf("Data.plane.origin.x: %f\n", get_data()->plane.origin.x);
+	printf("Data.plane.origin.y: %f\n", get_data()->plane.origin.y);
+	printf("Data.plane.origin.z: %f\n", get_data()->plane.origin.z);
+	printf("Data.plane.direction.x: %f\n", get_data()->plane.direction.x);
+	printf("Data.plane.direction.y: %f\n", get_data()->plane.direction.y);
+	printf("Data.plane.direction.z: %f\n", get_data()->plane.direction.z);
+	printf("Data.plane.color.r: %d\n", get_data()->plane.color.r);
+	printf("Data.plane.color.g: %d\n", get_data()->plane.color.g);
+	printf("Data.plane.color.b: %d\n", get_data()->plane.color.b);
+	i = 0;
+	tmp = get_data()->objects;
+	while (tmp)
+	{
+		printf("Data.objects[%d].id: %d\n", i, tmp->id);
+		printf("Data.objects[%d].object: %p\n", i, tmp->object);
+		if (tmp->id == pl)
+		{
+			printf("Data.objects[%d].object: %p\n", i, tmp->object);
+			printf("Data.objects[%d].object.origin.x: %f\n", i,
+				((t_plane *)tmp->object)->origin.x);
+			printf("Data.objects[%d].object.origin.y: %f\n", i,
+				((t_plane *)tmp->object)->origin.y);
+			printf("Data.objects[%d].object.origin.z: %f\n", i,
+				((t_plane *)tmp->object)->origin.z);
+			printf("Data.objects[%d].object.direction.x: %f\n", i,
+				((t_plane *)tmp->object)->direction.x);
+			printf("Data.objects[%d].object.direction.y: %f\n", i,
+				((t_plane *)tmp->object)->direction.y);
+			printf("Data.objects[%d].object.direction.z: %f\n", i,
+				((t_plane *)tmp->object)->direction.z);
+			printf("Data.objects[%d].object.color.r: %d\n", i,
+				((t_plane *)tmp->object)->color.r);
+			printf("Data.objects[%d].object.color.g: %d\n", i,
+				((t_plane *)tmp->object)->color.g);
+			printf("Data.objects[%d].object.color.b: %d\n", i,
+				((t_plane *)tmp->object)->color.b);
+		}
+		tmp = tmp->next;
+		i++;
+	}
+	clear_objects();
 	return (0);
 }
