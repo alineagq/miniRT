@@ -3,14 +3,39 @@
 /*                                                        :::      ::::::::   */
 /*   objects.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fsuomins <fsuomins@student.42sp.org.br     +#+  +:+       +#+        */
+/*   By: fsuomins <fsuomins@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 21:43:53 by fsuomins          #+#    #+#             */
-/*   Updated: 2023/11/03 22:11:25 by fsuomins         ###   ########.fr       */
+/*   Updated: 2023/11/04 20:52:30 by fsuomins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minirt.h"
+
+size_t	get_obj_size(t_id id)
+{
+	size_t	size;
+
+	size = 0;
+	if (id == sp)
+		size = sizeof(t_sphere);
+	else if (id == pl)
+		size = sizeof(t_plane);
+	else if (id == cy)
+		size = sizeof(t_cylinder);
+	else if (id == sq)
+		size = sizeof(t_cylinder);
+	else if (id == tr)
+		size = sizeof(t_cylinder);
+	return (size);
+}
+
+void *get_obj_content(t_id id)
+{
+	if (id == pl)
+		return (&get_data()->plane);
+	return (NULL);
+}
 
 void	add_object(t_id id, void *content)
 {
@@ -18,7 +43,8 @@ void	add_object(t_id id, void *content)
 	t_object	*new;
 	void		*copy;
 
-	copy = ft_memcpy(malloc(sizeof(content)), content, sizeof(content));
+	copy = ft_calloc(1, get_obj_size(id));
+	ft_memcpy(copy, content, sizeof(copy));
 	head = get_data()->objects;
 	if (!head)
 	{
@@ -68,14 +94,15 @@ void	remove_object(t_id id)
 void	clear_objects(void)
 {
 	t_object	*head;
-	t_object	*next;
+	t_object	*tmp;
 
 	head = get_data()->objects;
 	while (head)
 	{
-		next = head->next;
-		free(head);
-		head = next;
+		tmp = head;
+		head = head->next;
+		free(tmp->object);
+		free(tmp);
 	}
 	get_data()->objects = NULL;
 }
