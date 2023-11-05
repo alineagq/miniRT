@@ -6,7 +6,7 @@
 /*   By: aqueiroz <aqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 11:08:29 by fsuomins          #+#    #+#             */
-/*   Updated: 2023/11/04 22:31:00 by aqueiroz         ###   ########.fr       */
+/*   Updated: 2023/11/04 23:30:54 by aqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,6 @@ static void	print_header(void)
 
 int	main(int argc, char **argv)
 {
-	int			i;
-	t_object	*tmp;
-
 	print_header();
 	validate_args(argc, argv);
 	if (!validate_scene(argv[1]))
@@ -61,8 +58,17 @@ int	main(int argc, char **argv)
 		clear_objects();
 		return (1);
 	}
-	// parse_scene(argv[1]);
-	// Dont need free
+	get_data()->mlx.win = mlx_init(700, 700, "miniRT", 0);
+	mlx_loop(get_data()->mlx.win);
+	clear_objects();
+	return (0);
+}
+
+void	print_data(void)
+{
+	int			i;
+	t_object	*tmp;
+
 	printf("Data.ambient.ratio: %f\n", get_data()->ambient.ratio);
 	printf("Data.ambient.color.r: %d\n", get_data()->ambient.color.r);
 	printf("Data.ambient.color.g: %d\n", get_data()->ambient.color.g);
@@ -97,43 +103,68 @@ int	main(int argc, char **argv)
 	{
 		if (tmp->id == pl)
 		{
-			printf("Data.objects[%d].plane.origin.x: %f\n", i, ((t_plane *)tmp->object)->origin.x);
-			printf("Data.objects[%d].plane.origin.y: %f\n", i, ((t_plane *)tmp->object)->origin.y);
-			printf("Data.objects[%d].plane.origin.z: %f\n", i, ((t_plane *)tmp->object)->origin.z);
-			printf("Data.objects[%d].plane.direction.x: %f\n", i, ((t_plane *)tmp->object)->direction.x);
-			printf("Data.objects[%d].plane.direction.y: %f\n", i, ((t_plane *)tmp->object)->direction.y);
-			printf("Data.objects[%d].plane.direction.z: %f\n", i, ((t_plane *)tmp->object)->direction.z);
-			printf("Data.objects[%d].plane.color.r: %d\n", i, ((t_plane *)tmp->object)->color.r);
-			printf("Data.objects[%d].plane.color.g: %d\n", i, ((t_plane *)tmp->object)->color.g);
-			printf("Data.objects[%d].plane.color.b: %d\n", i, ((t_plane *)tmp->object)->color.b);
+			printf("Data.objects[%d].plane.origin.x: %f\n", i,
+				((t_plane *)tmp->object)->origin.x);
+			printf("Data.objects[%d].plane.origin.y: %f\n", i,
+				((t_plane *)tmp->object)->origin.y);
+			printf("Data.objects[%d].plane.origin.z: %f\n", i,
+				((t_plane *)tmp->object)->origin.z);
+			printf("Data.objects[%d].plane.direction.x: %f\n", i,
+				((t_plane *)tmp->object)->direction.x);
+			printf("Data.objects[%d].plane.direction.y: %f\n", i,
+				((t_plane *)tmp->object)->direction.y);
+			printf("Data.objects[%d].plane.direction.z: %f\n", i,
+				((t_plane *)tmp->object)->direction.z);
+			printf("Data.objects[%d].plane.color.r: %d\n", i,
+				((t_plane *)tmp->object)->color.r);
+			printf("Data.objects[%d].plane.color.g: %d\n", i,
+				((t_plane *)tmp->object)->color.g);
+			printf("Data.objects[%d].plane.color.b: %d\n", i,
+				((t_plane *)tmp->object)->color.b);
 		}
 		if (tmp->id == sp)
 		{
-			printf("Data.objects[%d].sphere.origin.x: %f\n", i, ((t_sphere *)tmp->object)->origin.x);
-			printf("Data.objects[%d].sphere.origin.y: %f\n", i, ((t_sphere *)tmp->object)->origin.y);
-			printf("Data.objects[%d].sphere.origin.z: %f\n", i, ((t_sphere *)tmp->object)->origin.z);
-			printf("Data.objects[%d].sphere.diameter: %f\n", i, ((t_sphere *)tmp->object)->diameter);
-			printf("Data.objects[%d].sphere.color.r: %d\n", i, ((t_sphere *)tmp->object)->color.r);
-			printf("Data.objects[%d].sphere.color.g: %d\n", i, ((t_sphere *)tmp->object)->color.g);
-			printf("Data.objects[%d].sphere.color.b: %d\n", i, ((t_sphere *)tmp->object)->color.b);
+			printf("Data.objects[%d].sphere.origin.x: %f\n", i,
+				((t_sphere *)tmp->object)->origin.x);
+			printf("Data.objects[%d].sphere.origin.y: %f\n", i,
+				((t_sphere *)tmp->object)->origin.y);
+			printf("Data.objects[%d].sphere.origin.z: %f\n", i,
+				((t_sphere *)tmp->object)->origin.z);
+			printf("Data.objects[%d].sphere.diameter: %f\n", i,
+				((t_sphere *)tmp->object)->diameter);
+			printf("Data.objects[%d].sphere.color.r: %d\n", i,
+				((t_sphere *)tmp->object)->color.r);
+			printf("Data.objects[%d].sphere.color.g: %d\n", i,
+				((t_sphere *)tmp->object)->color.g);
+			printf("Data.objects[%d].sphere.color.b: %d\n", i,
+				((t_sphere *)tmp->object)->color.b);
 		}
 		if (tmp->id == cy)
 		{
-			printf("Data.objects[%d].cylinder.origin.x: %f\n", i, ((t_cylinder *)tmp->object)->origin.x);
-			printf("Data.objects[%d].cylinder.origin.y: %f\n", i, ((t_cylinder *)tmp->object)->origin.y);
-			printf("Data.objects[%d].cylinder.origin.z: %f\n", i, ((t_cylinder *)tmp->object)->origin.z);
-			printf("Data.objects[%d].cylinder.direction.x: %f\n", i, ((t_cylinder *)tmp->object)->direction.x);
-			printf("Data.objects[%d].cylinder.direction.y: %f\n", i, ((t_cylinder *)tmp->object)->direction.y);
-			printf("Data.objects[%d].cylinder.direction.z: %f\n", i, ((t_cylinder *)tmp->object)->direction.z);
-			printf("Data.objects[%d].cylinder.diameter: %f\n", i, ((t_cylinder *)tmp->object)->diameter);
-			printf("Data.objects[%d].cylinder.height: %f\n", i, ((t_cylinder *)tmp->object)->height);
-			printf("Data.objects[%d].cylinder.color.r: %d\n", i, ((t_cylinder *)tmp->object)->color.r);
-			printf("Data.objects[%d].cylinder.color.g: %d\n", i, ((t_cylinder *)tmp->object)->color.g);
-			printf("Data.objects[%d].cylinder.color.b: %d\n", i, ((t_cylinder *)tmp->object)->color.b);
+			printf("Data.objects[%d].cylinder.origin.x: %f\n", i,
+				((t_cylinder *)tmp->object)->origin.x);
+			printf("Data.objects[%d].cylinder.origin.y: %f\n", i,
+				((t_cylinder *)tmp->object)->origin.y);
+			printf("Data.objects[%d].cylinder.origin.z: %f\n", i,
+				((t_cylinder *)tmp->object)->origin.z);
+			printf("Data.objects[%d].cylinder.direction.x: %f\n", i,
+				((t_cylinder *)tmp->object)->direction.x);
+			printf("Data.objects[%d].cylinder.direction.y: %f\n", i,
+				((t_cylinder *)tmp->object)->direction.y);
+			printf("Data.objects[%d].cylinder.direction.z: %f\n", i,
+				((t_cylinder *)tmp->object)->direction.z);
+			printf("Data.objects[%d].cylinder.diameter: %f\n", i,
+				((t_cylinder *)tmp->object)->diameter);
+			printf("Data.objects[%d].cylinder.height: %f\n", i,
+				((t_cylinder *)tmp->object)->height);
+			printf("Data.objects[%d].cylinder.color.r: %d\n", i,
+				((t_cylinder *)tmp->object)->color.r);
+			printf("Data.objects[%d].cylinder.color.g: %d\n", i,
+				((t_cylinder *)tmp->object)->color.g);
+			printf("Data.objects[%d].cylinder.color.b: %d\n", i,
+				((t_cylinder *)tmp->object)->color.b);
 		}
 		tmp = tmp->next;
 		i++;
 	}
-	clear_objects();
-	return (0);
 }
