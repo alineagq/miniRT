@@ -6,7 +6,7 @@
 /*   By: aqueiroz <aqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 17:05:52 by fsuomins          #+#    #+#             */
-/*   Updated: 2023/11/04 22:03:18 by aqueiroz         ###   ########.fr       */
+/*   Updated: 2023/11/04 22:27:00 by aqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,8 +103,8 @@ typedef struct s_plane
 
 typedef struct s_cylinder
 {
-	t_vector	*origin;
-	t_vector	*direction;
+	t_vector	origin;
+	t_vector	direction;
 	double		diameter;
 	double		height;
 	t_color		color;

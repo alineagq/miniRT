@@ -6,7 +6,7 @@
 /*   By: aqueiroz <aqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 11:08:29 by fsuomins          #+#    #+#             */
-/*   Updated: 2023/11/04 22:10:04 by aqueiroz         ###   ########.fr       */
+/*   Updated: 2023/11/04 22:31:00 by aqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,6 +116,20 @@ int	main(int argc, char **argv)
 			printf("Data.objects[%d].sphere.color.r: %d\n", i, ((t_sphere *)tmp->object)->color.r);
 			printf("Data.objects[%d].sphere.color.g: %d\n", i, ((t_sphere *)tmp->object)->color.g);
 			printf("Data.objects[%d].sphere.color.b: %d\n", i, ((t_sphere *)tmp->object)->color.b);
+		}
+		if (tmp->id == cy)
+		{
+			printf("Data.objects[%d].cylinder.origin.x: %f\n", i, ((t_cylinder *)tmp->object)->origin.x);
+			printf("Data.objects[%d].cylinder.origin.y: %f\n", i, ((t_cylinder *)tmp->object)->origin.y);
+			printf("Data.objects[%d].cylinder.origin.z: %f\n", i, ((t_cylinder *)tmp->object)->origin.z);
+			printf("Data.objects[%d].cylinder.direction.x: %f\n", i, ((t_cylinder *)tmp->object)->direction.x);
+			printf("Data.objects[%d].cylinder.direction.y: %f\n", i, ((t_cylinder *)tmp->object)->direction.y);
+			printf("Data.objects[%d].cylinder.direction.z: %f\n", i, ((t_cylinder *)tmp->object)->direction.z);
+			printf("Data.objects[%d].cylinder.diameter: %f\n", i, ((t_cylinder *)tmp->object)->diameter);
+			printf("Data.objects[%d].cylinder.height: %f\n", i, ((t_cylinder *)tmp->object)->height);
+			printf("Data.objects[%d].cylinder.color.r: %d\n", i, ((t_cylinder *)tmp->object)->color.r);
+			printf("Data.objects[%d].cylinder.color.g: %d\n", i, ((t_cylinder *)tmp->object)->color.g);
+			printf("Data.objects[%d].cylinder.color.b: %d\n", i, ((t_cylinder *)tmp->object)->color.b);
 		}
 		tmp = tmp->next;
 		i++;
