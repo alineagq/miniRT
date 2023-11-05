@@ -6,7 +6,7 @@
 /*   By: aqueiroz <aqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 11:08:29 by fsuomins          #+#    #+#             */
-/*   Updated: 2023/11/04 21:58:01 by aqueiroz         ###   ########.fr       */
+/*   Updated: 2023/11/04 22:10:04 by aqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,16 @@ int	main(int argc, char **argv)
 			printf("Data.objects[%d].plane.color.r: %d\n", i, ((t_plane *)tmp->object)->color.r);
 			printf("Data.objects[%d].plane.color.g: %d\n", i, ((t_plane *)tmp->object)->color.g);
 			printf("Data.objects[%d].plane.color.b: %d\n", i, ((t_plane *)tmp->object)->color.b);
+		}
+		if (tmp->id == sp)
+		{
+			printf("Data.objects[%d].sphere.origin.x: %f\n", i, ((t_sphere *)tmp->object)->origin.x);
+			printf("Data.objects[%d].sphere.origin.y: %f\n", i, ((t_sphere *)tmp->object)->origin.y);
+			printf("Data.objects[%d].sphere.origin.z: %f\n", i, ((t_sphere *)tmp->object)->origin.z);
+			printf("Data.objects[%d].sphere.diameter: %f\n", i, ((t_sphere *)tmp->object)->diameter);
+			printf("Data.objects[%d].sphere.color.r: %d\n", i, ((t_sphere *)tmp->object)->color.r);
+			printf("Data.objects[%d].sphere.color.g: %d\n", i, ((t_sphere *)tmp->object)->color.g);
+			printf("Data.objects[%d].sphere.color.b: %d\n", i, ((t_sphere *)tmp->object)->color.b);
 		}
 		tmp = tmp->next;
 		i++;
