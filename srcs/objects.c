@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   objects.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fsuomins <fsuomins@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: aqueiroz <aqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 21:43:53 by fsuomins          #+#    #+#             */
-/*   Updated: 2023/11/04 20:52:30 by fsuomins         ###   ########.fr       */
+/*   Updated: 2023/11/04 21:56:41 by aqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	add_object(t_id id, void *content)
 	void		*copy;
 
 	copy = ft_calloc(1, get_obj_size(id));
-	ft_memcpy(copy, content, sizeof(copy));
+	ft_memcpy(copy, content, get_obj_size(id));
 	head = get_data()->objects;
 	if (!head)
 	{
@@ -65,6 +65,7 @@ void	add_object(t_id id, void *content)
 		head->next = new;
 	}
 }
+
 
 void	remove_object(t_id id)
 {

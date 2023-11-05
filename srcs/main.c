@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fsuomins <fsuomins@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: aqueiroz <aqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 11:08:29 by fsuomins          #+#    #+#             */
-/*   Updated: 2023/11/04 20:56:07 by fsuomins         ###   ########.fr       */
+/*   Updated: 2023/11/04 21:58:01 by aqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,10 @@ int	main(int argc, char **argv)
 			printf("Data.objects[%d].plane.origin.z: %f\n", i, ((t_plane *)tmp->object)->origin.z);
 			printf("Data.objects[%d].plane.direction.x: %f\n", i, ((t_plane *)tmp->object)->direction.x);
 			printf("Data.objects[%d].plane.direction.y: %f\n", i, ((t_plane *)tmp->object)->direction.y);
+			printf("Data.objects[%d].plane.direction.z: %f\n", i, ((t_plane *)tmp->object)->direction.z);
+			printf("Data.objects[%d].plane.color.r: %d\n", i, ((t_plane *)tmp->object)->color.r);
+			printf("Data.objects[%d].plane.color.g: %d\n", i, ((t_plane *)tmp->object)->color.g);
+			printf("Data.objects[%d].plane.color.b: %d\n", i, ((t_plane *)tmp->object)->color.b);
 		}
 		tmp = tmp->next;
 		i++;
