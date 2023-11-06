@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aqueiroz <aqueiroz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aqueiroz <aqueiroz@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 11:08:29 by fsuomins          #+#    #+#             */
-/*   Updated: 2023/11/04 23:30:54 by aqueiroz         ###   ########.fr       */
+/*   Updated: 2023/11/06 19:03:25 by aqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,17 @@ static void	print_header(void)
 	printf("\n");
 }
 
+void my_keyhook(mlx_key_data_t keydata, void* param)
+{
+	(void)param;
+	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
+	{
+		mlx_terminate(get_data()->mlx.win);
+		clear_objects();
+		exit(0);
+	}
+}
+
 int	main(int argc, char **argv)
 {
 	print_header();
@@ -59,7 +70,9 @@ int	main(int argc, char **argv)
 		return (1);
 	}
 	get_data()->mlx.win = mlx_init(700, 700, "miniRT", 0);
+	mlx_key_hook(get_data()->mlx.win, &my_keyhook, NULL);
 	mlx_loop(get_data()->mlx.win);
+	mlx_terminate(get_data()->mlx.win);
 	clear_objects();
 	return (0);
 }
