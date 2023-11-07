@@ -6,7 +6,7 @@
 /*   By: aqueiroz <aqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 11:15:12 by fsuomins          #+#    #+#             */
-/*   Updated: 2023/11/03 15:52:42 by aqueiroz         ###   ########.fr       */
+/*   Updated: 2023/11/07 02:19:42 by aqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,5 +70,7 @@ int	validate_light(char *line)
 		return (0);
 	}
 	free_split(split);
+	get_data()->light.color = color_multiply(get_data()->light.color,
+			get_data()->light.ratio);
 	return (1);
 }

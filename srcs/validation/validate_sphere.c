@@ -6,7 +6,7 @@
 /*   By: aqueiroz <aqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 11:15:52 by fsuomins          #+#    #+#             */
-/*   Updated: 2023/11/04 22:10:18 by aqueiroz         ###   ########.fr       */
+/*   Updated: 2023/11/07 02:35:20 by aqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ int	validate_sphere(char *line)
 		free_split(split);
 		return (0);
 	}
+	get_data()->sphere.radius = fabs(get_data()->sphere.diameter * 0.5);
 	add_object(sp, &get_data()->sphere);
 	free_split(split);
 	return (1);

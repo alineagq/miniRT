@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fsuomins <fsuomins@student.42sp.org.br     +#+  +:+       +#+        */
+/*   By: aqueiroz <aqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 12:24:08 by aqueiroz          #+#    #+#             */
-/*   Updated: 2023/11/03 21:57:20 by fsuomins         ###   ########.fr       */
+/*   Updated: 2023/11/07 03:22:26 by aqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,9 @@
 # define COLOR_CY "\033[0;36m"
 # define COLOR_CY_1 "\033[1;36m"
 # define COLOR_WH "\033[0;37m"
+# define WIDTH 1920
+# define HEIGHT 1080
+# define M_PI 3.14159265358979323846
 
 //////////////****** validation *******/////////////////////
 
@@ -70,5 +73,6 @@ t_data	*get_data(void);
 void	add_object(t_id id, void *content);
 void	remove_object(t_id id);
 void	clear_objects(void);
+t_color	color_multiply(t_color color, double ratio);
 
 #endif

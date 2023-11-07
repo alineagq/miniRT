@@ -3,14 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aqueiroz <aqueiroz@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: aqueiroz <aqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 11:08:29 by fsuomins          #+#    #+#             */
-/*   Updated: 2023/11/06 19:03:25 by aqueiroz         ###   ########.fr       */
+/*   Updated: 2023/11/07 11:02:06 by aqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minirt.h"
+#include <memory.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+
 
 static void	validate_args(int argc, char **argv)
 {
@@ -49,15 +54,25 @@ static void	print_header(void)
 	printf("\n");
 }
 
-void my_keyhook(mlx_key_data_t keydata, void* param)
+// int	new_buffer(mlx_image_t *buffer, void *mlx, const int width, const int height)
+// {
+// 	buffer = mlx_new_image(mlx, width, height);
+// 	if (!buffer)
+// 		return (0);
+// 	return (1);
+// }
+
+void	init_resolution(void)
 {
-	(void)param;
-	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
-	{
-		mlx_terminate(get_data()->mlx.win);
-		clear_objects();
-		exit(0);
-	}
+	t_data	*data;
+
+	data = get_data();
+	data->mlx.width = WIDTH;
+	data->mlx.height = HEIGHT;
+	data->mlx.mlx = mlx_init(data->mlx.width, data->mlx.height, "miniRT", 0);
+	data->ratio = (double)data->mlx.width / (double)data->mlx.height;
+// 	if (!new_buffer(data->mlx.image, data->mlx.mlx, data->mlx.width, data->mlx.height))
+// 		return ;
 }
 
 int	main(int argc, char **argv)
@@ -69,10 +84,10 @@ int	main(int argc, char **argv)
 		clear_objects();
 		return (1);
 	}
-	get_data()->mlx.win = mlx_init(700, 700, "miniRT", 0);
-	mlx_key_hook(get_data()->mlx.win, &my_keyhook, NULL);
-	mlx_loop(get_data()->mlx.win);
-	mlx_terminate(get_data()->mlx.win);
+	init_resolution();
+	// mlx_image_to_window(get_data()->mlx.mlx, get_data()->mlx.image, 0, 0);
+	mlx_loop(get_data()->mlx.mlx);
+	mlx_terminate(get_data()->mlx.mlx);
 	clear_objects();
 	return (0);
 }

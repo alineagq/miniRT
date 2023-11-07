@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: fsuomins <fsuomins@student.42sp.org.br     +#+  +:+       +#+         #
+#    By: aqueiroz <aqueiroz@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/11 12:04:54 by aqueiroz          #+#    #+#              #
-#    Updated: 2023/11/03 21:43:40 by fsuomins         ###   ########.fr        #
+#    Updated: 2023/11/06 22:34:39 by aqueiroz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,12 +57,13 @@ OBJS = $(SRCS:.c=.o)
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -g3
 LIBFLAGS = -Llibs/MLX42/build -Llibs/libft -lmlx42 -lft -Iinclude -ldl -lglfw -pthread -lm
-VALGRIND_ARGS = --trace-children=yes --track-origins=yes \
+VALGRIND_ARGS = --trace-children=yes --track-origins=yes  --suppressions=mini.supp \
 	--leak-check=full --show-leak-kinds=all --quiet
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
+	convert -size 100x100 xc:white -pointsize 40 -draw "text 14,62 '42SP'" icon.png
 	@echo "$(purple)Compiling project...$(reset)"
 	@echo "$(purple)Compiling Libft...$(reset)"
 	@$(MAKE) -C libs/libft > /dev/null && \
@@ -75,7 +76,7 @@ $(NAME): $(OBJS)
 
 %.o: %.c
 	@$(CC) $(CFLAGS) -I$(PATH_INC) -c $< -o $@
-
+    
 valgrind: $(NAME)
 	valgrind $(VALGRIND_ARGS) ./$(NAME) $(filter-out $@,$(MAKECMDGOALS))
 
@@ -92,4 +93,4 @@ fclean: clean
 
 re: fclean all
 	
-.PHONY: all color clean fclean re valgrind
+.PHONY: all color clean fclean re valgrind icon

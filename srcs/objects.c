@@ -6,7 +6,7 @@
 /*   By: aqueiroz <aqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 21:43:53 by fsuomins          #+#    #+#             */
-/*   Updated: 2023/11/04 21:56:41 by aqueiroz         ###   ########.fr       */
+/*   Updated: 2023/11/07 03:30:40 by aqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ size_t	get_obj_size(t_id id)
 	return (size);
 }
 
-void *get_obj_content(t_id id)
+void	*get_obj_content(t_id id)
 {
 	if (id == pl)
 		return (&get_data()->plane);
@@ -56,8 +56,9 @@ void	add_object(t_id id, void *content)
 	}
 	else
 	{
-		while (head->next)
-			head = head->next;
+		if (head->next)
+			while (head->next)
+				head = head->next;
 		new = malloc(sizeof(t_object));
 		new->id = id;
 		new->object = copy;
@@ -65,7 +66,6 @@ void	add_object(t_id id, void *content)
 		head->next = new;
 	}
 }
-
 
 void	remove_object(t_id id)
 {
