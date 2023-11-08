@@ -6,13 +6,27 @@
 /*   By: aqueiroz <aqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 17:05:52 by fsuomins          #+#    #+#             */
-/*   Updated: 2023/11/07 03:11:30 by aqueiroz         ###   ########.fr       */
+/*   Updated: 2023/11/08 12:12:30 by aqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCTS_H
 # define STRUCTS_H
 # include "minirt.h"
+
+typedef enum e_shape_id
+{
+	SPHERE,
+	PLANE,
+	CYLINDER
+}					t_shape_id;
+
+typedef struct s_shape
+{
+	t_shape_id		id;
+	void			*shape;
+	t_color			diffuse;
+}					t_shape;
 
 typedef enum e_id
 {
