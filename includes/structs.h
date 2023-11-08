@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aqueiroz <aqueiroz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fsuomins <fsuomins@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 17:05:52 by fsuomins          #+#    #+#             */
-/*   Updated: 2023/11/08 12:12:30 by aqueiroz         ###   ########.fr       */
+/*   Updated: 2023/11/08 12:55:40 by fsuomins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,7 @@ typedef enum e_shape_id
 	SPHERE,
 	PLANE,
 	CYLINDER
-}					t_shape_id;
-
-typedef struct s_shape
-{
-	t_shape_id		id;
-	void			*shape;
-	t_color			diffuse;
-}					t_shape;
+}	t_shape_id;
 
 typedef enum e_id
 {
@@ -40,6 +33,37 @@ typedef enum e_id
 	sq,
 	tr
 }					t_id;
+
+typedef struct s_vector
+{
+	double			x;
+	double			y;
+	double			z;
+}					t_vector;
+
+typedef struct s_color
+{
+	int				r;
+	int				g;
+	int				b;
+}					t_color;
+
+typedef struct s_aabb
+{
+	t_vector		min;
+	t_vector		max;
+	t_vector		center;	
+}					t_aabb;
+
+typedef struct s_shape
+{
+	t_shape_id		id;
+	void			*shape;
+	t_color			diffuse;
+	t_aabb			volume;
+	void			*next;
+}					t_shape;
+
 
 typedef struct s_parse
 {
@@ -58,26 +82,12 @@ typedef struct s_file
 
 typedef struct s_object
 {
-	t_id			id;
+	t_shape_id		id;
 	void			*object;
-	struct s_object	*next;
+	t_color			diffuse;
+	t_aabb			volume;
+	void			*next;
 }					t_object;
-
-// Scene
-
-typedef struct s_vector
-{
-	double			x;
-	double			y;
-	double			z;
-}					t_vector;
-
-typedef struct s_color
-{
-	int				r;
-	int				g;
-	int				b;
-}					t_color;
 
 typedef struct s_ambient
 {

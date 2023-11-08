@@ -6,7 +6,7 @@
 /*   By: fsuomins <fsuomins@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 11:42:10 by fsuomins          #+#    #+#             */
-/*   Updated: 2023/11/07 22:03:09 by fsuomins         ###   ########.fr       */
+/*   Updated: 2023/11/08 12:52:01 by fsuomins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,7 @@ int	validate_cylinder(char *line)
 	}
 	get_data()->cylinder.radius = fabs(get_data()->cylinder.diameter * 0.5);
 	get_data()->cylinder.height = fabs(get_data()->cylinder.height);
-	add_object(cy, &get_data()->cylinder);
+	add_object(CYLINDER, &get_data()->cylinder);
 	free_split(split);
 	return (1);
 }

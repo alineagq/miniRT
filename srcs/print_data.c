@@ -6,7 +6,7 @@
 /*   By: fsuomins <fsuomins@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 21:45:00 by fsuomins          #+#    #+#             */
-/*   Updated: 2023/11/07 21:45:17 by fsuomins         ###   ########.fr       */
+/*   Updated: 2023/11/08 13:20:17 by fsuomins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	print_data(void)
 	tmp = get_data()->objects;
 	while (tmp)
 	{
-		if (tmp->id == pl)
+		if (tmp->id == PLANE)
 		{
 			printf("Data.objects[%d].plane.origin.x: %f\n", i,
 				((t_plane *)tmp->object)->origin.x);
@@ -70,7 +70,7 @@ void	print_data(void)
 			printf("Data.objects[%d].plane.color.b: %d\n", i,
 				((t_plane *)tmp->object)->color.b);
 		}
-		if (tmp->id == sp)
+		if (tmp->id == SPHERE)
 		{
 			printf("Data.objects[%d].sphere.origin.x: %f\n", i,
 				((t_sphere *)tmp->object)->origin.x);
@@ -87,7 +87,7 @@ void	print_data(void)
 			printf("Data.objects[%d].sphere.color.b: %d\n", i,
 				((t_sphere *)tmp->object)->color.b);
 		}
-		if (tmp->id == cy)
+		if (tmp->id == CYLINDER)
 		{
 			printf("Data.objects[%d].cylinder.origin.x: %f\n", i,
 				((t_cylinder *)tmp->object)->origin.x);

@@ -6,7 +6,7 @@
 /*   By: fsuomins <fsuomins@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 11:15:52 by fsuomins          #+#    #+#             */
-/*   Updated: 2023/11/07 22:03:09 by fsuomins         ###   ########.fr       */
+/*   Updated: 2023/11/08 12:51:06 by fsuomins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ int	validate_sphere(char *line)
 		return (0);
 	}
 	get_data()->sphere.radius = fabs(get_data()->sphere.diameter * 0.5);
-	add_object(sp, &get_data()->sphere);
+	add_object(SPHERE, &get_data()->sphere);
 	free_split(split);
 	return (1);
 }

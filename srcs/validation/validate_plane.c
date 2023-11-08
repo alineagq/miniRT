@@ -6,7 +6,7 @@
 /*   By: fsuomins <fsuomins@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 11:39:39 by fsuomins          #+#    #+#             */
-/*   Updated: 2023/11/07 22:03:09 by fsuomins         ###   ########.fr       */
+/*   Updated: 2023/11/08 12:49:46 by fsuomins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ int	validate_plane(char *line)
 		free_split(split);
 		return (0);
 	}
-	add_object(pl, &get_data()->plane);
+	add_object(PLANE, &get_data()->plane);
 	free_split(split);
 	return (1);
 }

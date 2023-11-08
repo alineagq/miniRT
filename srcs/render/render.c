@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aqueiroz <aqueiroz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fsuomins <fsuomins@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 11:54:54 by aqueiroz          #+#    #+#             */
-/*   Updated: 2023/11/08 11:59:53 by aqueiroz         ###   ########.fr       */
+/*   Updated: 2023/11/08 14:14:49 by fsuomins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,18 @@
 void	render(void)
 {
 	t_data		*data;
-	t_object	*objects;
+	t_object	*object;
 
 	data = get_data();
-	objects = data->objects;
-	while (objects)
+	object = data->objects;
+	while (object)
 	{
-		if (objects->id == sp)
-			render_sphere(objects->object);
-		objects = objects->next;
+		if (object->id == SPHERE)
+			render_sphere(object, data->mlx);
+		// else if (object->id == PLANE)
+		// 	render_plane(object);
+		// else if (object->id == CYLINDER)
+		// 	render_cylinder(object);
+		object = object->next;
 	}
 }

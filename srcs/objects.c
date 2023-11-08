@@ -3,33 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   objects.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aqueiroz <aqueiroz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fsuomins <fsuomins@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 21:43:53 by fsuomins          #+#    #+#             */
-/*   Updated: 2023/11/07 22:23:33 by aqueiroz         ###   ########.fr       */
+/*   Updated: 2023/11/08 13:09:58 by fsuomins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minirt.h"
 
-size_t	get_obj_size(t_id id)
+size_t	get_obj_size(t_shape_id id)
 {
-	const size_t	sizes[] = {0, 0, 0, 0, 0, sizeof(t_sphere), sizeof(t_plane),
-		sizeof(t_cylinder), sizeof(t_cylinder)};
-
-	if (id >= R && id <= tr)
-		return (sizes[id]);
+	const size_t	size[] = {sizeof(t_sphere), sizeof(t_plane), sizeof(t_cylinder)};
+	
+	if (id >= SPHERE && id <= CYLINDER)
+		return (size[id]);
 	return (0);
 }
 
-void	*get_obj_content(t_id id)
-{
-	if (id == pl)
-		return (&get_data()->plane);
-	return (NULL);
-}
-
-void	add_object(t_id id, void *content)
+void	add_object(t_shape_id id, void *content)
 {
 	t_object	*head;
 	t_object	*new;
@@ -59,7 +51,7 @@ void	add_object(t_id id, void *content)
 	}
 }
 
-void	remove_object(t_id id)
+void	remove_object(t_shape_id id)
 {
 	t_object	*head;
 	t_object	*prev;

@@ -1,38 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   render_objects.c                                   :+:      :+:    :+:   */
+/*   construct.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fsuomins <fsuomins@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/07 22:44:07 by aqueiroz          #+#    #+#             */
-/*   Updated: 2023/11/08 14:15:10 by fsuomins         ###   ########.fr       */
+/*   Created: 2023/11/08 12:36:27 by fsuomins          #+#    #+#             */
+/*   Updated: 2023/11/08 13:59:34 by fsuomins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minirt.h"
 
-void	render_sphere(t_object *object)
+void	sphere_construct(t_shape *catch)
 {
-	t_sphere	*sphere;
-	t_mlx		*mlx;
-	int			x;
-	int			y;
-	int			color;
-
-	sphere = object->object;
-	mlx = get_data()->mlx;
-	y = 0;
-	while (y < mlx->height)
-	{
-		x = 0;
-		while (x < mlx->width)
-		{
-			color = get_sphere_color(sphere, x, y);
-			my_mlx_pixel_put(mlx, x, y, color);
-			x++;
-		}
-		y++;
-	}
+		
 }
-

@@ -6,7 +6,7 @@
 /*   By: fsuomins <fsuomins@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 12:24:08 by aqueiroz          #+#    #+#             */
-/*   Updated: 2023/11/07 22:08:17 by fsuomins         ###   ########.fr       */
+/*   Updated: 2023/11/08 13:19:24 by fsuomins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,8 @@ int			print_line_error(char *line);
 t_data		*get_data(void);
 
 //////////////****** utils *******/////////////////////
-void		add_object(t_id id, void *content);
-void		remove_object(t_id id);
+void		add_object(t_shape_id id, void *content);
+void		remove_object(t_shape_id id);
 void		clear_objects(void);
 t_color		color_multiply(t_color color, double ratio);
 void		print_data(void);
