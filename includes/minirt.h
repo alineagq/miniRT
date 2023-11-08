@@ -6,7 +6,7 @@
 /*   By: fsuomins <fsuomins@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 12:24:08 by aqueiroz          #+#    #+#             */
-/*   Updated: 2023/11/08 13:19:24 by fsuomins         ###   ########.fr       */
+/*   Updated: 2023/11/08 19:24:04 by fsuomins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,4 +87,10 @@ t_vector	vec_normalize(t_vector v);
 t_mat4		mat4_identity(void);
 t_mat4		camera_show(t_vector origem, t_vector focus);
 
+
+//////////////****** draw construct*******/////////////////////
+
+// void	draw_sphere(t_object sphere, void *mlx_ptr, void *win_ptr);
+// void	construct_sphere(t_object *sphere);
+// void	construct_bounding_boxes(void);
 #endif

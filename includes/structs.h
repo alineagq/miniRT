@@ -6,7 +6,7 @@
 /*   By: fsuomins <fsuomins@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 17:05:52 by fsuomins          #+#    #+#             */
-/*   Updated: 2023/11/08 12:55:40 by fsuomins         ###   ########.fr       */
+/*   Updated: 2023/11/08 17:54:16 by fsuomins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,15 +54,6 @@ typedef struct s_aabb
 	t_vector		max;
 	t_vector		center;	
 }					t_aabb;
-
-typedef struct s_shape
-{
-	t_shape_id		id;
-	void			*shape;
-	t_color			diffuse;
-	t_aabb			volume;
-	void			*next;
-}					t_shape;
 
 
 typedef struct s_parse

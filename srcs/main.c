@@ -3,19 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aqueiroz <aqueiroz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fsuomins <fsuomins@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 11:08:29 by fsuomins          #+#    #+#             */
-/*   Updated: 2023/11/07 22:40:34 by aqueiroz         ###   ########.fr       */
+/*   Updated: 2023/11/08 19:23:47 by fsuomins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minirt.h"
-
-// #include <memory.h>
-// #include <stdio.h>
-// #include <stdlib.h>
-// #include <unistd.h>
 
 static void	validate_args(int argc, char **argv)
 {
@@ -88,6 +83,7 @@ int	main(int argc, char **argv)
 	}
 	init_resolution();
 	mlx_loop_hook(get_data()->mlx.mlx, &hook, get_data()->mlx.mlx);
+	// draw_sphere(SPHERE, &get_data()->sphere);
 	mlx_loop(get_data()->mlx.mlx);
 	mlx_terminate(get_data()->mlx.mlx);
 	clear_objects();

@@ -6,7 +6,7 @@
 /*   By: fsuomins <fsuomins@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 21:43:53 by fsuomins          #+#    #+#             */
-/*   Updated: 2023/11/08 13:09:58 by fsuomins         ###   ########.fr       */
+/*   Updated: 2023/11/08 16:41:32 by fsuomins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 
 size_t	get_obj_size(t_shape_id id)
 {
-	const size_t	size[] = {sizeof(t_sphere), sizeof(t_plane), sizeof(t_cylinder)};
-	
+	const size_t size[] = {sizeof(t_sphere), sizeof(t_plane),
+		sizeof(t_cylinder)};
+
 	if (id >= SPHERE && id <= CYLINDER)
 		return (size[id]);
 	return (0);
