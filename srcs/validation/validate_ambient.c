@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_ambient.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aqueiroz <aqueiroz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fsuomins <fsuomins@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 11:14:05 by fsuomins          #+#    #+#             */
-/*   Updated: 2023/11/07 01:44:11 by aqueiroz         ###   ########.fr       */
+/*   Updated: 2023/11/07 21:21:16 by fsuomins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,16 +23,6 @@ int	validate_ambient_light(char *line)
 		return (0);
 	data->ambient.ratio = ambient_light;
 	return (1);
-}
-
-t_color	color_multiply(t_color color, double ratio)
-{
-	t_color	new_color;
-
-	new_color.r = color.r * ratio;
-	new_color.g = color.g * ratio;
-	new_color.b = color.b * ratio;
-	return (new_color);
 }
 
 int	validate_ambient(char *line)

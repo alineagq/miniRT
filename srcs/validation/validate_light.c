@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_light.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aqueiroz <aqueiroz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fsuomins <fsuomins@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 11:15:12 by fsuomins          #+#    #+#             */
-/*   Updated: 2023/11/07 02:19:42 by aqueiroz         ###   ########.fr       */
+/*   Updated: 2023/11/07 22:03:09 by fsuomins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static int	validate_light_brightness(char *line)
 
 	data = get_data();
 	split = ft_split(line, ' ');
-	if (is_numeric_string(split[0]) == 0)
+	if (ft_is_numeric_string(split[0]) == 0)
 	{
 		free_split(split);
 		return (0);
@@ -36,8 +36,8 @@ static int	validate_light_position(char *line)
 
 	data = get_data();
 	split = ft_split(line, ',');
-	if (is_numeric_string(split[0]) == 0 || is_numeric_string(split[1]) == 0
-		|| is_numeric_string(split[2]) == 0)
+	if (ft_is_numeric_string(split[0]) == 0 || ft_is_numeric_string(split[1]) == 0
+		|| ft_is_numeric_string(split[2]) == 0)
 	{
 		free_split(split);
 		return (0);

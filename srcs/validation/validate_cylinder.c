@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_cylinder.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aqueiroz <aqueiroz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fsuomins <fsuomins@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 11:42:10 by fsuomins          #+#    #+#             */
-/*   Updated: 2023/11/07 02:37:58 by aqueiroz         ###   ########.fr       */
+/*   Updated: 2023/11/07 22:03:09 by fsuomins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ static int	validate_cylinder_position(char *line)
 
 	data = get_data();
 	split = ft_split(line, ',');
-	if (!is_numeric_string(split[0]) || !is_numeric_string(split[1])
-		|| !is_numeric_string(split[2]))
+	if (!ft_is_numeric_string(split[0]) || !ft_is_numeric_string(split[1])
+		|| !ft_is_numeric_string(split[2]))
 	{
 		free_split(split);
 		return (0);
@@ -39,7 +39,7 @@ static int	validate_cylinder_diameter(char *line)
 
 	data = get_data();
 	split = ft_split(line, ' ');
-	if (!is_numeric_string(split[0]) || split[1] != NULL
+	if (!ft_is_numeric_string(split[0]) || split[1] != NULL
 		|| ft_atof(split[0]) < 0)
 	{
 		free_split(split);
@@ -57,7 +57,7 @@ static int	validate_cylinder_height(char *line)
 
 	data = get_data();
 	split = ft_split(line, ' ');
-	if (!is_numeric_string(split[0]) || split[1] != NULL
+	if (!ft_is_numeric_string(split[0]) || split[1] != NULL
 		|| ft_atof(split[0]) < 0)
 	{
 		free_split(split);

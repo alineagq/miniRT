@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: aqueiroz <aqueiroz@student.42.fr>          +#+  +:+       +#+         #
+#    By: fsuomins <fsuomins@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/11 12:04:54 by aqueiroz          #+#    #+#              #
-#    Updated: 2023/11/06 22:34:39 by aqueiroz         ###   ########.fr        #
+#    Updated: 2023/11/07 22:11:45 by fsuomins         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,7 +47,7 @@ FILES  =	main exit_error validation/validate_scene validation/validate_ambient \
 			validation/validate_camera validation/validate_light \
 			validation/validate_sphere validation/validate_plane \
 			validation/validate_color validation/validate_cylinder data \
-			objects
+			objects print_data matriz vector
 
 SRCS = $(addprefix $(SRC_PATH)/, $(addsuffix .c, $(FILES)))
 OBJS = $(SRCS:.c=.o)
@@ -63,7 +63,7 @@ VALGRIND_ARGS = --trace-children=yes --track-origins=yes  --suppressions=mini.su
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	convert -size 100x100 xc:white -pointsize 40 -draw "text 14,62 '42SP'" icon.png
+	#convert -size 100x100 xc:white -pointsize 40 -draw "text 14,62 '42SP'" icon.png
 	@echo "$(purple)Compiling project...$(reset)"
 	@echo "$(purple)Compiling Libft...$(reset)"
 	@$(MAKE) -C libs/libft > /dev/null && \

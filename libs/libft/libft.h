@@ -6,7 +6,7 @@
 /*   By: fsuomins <fsuomins@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 02:57:01 by aqueiroz          #+#    #+#             */
-/*   Updated: 2023/11/01 15:25:03 by fsuomins         ###   ########.fr       */
+/*   Updated: 2023/11/07 22:01:03 by fsuomins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ char		*ft_strrchr(const char *s, int c);
 char		*ft_strchr(const char *s, int c);
 char		*ft_strdup(const char *str);
 char		*ft_itoa(int n);
+int			ft_is_numeric_string(const char *str);
 int			ft_strncmp(const char *s1, const char *s2, size_t n);
 int			ft_memcmp(const void *s1, const void *s2, size_t n);
 int			ft_isprint(int c_is_printable);
