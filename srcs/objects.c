@@ -6,7 +6,7 @@
 /*   By: aqueiroz <aqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 21:43:53 by fsuomins          #+#    #+#             */
-/*   Updated: 2023/11/07 03:30:40 by aqueiroz         ###   ########.fr       */
+/*   Updated: 2023/11/07 22:23:33 by aqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,12 @@
 
 size_t	get_obj_size(t_id id)
 {
-	size_t	size;
+	const size_t	sizes[] = {0, 0, 0, 0, 0, sizeof(t_sphere), sizeof(t_plane),
+		sizeof(t_cylinder), sizeof(t_cylinder)};
 
-	size = 0;
-	if (id == sp)
-		size = sizeof(t_sphere);
-	else if (id == pl)
-		size = sizeof(t_plane);
-	else if (id == cy)
-		size = sizeof(t_cylinder);
-	else if (id == sq)
-		size = sizeof(t_cylinder);
-	else if (id == tr)
-		size = sizeof(t_cylinder);
-	return (size);
+	if (id >= R && id <= tr)
+		return (sizes[id]);
+	return (0);
 }
 
 void	*get_obj_content(t_id id)
