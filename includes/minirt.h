@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fsuomins <fsuomins@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: aqueiroz <aqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 12:24:08 by aqueiroz          #+#    #+#             */
-/*   Updated: 2023/11/08 19:24:04 by fsuomins         ###   ########.fr       */
+/*   Updated: 2023/11/09 10:33:18 by aqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@
 # define WIDTH 1920
 # define HEIGHT 1080
 # define M_PI 3.14159265358979323846
+# define M_INFINITY 1.0 / 0.0
 
 //////////////****** validation *******/////////////////////
 
@@ -86,7 +87,6 @@ t_vector	vec_normalize(t_vector v);
 
 t_mat4		mat4_identity(void);
 t_mat4		camera_show(t_vector origem, t_vector focus);
-
 
 //////////////****** draw construct*******/////////////////////
 

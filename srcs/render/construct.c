@@ -3,67 +3,74 @@
 /*                                                        :::      ::::::::   */
 /*   construct.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fsuomins <fsuomins@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: aqueiroz <aqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 17:51:03 by fsuomins          #+#    #+#             */
-/*   Updated: 2023/11/08 19:23:56 by fsuomins         ###   ########.fr       */
+/*   Updated: 2023/11/09 10:39:00 by aqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minirt.h"
 
-// function percorre 'objects' e chama a função de cada objeto para contruir o
-// box que envolve o objeto
+t_vector	vec_sub_scalar(t_vector vec, double scalar)
+{
+	t_vector	result;
 
-// void	draw_sphere(t_object sphere, void *mlx_ptr, void *win_ptr)
-// {
-// 	int	radius;
+	result.x = vec.x - scalar;
+	result.y = vec.y - scalar;
+	result.z = vec.z - scalar;
+	return (result);
+}
 
-// 	radius = sphere.diameter / 2;
-// 	int x, y, z;
-// 	for (x = -radius; x <= radius; x++)
-// 	{
-// 		for (y = -radius; y <= radius; y++)
-// 		{
-// 			for (z = -radius; z <= radius; z++)
-// 			{
-// 				if (x * x + y * y + z * z <= radius * radius)
-// 				{
-// 					mlx_pixel_put(mlx_ptr, win_ptr, sphere.origin.x + x,
-// 						sphere.origin.y + y, 0xFFFFFF);
-// 				}
-// 			}
-// 		}
-// 	}
-// }
+t_vector	vec_add_scalar(t_vector vec, double scalar)
+{
+	t_vector	result;
 
-// void	construct_sphere(t_object *sphere)
-// {
-// 	float	radius;
+	result.x = vec.x + scalar;
+	result.y = vec.y + scalar;
+	result.z = vec.z + scalar;
+	return (result);
+}
 
-// 	radius = sphere->diameter / 2.0;
-// 	sphere->volume.min.x = sphere->origin.x - radius;
-// 	sphere->volume.min.y = sphere->origin.y - radius;
-// 	sphere->volume.min.z = sphere->origin.z - radius;
-// 	sphere->volume.max.x = sphere->origin.x + radius;
-// 	sphere->volume.max.y = sphere->origin.y + radius;
-// 	sphere->volume.max.z = sphere->origin.z + radius;
-// 	sphere->volume.center.x = sphere->origin.x;
-// 	sphere->volume.center.y = sphere->origin.y;
-// 	sphere->volume.center.z = sphere->origin.z;
-// }
+int	create_box(t_aabb *box)
+{
+	t_vector	max;
+	t_vector	min;
 
-// // Function to construct bounding boxes for all objects
-// void	construct_bounding_boxes(void)
-// {
-// 	t_object	*head;
+	max = {M_INFINITY, M_INFINITY, M_INFINITY};
+	min = {-M_INFINITY, -M_INFINITY, -M_INFINITY};
+	box->min = min;
+	box->max = max;
+	return (1);
+}
 
-// 	head = get_data()->objects;
-// 	while (head)
-// 	{
-// 		if (head->id == SPHERE)
-// 			construct_sphere(head);
-// 		// Add other shape construction functions for PLANE and CYLINDER here
-// 		head = head->next;
-// 	}
-// }
+int	build_sphere(t_object *sphere)
+{
+	t_sphere	*sphere_data;
+
+	sphere_data = (t_sphere *)sphere->object;
+	create_box(&sphere->volume);
+	sphere->volume.min = vec_sub_scalar(sphere_data->origin,
+		sphere_data->radius);
+	sphere->volume.max = vec_add_scalar(sphere_data->origin,
+		sphere_data->radius);
+	return (1);
+}
+
+int	build_objects(void)
+{
+	t_object	*current;
+
+	current = get_data()->objects;
+	while (current)
+	{
+		if (current->id == SPHERE)
+			build_sphere(current);
+		// else if (current->id == PLANE)
+		// 	build_plane(current);
+		// else if (current->id == CYLINDER)
+		// 	build_cylinder(current);
+		current = current->next;
+	}
+	return (1);
+}
