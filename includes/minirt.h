@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fsuomins <fsuomins@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: aqueiroz <aqueiroz@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 12:24:08 by aqueiroz          #+#    #+#             */
-/*   Updated: 2023/11/09 17:27:45 by fsuomins         ###   ########.fr       */
+/*   Updated: 2023/11/09 19:03:00 by aqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@
 # define WIDTH 1920
 # define HEIGHT 1080
 # define M_PI 3.14159265358979323846
-# define M_INFINITY 1.0 / 0.0
+# define M_INFINITY (1.0 / 0.0)
 
 //////////////****** validation *******/////////////////////
 int			validate_scene(char *file);
@@ -50,7 +50,7 @@ int			validate_camera(char *line);
 int			validate_light(char *line);
 int			validate_sphere(char *line);
 int			validate_plane(char *line);
-int         validate_cylinder(char *line);
+int			validate_cylinder(char *line);
 int			validate_color(char *line, t_color *color);
 int			validate_orientation(char *str1, char *str2, char *str3);
 t_color		color_multiply(t_color color, double ratio);

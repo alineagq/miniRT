@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: fsuomins <fsuomins@student.42sp.org.br>    +#+  +:+       +#+         #
+#    By: aqueiroz <aqueiroz@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/11 12:04:54 by aqueiroz          #+#    #+#              #
-#    Updated: 2023/11/09 17:28:14 by fsuomins         ###   ########.fr        #
+#    Updated: 2023/11/09 18:50:13 by aqueiroz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -72,7 +72,6 @@ VALGRIND_ARGS = --trace-children=yes --track-origins=yes  --suppressions=mini.su
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	#convert -size 100x100 xc:white -pointsize 40 -draw "text 14,62 '42SP'" icon.png
 	@echo "$(purple)Compiling project...$(reset)"
 	@echo "$(purple)Compiling Libft...$(reset)"
 	@$(MAKE) -C libs/libft > /dev/null && \

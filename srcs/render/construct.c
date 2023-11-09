@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   construct.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fsuomins <fsuomins@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: aqueiroz <aqueiroz@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 17:51:03 by fsuomins          #+#    #+#             */
-/*   Updated: 2023/11/09 16:41:55 by fsuomins         ###   ########.fr       */
+/*   Updated: 2023/11/09 19:04:26 by aqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,33 @@ int	create_box(t_aabb *box)
 	return (1);
 }
 
+int	build_plane(t_object *plane)
+{
+	t_plane	*plane_data;
+
+	plane_data = (t_plane *)plane->object;
+	create_box(&plane->volume);
+	plane->volume.min = vec_sub_scalar(plane_data->origin, M_INFINITY);
+	plane->volume.max = vec_add_scalar(plane_data->origin, M_INFINITY);
+	return (1);
+}
+
+int	build_cylinder(t_object *cylinder)
+{
+	t_cylinder	*cy_data;
+	t_vector	inverted;
+	t_vector	center;
+
+	cy_data = (t_cylinder *)cylinder->object;
+	cy_data->height_d2 = cy_data->height / 2;
+	cy_data->half_height = vec_mult_scalar(cy_data->orientation,
+			cy_data->height_d2);
+	cy_data->top = vec_add(cy_data->origin, cy_data->half_height);
+	cy_data->bottom = vec_sub(cy_data->origin, cy_data->half_height);
+	cy_data->diff = vec_sub(cy_data->top, cy_data->bottom);
+	// TODO: check if this is correct
+}
+
 int	build_sphere(t_object *sphere)
 {
 	t_sphere	*sphere_data;
@@ -31,9 +58,9 @@ int	build_sphere(t_object *sphere)
 	sphere_data = (t_sphere *)sphere->object;
 	create_box(&sphere->volume);
 	sphere->volume.min = vec_sub_scalar(sphere_data->origin,
-		sphere_data->radius);
+			sphere_data->radius);
 	sphere->volume.max = vec_add_scalar(sphere_data->origin,
-		sphere_data->radius);
+			sphere_data->radius);
 	return (1);
 }
 

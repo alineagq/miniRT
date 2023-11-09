@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fsuomins <fsuomins@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: aqueiroz <aqueiroz@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 17:05:52 by fsuomins          #+#    #+#             */
-/*   Updated: 2023/11/09 16:57:49 by fsuomins         ###   ########.fr       */
+/*   Updated: 2023/11/09 19:00:18 by aqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,8 +97,6 @@ typedef struct s_hit
 	int			aabb_hit;
 }				t_hit;
 
-
-
 typedef struct s_parse
 {
 	char		*id;
@@ -159,8 +157,13 @@ typedef struct s_cylinder
 {
 	t_vector	origin;
 	t_vector	direction;
+	t_vector	top;
+	t_vector	bottom;
+	t_vector	diff;
 	double		diameter;
 	double		height;
+	double		height_d2;
+	double		height_half;
 	double		radius;
 	t_color		color;
 }				t_cylinder;
