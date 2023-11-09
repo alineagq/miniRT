@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aqueiroz <aqueiroz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fsuomins <fsuomins@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 17:05:52 by fsuomins          #+#    #+#             */
-/*   Updated: 2023/11/09 11:14:04 by aqueiroz         ###   ########.fr       */
+/*   Updated: 2023/11/09 16:57:49 by fsuomins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,25 +25,6 @@ typedef enum e_mat_element
 	m_down
 }				t_mat_element;
 
-typedef struct s_ray
-{
-	t_vector	origin;
-	t_vector	direction;
-	double		min;
-	double		max;
-}				t_ray;
-
-typedef struct s_hit
-{
-	t_ray		ray;
-	t_object	*ref;
-	double		distance;
-	t_color		color;
-	t_vector	point;
-	t_vector	normal;
-	int			aabb_hit;
-}				t_hit;
-
 typedef enum e_shape_id
 {
 	SPHERE,
@@ -59,9 +40,7 @@ typedef enum e_id
 	l,
 	sp,
 	pl,
-	cy,
-	sq,
-	tr
+	cy
 }				t_id;
 
 typedef struct s_vector
@@ -78,12 +57,47 @@ typedef struct s_color
 	int			b;
 }				t_color;
 
+typedef struct s_mat4
+{
+	double		data[4][4];
+}				t_mat4;
+
+typedef struct s_ray
+{
+	t_vector	origin;
+	t_vector	direction;
+	double		min;
+	double		max;
+}				t_ray;
+
 typedef struct s_aabb
 {
 	t_vector	min;
 	t_vector	max;
 	t_vector	center;
 }				t_aabb;
+
+typedef struct s_object
+{
+	t_shape_id	id;
+	void		*object;
+	t_color		diffuse;
+	t_aabb		volume;
+	void		*next;
+}				t_object;
+
+typedef struct s_hit
+{
+	t_ray		ray;
+	t_object	*ref;
+	double		distance;
+	t_color		color;
+	t_vector	point;
+	t_vector	normal;
+	int			aabb_hit;
+}				t_hit;
+
+
 
 typedef struct s_parse
 {
@@ -100,25 +114,13 @@ typedef struct s_file
 	int			valid;
 }				t_file;
 
-typedef struct s_object
-{
-	t_shape_id	id;
-	void		*object;
-	t_color		diffuse;
-	t_aabb		volume;
-	void		*next;
-}				t_object;
+
 
 typedef struct s_ambient
 {
 	double		ratio;
 	t_color		color;
 }				t_ambient;
-
-typedef struct s_mat4
-{
-	double		data[4][4];
-}				t_mat4;
 
 typedef struct s_camera
 {

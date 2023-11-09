@@ -3,34 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   construct.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aqueiroz <aqueiroz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fsuomins <fsuomins@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 17:51:03 by fsuomins          #+#    #+#             */
-/*   Updated: 2023/11/09 10:39:00 by aqueiroz         ###   ########.fr       */
+/*   Updated: 2023/11/09 16:41:55 by fsuomins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minirt.h"
-
-t_vector	vec_sub_scalar(t_vector vec, double scalar)
-{
-	t_vector	result;
-
-	result.x = vec.x - scalar;
-	result.y = vec.y - scalar;
-	result.z = vec.z - scalar;
-	return (result);
-}
-
-t_vector	vec_add_scalar(t_vector vec, double scalar)
-{
-	t_vector	result;
-
-	result.x = vec.x + scalar;
-	result.y = vec.y + scalar;
-	result.z = vec.z + scalar;
-	return (result);
-}
 
 int	create_box(t_aabb *box)
 {

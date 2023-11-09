@@ -1,27 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   data.c                                             :+:      :+:    :+:   */
+/*   scalar.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fsuomins <fsuomins@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/01 14:04:30 by fsuomins          #+#    #+#             */
-/*   Updated: 2023/11/01 14:04:51 by fsuomins         ###   ########.fr       */
+/*   Created: 2023/11/09 16:42:54 by fsuomins          #+#    #+#             */
+/*   Updated: 2023/11/09 16:43:15 by fsuomins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minirt.h"
 
-t_data	*get_data(void)
+t_vector	vec_sub_scalar(t_vector vec, double scalar)
 {
-	static t_data	data;
+	t_vector	result;
 
-	return (&data);
+	result.x = vec.x - scalar;
+	result.y = vec.y - scalar;
+	result.z = vec.z - scalar;
+	return (result);
 }
 
-// void	free_data(void)
-// {
-// 	// t_data	*data;
+t_vector	vec_add_scalar(t_vector vec, double scalar)
+{
+	t_vector	result;
 
-// 	// data = get_data();
-// }
+	result.x = vec.x + scalar;
+	result.y = vec.y + scalar;
+	result.z = vec.z + scalar;
+	return (result);
+}
