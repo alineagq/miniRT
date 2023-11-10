@@ -3,38 +3,38 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aqueiroz <aqueiroz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fsuomins <fsuomins@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 10:39:08 by aqueiroz          #+#    #+#             */
-/*   Updated: 2023/11/10 01:03:05 by aqueiroz         ###   ########.fr       */
+/*   Updated: 2023/11/10 10:25:41 by fsuomins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minirt.h"
 
-int	tracing(t_data *scene, t_ray ray, t_color *color)
-{
-	t_hit	hit;
+// int	tracing(t_data *scene, t_ray ray, t_color *color)
+// {
+// 	t_hit	hit;
 
-	ft_memset(&hit, 0, sizeof(t_hit));
-	hit.ray = ray;
-	hit.distance = INFINITY;
-	hit.ray.max = INFINITY;
-	*color = (t_color){0, 0, 0};
-	if (intersect(&hit))
-	{
-		hit.color = hit.obj->diffuse;
-		// *color = shede(scene, &hit);
-		hit.obj = NULL;
-		return (1);
-	}
-	else if (scene->viewport == aabb && hit.aabb_hit)
-	{
-		// *color = s_aabb(scene, &hit);
-		return (1);
-	}
-	return (0);
-}
+// 	ft_memset(&hit, 0, sizeof(t_hit));
+// 	hit.ray = ray;
+// 	hit.distance = INFINITY;
+// 	hit.ray.max = INFINITY;
+// 	*color = (t_color){0, 0, 0};
+// 	if (intersect(&hit))
+// 	{
+// 		hit.color = hit.obj->diffuse;
+// 		// *color = shede(scene, &hit);
+// 		hit.obj = NULL;
+// 		return (1);
+// 	}
+// 	else if (scene->viewport == aabb && hit.aabb_hit)
+// 	{
+// 		// *color = s_aabb(scene, &hit);
+// 		return (1);
+// 	}
+// 	return (0);
+// }
 
 t_vector	mat4_get(t_mat4 mx, t_mat_element type)
 {
@@ -69,6 +69,7 @@ int	render(t_data *scene)
 	t_color	color;
 	t_ray	ray;
 
+	(void)color;
 	scene->u = 0;
 	scene->v = 0;
 	while (scene->u < (int)scene->mlx.image->width)
@@ -76,7 +77,7 @@ int	render(t_data *scene)
 		while (scene->v < (int)scene->mlx.image->height)
 		{
 			camera_ray(scene, &ray, scene->u, scene->v);
-			tracing(scene, ray, &color);
+			// tracing(scene, ray, &color);
 			// calculate_color(&scene->mlx.image, scene->u, scene->v, color);
 			scene->v++;
 		}
