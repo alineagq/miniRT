@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vector.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fsuomins <fsuomins@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: aqueiroz <aqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 21:19:58 by fsuomins          #+#    #+#             */
-/*   Updated: 2023/11/09 16:43:03 by fsuomins         ###   ########.fr       */
+/*   Updated: 2023/11/09 22:57:52 by aqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,9 @@ t_vector	vec_normalize(t_vector v)
 t_vector	vec_add(t_vector v1, t_vector v2)
 {
 	return ((t_vector){v1.x + v2.x, v1.y + v2.y, v1.z + v2.z});
+}
+
+t_vector	vec_mult(t_vector v1, t_vector v2)
+{
+	return ((t_vector){v1.x * v2.x, v1.y * v2.y, v1.z * v2.z});
 }

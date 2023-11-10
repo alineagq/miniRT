@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aqueiroz <aqueiroz@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: aqueiroz <aqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 12:24:08 by aqueiroz          #+#    #+#             */
-/*   Updated: 2023/11/09 19:03:00 by aqueiroz         ###   ########.fr       */
+/*   Updated: 2023/11/09 23:44:34 by aqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,22 @@ t_vector	vec_sub(t_vector v1, t_vector v2);
 t_vector	vec_cross(t_vector v1, t_vector v2);
 t_vector	vec_normalize(t_vector v);
 t_vector	vec_add(t_vector v1, t_vector v2);
-
+t_vector	vec_mult(t_vector v1, t_vector v2);
+t_vector	vec_sub_scalar(t_vector vec, double scalar);
+t_vector	vec_add_scalar(t_vector vec, double scalar);
+t_vector	vec_mult_scalar(t_vector vec, double scalar);
+t_vector	vec_div_scalar(t_vector vec, double scalar);
+double		vec_dot(t_vector v1, t_vector v2);
+double		vec_magintude(t_vector v);
+t_vector	vec_unit(t_vector v);
+t_vector	mat4_mult_dir(t_mat4 matrix, t_vector dir);
 t_mat4		camera_show(t_vector origem, t_vector focus);
+
+//////////////****** render *******/////////////////////
+int			create_box(t_aabb *box);
+int			box_add_vec(t_aabb *volume, t_vector vec);
+int			build_objects(void);
+int			render(t_data *scene);
 
 //////////////****** utils *******/////////////////////
 void		free_split(char **split);

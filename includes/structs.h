@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aqueiroz <aqueiroz@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: aqueiroz <aqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 17:05:52 by fsuomins          #+#    #+#             */
-/*   Updated: 2023/11/09 19:00:18 by aqueiroz         ###   ########.fr       */
+/*   Updated: 2023/11/09 22:44:47 by aqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,15 @@ typedef enum e_mat_element
 	m_up,
 	m_down
 }				t_mat_element;
+
+typedef enum e_mode
+{
+	unlit,
+	flat,
+	shaded,
+	aabb,
+	none
+}	t_mode;
 
 typedef enum e_shape_id
 {
@@ -75,6 +84,7 @@ typedef struct s_aabb
 	t_vector	min;
 	t_vector	max;
 	t_vector	center;
+	int			active;
 }				t_aabb;
 
 typedef struct s_object
@@ -111,8 +121,6 @@ typedef struct s_file
 	int			fd;
 	int			valid;
 }				t_file;
-
-
 
 typedef struct s_ambient
 {
@@ -157,13 +165,13 @@ typedef struct s_cylinder
 {
 	t_vector	origin;
 	t_vector	direction;
+	t_vector	middle;
 	t_vector	top;
 	t_vector	bottom;
 	t_vector	diff;
 	double		diameter;
 	double		height;
-	double		height_d2;
-	double		height_half;
+	double		half_height;
 	double		radius;
 	t_color		color;
 }				t_cylinder;
@@ -179,25 +187,11 @@ typedef struct s_mlx
 	int			width;
 	int			height;
 }				t_mlx;
-
-typedef struct s_buffer
-{
-	void		*image;
-	void		*address;
-	int			size;
-	int			width;
-	int			height;
-	int			bpp;
-	int			row_size;
-	int			endian;
-	int			de_gamma;
-}				t_buffer;
 typedef struct s_data
 {
 	int			viewport;
 	double		ratio;
 	t_mlx		mlx;
-	t_buffer	buffer;
 	t_camera	camera;
 	t_ambient	ambient;
 	t_light		light;

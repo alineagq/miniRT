@@ -3,55 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   construct.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aqueiroz <aqueiroz@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: aqueiroz <aqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 17:51:03 by fsuomins          #+#    #+#             */
-/*   Updated: 2023/11/09 19:04:26 by aqueiroz         ###   ########.fr       */
+/*   Updated: 2023/11/09 23:19:09 by aqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minirt.h"
 
-int	create_box(t_aabb *box)
+static int	build_plane(t_object *plane)
 {
-	t_vector	max;
-	t_vector	min;
-
-	max = {M_INFINITY, M_INFINITY, M_INFINITY};
-	min = {-M_INFINITY, -M_INFINITY, -M_INFINITY};
-	box->min = min;
-	box->max = max;
+	plane->volume.active = 0;
 	return (1);
 }
 
-int	build_plane(t_object *plane)
-{
-	t_plane	*plane_data;
-
-	plane_data = (t_plane *)plane->object;
-	create_box(&plane->volume);
-	plane->volume.min = vec_sub_scalar(plane_data->origin, M_INFINITY);
-	plane->volume.max = vec_add_scalar(plane_data->origin, M_INFINITY);
-	return (1);
-}
-
-int	build_cylinder(t_object *cylinder)
-{
-	t_cylinder	*cy_data;
-	t_vector	inverted;
-	t_vector	center;
-
-	cy_data = (t_cylinder *)cylinder->object;
-	cy_data->height_d2 = cy_data->height / 2;
-	cy_data->half_height = vec_mult_scalar(cy_data->orientation,
-			cy_data->height_d2);
-	cy_data->top = vec_add(cy_data->origin, cy_data->half_height);
-	cy_data->bottom = vec_sub(cy_data->origin, cy_data->half_height);
-	cy_data->diff = vec_sub(cy_data->top, cy_data->bottom);
-	// TODO: check if this is correct
-}
-
-int	build_sphere(t_object *sphere)
+static int	build_sphere(t_object *sphere)
 {
 	t_sphere	*sphere_data;
 
@@ -64,6 +31,35 @@ int	build_sphere(t_object *sphere)
 	return (1);
 }
 
+static int	build_cylinder(t_object *cylinder_data)
+{
+	t_cylinder	*cylinder;
+	t_vector	inverter;
+	t_vector	center_circle;
+
+	cylinder = (t_cylinder *)cylinder_data->object;
+	cylinder->half_height = cylinder->height / 2;
+	cylinder->middle = vec_mult_scalar(cylinder->direction, cylinder->height
+			/ 2);
+	cylinder->top = vec_add(cylinder->origin, cylinder->middle);
+	cylinder->bottom = vec_sub(cylinder->origin, cylinder->middle);
+	cylinder->diff = vec_sub(cylinder->top, cylinder->bottom);
+	inverter = vec_sub((t_vector){1.0, 1.0, 1.0},
+			vec_div_scalar(vec_mult(cylinder->diff, cylinder->diff),
+				vec_dot(cylinder->diff, cylinder->diff)));
+	center_circle = (t_vector){cylinder->radius * sqrt(inverter.x),
+		cylinder->radius * sqrt(inverter.y), cylinder->radius
+		* sqrt(inverter.z)};
+	create_box(&cylinder_data->volume);
+	box_add_vec(&cylinder_data->volume, vec_add(cylinder->top, center_circle));
+	box_add_vec(&cylinder_data->volume, vec_sub(cylinder->top, center_circle));
+	box_add_vec(&cylinder_data->volume, vec_add(cylinder->bottom,
+			center_circle));
+	box_add_vec(&cylinder_data->volume, vec_sub(cylinder->bottom,
+			center_circle));
+	return (1);
+}
+
 int	build_objects(void)
 {
 	t_object	*current;
@@ -73,10 +69,10 @@ int	build_objects(void)
 	{
 		if (current->id == SPHERE)
 			build_sphere(current);
-		// else if (current->id == PLANE)
-		// 	build_plane(current);
-		// else if (current->id == CYLINDER)
-		// 	build_cylinder(current);
+		else if (current->id == PLANE)
+			build_plane(current);
+		else if (current->id == CYLINDER)
+			build_cylinder(current);
 		current = current->next;
 	}
 	return (1);

@@ -51,5 +51,22 @@
    Memcheck:Leak
    match-leak-kinds: reachable
    ...
-   fun:_dl_open
+   fun:LLVMParseCommandLineOptions
+   ...
 }
+{
+   <Your_Suppression_Name>
+   Memcheck:Leak
+   ...
+   fun:dlopen@@GLIBC_2.34
+   ...
+}
+{
+   <Your_Suppression_Name>
+   Memcheck:Leak
+   ...
+   fun:strncmp
+   fun:is_dst
+   ...
+}
+

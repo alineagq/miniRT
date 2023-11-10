@@ -1,6 +1,11 @@
 {
 	"files.associations": {
 		"float.h": "c",
-		"minirt.h": "c"
+		"minirt.h": "c",
+		"array": "c",
+		"memory": "c",
+		"functional": "c",
+		"tuple": "c",
+		"utility": "c"
 	}
 }

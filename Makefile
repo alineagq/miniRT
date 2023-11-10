@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: aqueiroz <aqueiroz@student.42sp.org.br>    +#+  +:+       +#+         #
+#    By: aqueiroz <aqueiroz@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/11 12:04:54 by aqueiroz          #+#    #+#              #
-#    Updated: 2023/11/09 18:50:13 by aqueiroz         ###   ########.fr        #
+#    Updated: 2023/11/09 23:47:01 by aqueiroz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,7 +47,7 @@ FILES	= main
 
 FILES 	+= matrix/matrix
 
-FILES 	+= vector/vector
+FILES 	+= vector/vector vector/scalar vector/properties
 
 FILES 	+= validation/validate_ambient validation/validate_camera \
 			validation/validate_cylinder validation/validate_light \
@@ -56,6 +56,8 @@ FILES 	+= validation/validate_ambient validation/validate_camera \
 
 FILES 	+= window/window
 
+FILES 	+= render/aabb render/construct render/render
+
 FILES 	+= utils/data utils/objects utils/exit_error
 
 SRCS = $(addprefix $(SRC_PATH)/, $(addsuffix .c, $(FILES)))
@@ -63,8 +65,8 @@ OBJS = $(SRCS:.c=.o)
 
 # FLAGS
 
-CC = cc
-CFLAGS = -Wall -Wextra -Werror -g3
+CC = clang
+CFLAGS = -Wall -Wextra -Werror
 LIBFLAGS = -Llibs/MLX42/build -Llibs/libft -lmlx42 -lft -Iinclude -ldl -lglfw -pthread -lm
 VALGRIND_ARGS = --trace-children=yes --track-origins=yes  --suppressions=mini.supp \
 	--leak-check=full --show-leak-kinds=all --quiet

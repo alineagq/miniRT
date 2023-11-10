@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   window.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fsuomins <fsuomins@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: aqueiroz <aqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 16:46:16 by fsuomins          #+#    #+#             */
-/*   Updated: 2023/11/09 16:48:12 by fsuomins         ###   ########.fr       */
+/*   Updated: 2023/11/09 22:17:34 by aqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,11 @@ void	init_resolution(void)
 	data = get_data();
 	data->mlx.width = WIDTH;
 	data->mlx.height = HEIGHT;
+	data->viewport = flat;
 	data->mlx.mlx = mlx_init(data->mlx.width, data->mlx.height, "miniRT", 0);
 	data->ratio = (double)data->mlx.width / (double)data->mlx.height;
+	data->mlx.image = mlx_new_image(data->mlx.mlx, data->mlx.width,
+			data->mlx.height);
 }
 
 void	window_loop(void)
