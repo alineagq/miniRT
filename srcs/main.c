@@ -6,7 +6,7 @@
 /*   By: aqueiroz <aqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 11:08:29 by fsuomins          #+#    #+#             */
-/*   Updated: 2023/11/09 23:45:27 by aqueiroz         ###   ########.fr       */
+/*   Updated: 2023/11/10 00:55:12 by aqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ int	main(int argc, char **argv)
 	init_resolution();
 	build_objects();
 	render(get_data());
+	mlx_image_to_window(get_data()->mlx.mlx, get_data()->mlx.image, 0, 0);
 	window_loop();
 	return (0);
 }

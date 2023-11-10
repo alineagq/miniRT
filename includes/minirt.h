@@ -6,7 +6,7 @@
 /*   By: aqueiroz <aqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 12:24:08 by aqueiroz          #+#    #+#             */
-/*   Updated: 2023/11/09 23:44:34 by aqueiroz         ###   ########.fr       */
+/*   Updated: 2023/11/10 01:03:50 by aqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@
 # define HEIGHT 1080
 # define M_PI 3.14159265358979323846
 # define M_INFINITY (1.0 / 0.0)
+# define M_EPSILON 1e-8
 
 //////////////****** validation *******/////////////////////
 int			validate_scene(char *file);
@@ -77,12 +78,18 @@ double		vec_magintude(t_vector v);
 t_vector	vec_unit(t_vector v);
 t_vector	mat4_mult_dir(t_mat4 matrix, t_vector dir);
 t_mat4		camera_show(t_vector origem, t_vector focus);
+t_vector	vec_div(t_vector v1, t_vector v2);
+t_vector	get_point(t_vector ro, t_vector rd, double t);
 
 //////////////****** render *******/////////////////////
 int			create_box(t_aabb *box);
 int			box_add_vec(t_aabb *volume, t_vector vec);
 int			build_objects(void);
 int			render(t_data *scene);
+
+int			sphere_intersect(t_object *object, t_hit *hit);
+int			intersect(t_hit *hit);
+int			aabb_test(const t_ray ray, const t_aabb volume, int *hit);
 
 //////////////****** utils *******/////////////////////
 void		free_split(char **split);

@@ -6,13 +6,14 @@
 /*   By: aqueiroz <aqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 17:05:52 by fsuomins          #+#    #+#             */
-/*   Updated: 2023/11/09 22:44:47 by aqueiroz         ###   ########.fr       */
+/*   Updated: 2023/11/10 00:59:13 by aqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCTS_H
 # define STRUCTS_H
 # include "minirt.h"
+
 
 typedef enum e_mat_element
 {
@@ -32,7 +33,7 @@ typedef enum e_mode
 	shaded,
 	aabb,
 	none
-}	t_mode;
+}				t_mode;
 
 typedef enum e_shape_id
 {
@@ -71,6 +72,16 @@ typedef struct s_mat4
 	double		data[4][4];
 }				t_mat4;
 
+typedef struct s_sphere_position
+{
+	double		t;
+	t_vector	p;
+	double		y;
+	double		x;
+	double		t1;
+	double		t2;
+}	t_sphere_position;
+
 typedef struct s_ray
 {
 	t_vector	origin;
@@ -99,14 +110,13 @@ typedef struct s_object
 typedef struct s_hit
 {
 	t_ray		ray;
-	t_object	*ref;
+	t_object	*obj;
 	double		distance;
 	t_color		color;
 	t_vector	point;
 	t_vector	normal;
 	int			aabb_hit;
 }				t_hit;
-
 typedef struct s_parse
 {
 	char		*id;

@@ -6,7 +6,7 @@
 #    By: aqueiroz <aqueiroz@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/11 12:04:54 by aqueiroz          #+#    #+#              #
-#    Updated: 2023/11/09 23:47:01 by aqueiroz         ###   ########.fr        #
+#    Updated: 2023/11/10 01:02:12 by aqueiroz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,7 +56,9 @@ FILES 	+= validation/validate_ambient validation/validate_camera \
 
 FILES 	+= window/window
 
-FILES 	+= render/aabb render/construct render/render
+FILES 	+= render/aabb render/construct render/render render/intersect\
+			render/aabb_test render/sphere 
+			
 
 FILES 	+= utils/data utils/objects utils/exit_error
 
