@@ -6,7 +6,7 @@
 /*   By: aqueiroz <aqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 11:08:29 by fsuomins          #+#    #+#             */
-/*   Updated: 2023/11/10 22:20:37 by aqueiroz         ###   ########.fr       */
+/*   Updated: 2023/11/10 23:46:06 by aqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,10 @@
 
 static void	validate_args(int argc, char **argv)
 {
-	int	i;
-
-	i = 0;
 	if (argc != 2)
-	{
-		ft_putstr_fd("Error\n", 1);
-		ft_putstr_fd("Usage: ./miniRT <*.rt>\n", 1);
-		exit(1);
-	}
-	while (argv[1][i])
-		i++;
-	if (argv[1][i - 1] != 't' || argv[1][i - 2] != 'r' || argv[1][i - 3] != '.')
-	{
-		printf("Error\n");
-		printf("File extension must be <*.rt>.\n");
-		exit(1);
-	}
+		print_and_exit("Invalid number of arguments.\n", EINVAL);
+	if (!check_file_extention(argv[1], ".rt"))
+		print_and_exit("Invalid file extention.\n", EINVAL);
 }
 
 static void	print_header(void)

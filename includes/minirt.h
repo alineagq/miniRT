@@ -6,7 +6,7 @@
 /*   By: aqueiroz <aqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 12:24:08 by aqueiroz          #+#    #+#             */
-/*   Updated: 2023/11/10 01:03:50 by aqueiroz         ###   ########.fr       */
+/*   Updated: 2023/11/10 23:51:23 by aqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@
 # define COLOR_CY "\033[0;36m"
 # define COLOR_CY_1 "\033[1;36m"
 # define COLOR_WH "\033[0;37m"
-# define WIDTH 1920
-# define HEIGHT 1080
+# define WIDTH 800
+# define HEIGHT 600
 # define M_PI 3.14159265358979323846
 # define M_INFINITY (1.0 / 0.0)
 # define M_EPSILON 1e-8
@@ -98,5 +98,7 @@ void		add_object(t_shape_id id, void *content);
 void		remove_object(t_shape_id id);
 void		clear_objects(void);
 void		exit_error(char *message, char **split);
+void		print_and_exit(char *message, int exit_code);
+int			check_file_extention(const char *str, const char *ext);
 
 #endif
