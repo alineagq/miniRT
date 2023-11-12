@@ -6,7 +6,7 @@
 #    By: aqueiroz <aqueiroz@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/11 12:04:54 by aqueiroz          #+#    #+#              #
-#    Updated: 2023/11/10 01:02:12 by aqueiroz         ###   ########.fr        #
+#    Updated: 2023/11/11 19:20:22 by aqueiroz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -89,7 +89,7 @@ $(NAME): $(OBJS)
 %.o: %.c
 	@$(CC) $(CFLAGS) -I$(PATH_INC) -c $< -o $@
     
-valgrind: $(NAME)
+valgrind: re
 	valgrind $(VALGRIND_ARGS) ./$(NAME) $(filter-out $@,$(MAKECMDGOALS))
 
 clean:

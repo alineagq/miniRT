@@ -6,7 +6,7 @@
 /*   By: aqueiroz <aqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 00:17:15 by aqueiroz          #+#    #+#             */
-/*   Updated: 2023/11/10 01:05:06 by aqueiroz         ###   ########.fr       */
+/*   Updated: 2023/11/11 20:25:50 by aqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static t_vector	get_minmax(const t_aabb volume, const int sign)
 	return (volume.min);
 }
 
-static int	aabb_intersect(const t_ray ray, t_aabb volume)
+int	aabb_intersect(const t_ray ray, t_aabb volume)
 {
 	t_vector	inverse;
 	t_vector	sign;
@@ -57,13 +57,16 @@ static int	aabb_intersect(const t_ray ray, t_aabb volume)
 
 int	aabb_test(const t_ray ray, const t_aabb volume, int *hit)
 {
-	if (volume.active == 0)
-		return (1);
-	if (aabb_intersect(ray, volume))
-	{
-		if (hit)
-			*hit = 1;
-		return (1);
-	}
+	// if (volume.active == 0)
+	// 	return (1);
+	printf("%d\n", volume.active);
+	printf("%f\n", ray.direction.x);
+	printf("%d\n", *hit);
+	// if (aabb_intersect(ray, volume))
+	// {
+	// 	if (hit)
+	// 		*hit = 1;
+	// 	return (1);
+	// }
 	return (0);
 }

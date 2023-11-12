@@ -6,7 +6,7 @@
 /*   By: aqueiroz <aqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 12:24:08 by aqueiroz          #+#    #+#             */
-/*   Updated: 2023/11/10 23:51:23 by aqueiroz         ###   ########.fr       */
+/*   Updated: 2023/11/11 21:51:58 by aqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ t_vector	get_point(t_vector ro, t_vector rd, double t);
 int			create_box(t_aabb *box);
 int			box_add_vec(t_aabb *volume, t_vector vec);
 int			build_objects(void);
-int			render(t_data *scene);
+int			render(void);
 
 int			sphere_intersect(t_object *object, t_hit *hit);
 int			intersect(t_hit *hit);
@@ -100,5 +100,12 @@ void		clear_objects(void);
 void		exit_error(char *message, char **split);
 void		print_and_exit(char *message, int exit_code);
 int			check_file_extention(const char *str, const char *ext);
+
+void		render_try(void *param);
+t_hit		*get_hit(void);
+int			aabb_intersect(const t_ray ray, t_aabb volume);
+int			vec_comp_scalar(t_vector v1, double v2);
+t_vector	vec_clamp(t_vector v, double min, double max);
+double		clamp(double value, double min, double max);
 
 #endif
