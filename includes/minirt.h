@@ -6,7 +6,7 @@
 /*   By: aqueiroz <aqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 12:24:08 by aqueiroz          #+#    #+#             */
-/*   Updated: 2023/11/11 21:51:58 by aqueiroz         ###   ########.fr       */
+/*   Updated: 2023/11/12 12:51:05 by aqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,5 +107,6 @@ int			aabb_intersect(const t_ray ray, t_aabb volume);
 int			vec_comp_scalar(t_vector v1, double v2);
 t_vector	vec_clamp(t_vector v, double min, double max);
 double		clamp(double value, double min, double max);
+int			plane_intersect(t_object *obj, t_hit *hit);
 
 #endif

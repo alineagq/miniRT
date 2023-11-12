@@ -6,7 +6,7 @@
 /*   By: aqueiroz <aqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 16:46:16 by fsuomins          #+#    #+#             */
-/*   Updated: 2023/11/11 10:59:15 by aqueiroz         ###   ########.fr       */
+/*   Updated: 2023/11/12 10:14:27 by aqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,8 @@ void	init_resolution(void)
 
 void	window_loop(void)
 {
-	// mlx_image_to_window(get_data()->mlx.mlx, get_data()->mlx.image, 0, 0);
+	printf("ioioioio");
+	mlx_image_to_window(get_data()->mlx.mlx, get_data()->mlx.image, 0, 0);
 	mlx_loop_hook(get_data()->mlx.mlx, &hook, get_data()->mlx.mlx);
 	mlx_loop(get_data()->mlx.mlx);
 	mlx_terminate(get_data()->mlx.mlx);

@@ -6,7 +6,7 @@
 /*   By: aqueiroz <aqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 17:51:03 by fsuomins          #+#    #+#             */
-/*   Updated: 2023/11/11 18:56:14 by aqueiroz         ###   ########.fr       */
+/*   Updated: 2023/11/12 13:18:01 by aqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,10 @@
 
 static int	build_plane(t_object *plane)
 {
+	t_plane	*plane_data;
+
+	plane_data = (t_plane *)plane->object;
+	plane->diffuse = plane_data->color;
 	plane->volume.active = 0;
 	return (1);
 }
@@ -24,6 +28,7 @@ static int	build_sphere(t_object *sphere)
 
 	sphere_data = (t_sphere *)sphere->object;
 	create_box(&sphere->volume);
+	sphere->diffuse = sphere_data->color;
 	sphere->volume.min = vec_sub_scalar(sphere_data->origin,
 			sphere_data->radius);
 	sphere->volume.max = vec_add_scalar(sphere_data->origin,
@@ -38,6 +43,7 @@ static int	build_cylinder(t_object *cylinder_data)
 	t_vector	center_circle;
 
 	cylinder = (t_cylinder *)cylinder_data->object;
+	cylinder_data->diffuse = cylinder->color;
 	cylinder->half_height = cylinder->height / 2;
 	cylinder->middle = vec_mult_scalar(cylinder->direction, cylinder->height
 			/ 2);
@@ -65,6 +71,7 @@ int	build_objects(void)
 	t_object	*current;
 
 	current = get_data()->objects;
+	printf("build_objects\n");
 	while (current)
 	{
 		if (current->id == SPHERE)

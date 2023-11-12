@@ -6,7 +6,7 @@
 /*   By: aqueiroz <aqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 10:39:08 by aqueiroz          #+#    #+#             */
-/*   Updated: 2023/11/11 22:11:01 by aqueiroz         ###   ########.fr       */
+/*   Updated: 2023/11/12 11:06:28 by aqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -158,22 +158,24 @@ t_color	vector_to_rgb(t_vector color)
 
 t_color	ray_color(t_ray *ray)
 {
-	t_hit		rec;
+	t_hit		*rec;
 	t_vector	target;
 
-	ft_memset(&rec, 0, sizeof(t_hit));
-	rec.ray = *ray;
-	rec.distance = INFINITY;
-	rec.ray.max = INFINITY;
+	rec = ft_calloc(sizeof(t_hit), 1);
+	rec->ray = *ray;
+	rec->distance = INFINITY;
+	rec->ray.max = INFINITY;
 	target = (t_vector){0, 0, 0};
-	if (intersect(&rec))
+	if (intersect(rec))
 	{
-		rec.color = rec.obj->diffuse;
-		target = shade(&rec);
-		rec.obj = NULL;
+		rec->color = rec->obj->diffuse;
+		target = shade(rec);
+		rec->obj = NULL;
+		free(rec);
 		return (vector_to_rgb(target));
 	}
-	rec.obj = NULL;
+	rec->obj = NULL;
+	free(rec);
 	return (vector_to_rgb(target));
 }
 
@@ -197,6 +199,8 @@ int	render(void)
 		{
 			camera_ray(scene, &ray, scene->u, scene->v);
 			color = ray_color(&ray);
+			if (color.r || color.g || color.b)
+				printf("color: %d %d %d\n", color.r, color.g, color.b);
 			write_color(&scene->mlx.image, scene->u, scene->v, color);
 			scene->v++;
 		}

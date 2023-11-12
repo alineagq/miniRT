@@ -6,14 +6,13 @@
 /*   By: aqueiroz <aqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 17:05:52 by fsuomins          #+#    #+#             */
-/*   Updated: 2023/11/10 00:59:13 by aqueiroz         ###   ########.fr       */
+/*   Updated: 2023/11/12 12:45:02 by aqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCTS_H
 # define STRUCTS_H
 # include "minirt.h"
-
 
 typedef enum e_mat_element
 {
@@ -80,7 +79,14 @@ typedef struct s_sphere_position
 	double		x;
 	double		t1;
 	double		t2;
-}	t_sphere_position;
+}				t_sphere_position;
+
+typedef struct s_plane_postion
+{
+	double		pl;
+	t_vector	p;
+	double		t;
+}				t_plane_postion;
 
 typedef struct s_ray
 {

@@ -6,7 +6,7 @@
 /*   By: aqueiroz <aqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 11:08:29 by fsuomins          #+#    #+#             */
-/*   Updated: 2023/11/11 18:58:17 by aqueiroz         ###   ########.fr       */
+/*   Updated: 2023/11/12 12:17:51 by aqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ void	render_try(void *param)
 	(void)param;
 	if (mlx_is_key_down(get_data()->mlx.mlx, MLX_KEY_ESCAPE))
 		mlx_close_window(get_data()->mlx.mlx);
+	render();
 }
 
 /**/
@@ -67,11 +68,14 @@ int	main(int argc, char **argv)
 		clear_objects();
 		return (1);
 	}
-	get_data()->mlx.mlx = mlx_init(800, 600, "MiniRT", 0);
-	get_data()->mlx.image = mlx_new_image(get_data()->mlx.mlx, 800, 600);
-	mlx_image_to_window(get_data()->mlx.mlx, get_data()->mlx.image, 0, 0);
+	init_resolution();
+	// get_data()->mlx.mlx = mlx_init(800, 600, "MiniRT", 0);
+	// get_data()->mlx.image = mlx_new_image(get_data()->mlx.mlx, 800, 600);
+	// mlx_image_to_window(get_data()->mlx.mlx, get_data()->mlx.image, 0, 0);
 	build_objects();
 	render();
+	// mlx_image_to_window(get_data()->mlx.mlx, get_data()->mlx.image, 0, 0);
+	mlx_loop_hook(get_data()->mlx.mlx, render_try, NULL);
 	mlx_loop(get_data()->mlx.mlx);
 	clear_objects();
 	mlx_terminate(get_data()->mlx.mlx);
