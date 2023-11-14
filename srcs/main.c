@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aqueiroz <aqueiroz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fsuomins <fsuomins@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 11:08:29 by fsuomins          #+#    #+#             */
-/*   Updated: 2023/11/12 12:17:51 by aqueiroz         ###   ########.fr       */
+/*   Updated: 2023/11/13 22:04:49 by fsuomins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,8 @@ int	main(int argc, char **argv)
 	build_objects();
 	render();
 	// mlx_image_to_window(get_data()->mlx.mlx, get_data()->mlx.image, 0, 0);
-	mlx_loop_hook(get_data()->mlx.mlx, render_try, NULL);
+	mlx_image_to_window(get_data()->mlx.mlx, get_data()->mlx.image, 0, 0);
+	// mlx_loop_hook(get_data()->mlx.mlx, render_try, NULL);
 	mlx_loop(get_data()->mlx.mlx);
 	clear_objects();
 	mlx_terminate(get_data()->mlx.mlx);

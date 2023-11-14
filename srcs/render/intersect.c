@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   intersect.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aqueiroz <aqueiroz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fsuomins <fsuomins@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 00:12:26 by aqueiroz          #+#    #+#             */
-/*   Updated: 2023/11/12 13:28:54 by aqueiroz         ###   ########.fr       */
+/*   Updated: 2023/11/13 22:19:34 by fsuomins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,6 @@ static int	sphere_hit(t_object *catch, t_hit *rec, double t, int inside)
 
 	sphere = catch->object;
 	rec->obj = catch;
-	printf("hit\n");
-	printf("rec.obj: %p\n", rec->obj);
-	printf("rec.obj->difuse.r: %d\n", rec->obj->diffuse.r);
 	rec->distance = t;
 	rec->point = get_point(rec->ray.origin, rec->ray.direction, rec->distance);
 	rec->normal = vec_unit(vec_sub(rec->point, sphere->origin));
@@ -29,13 +26,12 @@ static int	sphere_hit(t_object *catch, t_hit *rec, double t, int inside)
 	return (1);
 }
 
-int	sphere_intersect(t_object *catch, t_hit *rec)
+int	sphere_intersect(void *catch, t_hit *rec)
 {
 	t_sphere			*sphere;
 	t_sphere_position	vars;
-
-	sphere = catch->object;
-	printf("sphere->origin.x: %f\n", sphere->origin.x);
+	
+	sphere = catch;
 	vars.t = vec_dot(vec_sub(sphere->origin, rec->ray.origin),
 		rec->ray.direction);
 	vars.p = get_point(rec->ray.origin, rec->ray.direction, vars.t);
@@ -65,20 +61,21 @@ int	aabb_test(t_ray ray, t_aabb box, int *aabb_hit)
 	return (0);
 }
 
-int	plane_intersect(t_object *obj, t_hit *hit)
+int	plane_intersect(void *obj, t_hit *hit)
 {
 	t_plane			*plane;
 	t_plane_postion	values;
 
-	plane = obj->object;
-	printf("%p\n", obj);
-	printf("%f\n", plane->direction.x);
+	plane = obj;
 	values.pl = vec_dot(plane->direction, hit->ray.direction);
-	printf("values.pl: %f\n", values.pl);
 	if (fabs(values.pl) < M_EPSILON)
 		return (0);
+	printf("pl: %f\n", values.pl);
 	values.p = vec_sub(plane->origin, hit->ray.origin);
+	printf("p: %f %f %f\n", values.p.x, values.p.y, values.p.z);
+	printf("plane->direction: %f %f %f\n", plane->direction.x, plane->direction.y, plane->direction.z);
 	values.t = vec_dot(values.p, plane->direction) / values.pl;
+	printf("t: %f\n", values.t);
 	if (values.t < M_EPSILON || values.t > hit->distance)
 		return (0);
 	hit->normal = plane->direction;

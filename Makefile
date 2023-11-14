@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: aqueiroz <aqueiroz@student.42.fr>          +#+  +:+       +#+         #
+#    By: fsuomins <fsuomins@student.42sp.org.br     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/11 12:04:54 by aqueiroz          #+#    #+#              #
-#    Updated: 2023/11/12 13:53:33 by aqueiroz         ###   ########.fr        #
+#    Updated: 2023/11/13 21:42:38 by fsuomins         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -68,7 +68,7 @@ OBJS = $(SRCS:.c=.o)
 # FLAGS
 
 CC = clang
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g
 LIBFLAGS = -Llibs/MLX42/build -Llibs/libft -lmlx42 -lft -Iinclude -ldl -lglfw -pthread -lm
 VALGRIND_ARGS = --trace-children=yes --track-origins=yes  --suppressions=mini.supp \
 	--leak-check=full --show-leak-kinds=all --quiet
