@@ -45,23 +45,7 @@ PATH_INC = includes
 
 FILES	= main
 
-FILES 	+= matrix/matrix
-
-FILES 	+= vector/vector vector/scalar vector/properties
-
-FILES 	+= validation/validate_ambient validation/validate_camera \
-			validation/validate_cylinder validation/validate_light \
-			validation/validate_plane validation/validate_scene \
-			validation/validate_sphere validation/validate_color
-
 FILES 	+= window/window
-
-FILES 	+= render/aabb render/construct render/render render/intersect\
-			render/aabb_test render/sphere render/ray_color render/shede \
-			render/hit render/color_put
-			
-
-FILES 	+= utils/data utils/objects utils/exit_error
 
 SRCS = $(addprefix $(SRC_PATH)/, $(addsuffix .c, $(FILES)))
 OBJS = $(SRCS:.c=.o)

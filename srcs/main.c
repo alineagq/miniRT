@@ -55,7 +55,9 @@ void	render_try(void *param)
 	(void)param;
 	if (mlx_is_key_down(get_data()->mlx.mlx, MLX_KEY_ESCAPE))
 		mlx_close_window(get_data()->mlx.mlx);
-	render();
+	for (int i = 0; i < get_data()->mlx.width; i++)
+		for (int j = 0; j <  get_data()->mlx.height; j++)
+			mlx_put_pixel(get_data()->mlx.image, i, j, rgba_to_int(255, 0, 0, 255));
 }
 
 /**/
@@ -69,14 +71,8 @@ int	main(int argc, char **argv)
 		return (1);
 	}
 	init_resolution();
-	// get_data()->mlx.mlx = mlx_init(800, 600, "MiniRT", 0);
-	// get_data()->mlx.image = mlx_new_image(get_data()->mlx.mlx, 800, 600);
-	// mlx_image_to_window(get_data()->mlx.mlx, get_data()->mlx.image, 0, 0);
-	build_objects();
-	render();
-	// mlx_image_to_window(get_data()->mlx.mlx, get_data()->mlx.image, 0, 0);
 	mlx_image_to_window(get_data()->mlx.mlx, get_data()->mlx.image, 0, 0);
-	// mlx_loop_hook(get_data()->mlx.mlx, render_try, NULL);
+	mlx_loop_hook(get_data()->mlx.mlx, render_try, NULL);
 	mlx_loop(get_data()->mlx.mlx);
 	clear_objects();
 	mlx_terminate(get_data()->mlx.mlx);

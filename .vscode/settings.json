@@ -7,5 +7,7 @@
 		"functional": "c",
 		"tuple": "c",
 		"utility": "c"
-	}
+	},
+	"42header.email": "aqueiroz@student.42sp.org.br",
+	"42header.username": "aqueiroz"
 }
