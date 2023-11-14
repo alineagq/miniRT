@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aqueiroz <aqueiroz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fsuomins <fsuomins@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 17:05:52 by fsuomins          #+#    #+#             */
-/*   Updated: 2023/11/12 12:45:02 by aqueiroz         ###   ########.fr       */
+/*   Updated: 2023/11/14 10:45:10 by fsuomins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,12 +52,14 @@ typedef enum e_id
 	cy
 }				t_id;
 
+
 typedef struct s_vector
 {
 	double		x;
 	double		y;
 	double		z;
 }				t_vector;
+
 
 typedef struct s_color
 {
@@ -158,6 +160,8 @@ typedef struct s_light
 	t_vector	origin;
 	double		ratio;
 	t_color		color;
+	t_vector	dir;
+	int			angle;
 }				t_light;
 
 // objects

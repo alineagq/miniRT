@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: fsuomins <fsuomins@student.42sp.org.br     +#+  +:+       +#+         #
+#    By: fsuomins <fsuomins@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/11 12:04:54 by aqueiroz          #+#    #+#              #
-#    Updated: 2023/11/13 21:42:38 by fsuomins         ###   ########.fr        #
+#    Updated: 2023/11/14 11:08:10 by fsuomins         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,7 +57,8 @@ FILES 	+= validation/validate_ambient validation/validate_camera \
 FILES 	+= window/window
 
 FILES 	+= render/aabb render/construct render/render render/intersect\
-			render/aabb_test render/sphere 
+			render/aabb_test render/sphere render/ray_color render/shede \
+			render/hit render/color_put
 			
 
 FILES 	+= utils/data utils/objects utils/exit_error
