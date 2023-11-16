@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   shede.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fsuomins <fsuomins@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: fsuomins <fsuomins@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 10:55:57 by fsuomins          #+#    #+#             */
-/*   Updated: 2023/11/14 11:20:56 by fsuomins         ###   ########.fr       */
+/*   Updated: 2023/11/16 20:40:58 by fsuomins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,24 +53,24 @@ int	is_shadow(t_vector origin, t_vector dir)
 	return (true);
 }
 
-t_vector	s_shaded(t_data *scene, t_hit *rec)
-{
-	t_vector	l_diffuse;
-	t_light		lights;
+// t_vector	s_shaded(t_data *scene, t_hit *rec)
+// {
+// 	t_vector	l_diffuse;
+// 	t_light		lights;
 
-	lights = scene->light;
-	l_diffuse = vec_mult(rgb_to_vector(rec->color),
-			rgb_to_vector(scene->ambient.color));
-	lights.dir = vec_sub_scalar(lights.origin, rec->point);
-	if (is_shadow(scene) == 0)
-	{
-		lights.angle = clamp(vec_dot(vec_unit(lights.dir), rec->normal), 0,
-				1);
-		l_diffuse = vec_add(l_diffuse, vec_mult_scalar(lights->color,
-					lights.angle));
-	}
-	return (vec_clamp(vec_mult(rec->color, l_diffuse), 0.0, 1.0));
-}
+// 	lights = scene->light;
+// 	l_diffuse = vec_mult(rgb_to_vector(rec->color),
+// 			rgb_to_vector(scene->ambient.color));
+// 	lights.dir = vec_sub_scalar(lights.origin, rec->point);
+// 	if (is_shadow(scene) == 0)
+// 	{
+// 		lights.angle = clamp(vec_dot(vec_unit(lights.dir), rec->normal), 0,
+// 				1);
+// 		l_diffuse = vec_add(l_diffuse, vec_mult_scalar(lights->color,
+// 					lights.angle));
+// 	}
+// 	return (vec_clamp(vec_mult(rec->color, l_diffuse), 0.0, 1.0));
+// }
 
 t_vector	shaded_shade(t_hit *hit)
 {
@@ -100,7 +100,6 @@ t_vector	shade(t_hit *hit)
 		color = flat_shade(hit);
 	if (get_data()->viewport == aabb)
 		color = s_aabb(hit);
-	printf("color: %f %f %f\n", color.x, color.y, color.z);
 	if (get_data()->viewport == shaded)
 		color = shaded_shade(hit);
 	return (color);

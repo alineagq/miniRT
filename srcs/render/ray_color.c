@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_color.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fsuomins <fsuomins@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: fsuomins <fsuomins@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 10:51:16 by fsuomins          #+#    #+#             */
-/*   Updated: 2023/11/14 10:54:31 by fsuomins         ###   ########.fr       */
+/*   Updated: 2023/11/16 20:41:15 by fsuomins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,8 @@ t_color	ray_color(t_ray *ray)
 	target = (t_vector){0, 0, 0};
 	if (intersect(rec))
 	{
-		printf("hit\n");
 		rec->color = rec->obj->diffuse;
 		target = shade(rec);
-		printf("target: %f %f %f\n", target.x, target.y, target.z);
 		rec->obj = NULL;
 		free(rec);
 		return (vector_to_rgb(target));

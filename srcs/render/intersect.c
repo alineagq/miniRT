@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   intersect.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fsuomins <fsuomins@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: fsuomins <fsuomins@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 00:12:26 by aqueiroz          #+#    #+#             */
-/*   Updated: 2023/11/14 10:23:21 by fsuomins         ###   ########.fr       */
+/*   Updated: 2023/11/16 20:39:38 by fsuomins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	sphere_intersect(void *catch, t_hit *rec)
 {
 	t_sphere			*sphere;
 	t_sphere_position	vars;
-	
+
 	sphere = catch;
 	vars.t = vec_dot(vec_sub(sphere->origin, rec->ray.origin),
 		rec->ray.direction);
@@ -70,12 +70,8 @@ int	plane_intersect(void *obj, t_hit *hit)
 	values.pl = vec_dot(plane->direction, hit->ray.direction);
 	if (fabs(values.pl) < M_EPSILON)
 		return (0);
-	printf("pl: %f\n", values.pl);
 	values.p = vec_sub(plane->origin, hit->ray.origin);
-	printf("p: %f %f %f\n", values.p.x, values.p.y, values.p.z);
-	printf("plane->direction: %f %f %f\n", plane->direction.x, plane->direction.y, plane->direction.z);
 	values.t = vec_dot(values.p, plane->direction) / values.pl;
-	printf("t: %f\n", values.t);
 	if (values.t < M_EPSILON || values.t > hit->distance)
 		return (0);
 	hit->normal = plane->direction;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hit.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fsuomins <fsuomins@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: fsuomins <fsuomins@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 11:00:58 by fsuomins          #+#    #+#             */
-/*   Updated: 2023/11/14 11:05:45 by fsuomins         ###   ########.fr       */
+/*   Updated: 2023/11/16 20:37:19 by fsuomins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,9 +62,11 @@ int	hit(t_object *objects, t_ray *ray, t_hit *rec)
 		{
 			{
 			if (temp_rec.distance < closest_so_far)
+			{
 				hit_anything = 1;
 				closest_so_far = temp_rec.distance;
 				*rec = temp_rec;
+			}
 			}
 		}
 		temp = temp->next;
