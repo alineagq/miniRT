@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: fsuomins <fsuomins@student.42sp.org.br>    +#+  +:+       +#+         #
+#    By: aqueiroz <aqueiroz@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/11 12:04:54 by aqueiroz          #+#    #+#              #
-#    Updated: 2023/11/14 11:08:10 by fsuomins         ###   ########.fr        #
+#    Updated: 2023/11/15 00:17:53 by aqueiroz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,31 +47,42 @@ FILES	= main
 
 FILES 	+= window/window
 
+FILES 	+= utils/data utils/ray utils/color utils/file utils/terminal
+
 SRCS = $(addprefix $(SRC_PATH)/, $(addsuffix .c, $(FILES)))
 OBJS = $(SRCS:.c=.o)
 
 # FLAGS
 
 CC = clang
-CFLAGS = -Wall -Wextra -Werror -g
-LIBFLAGS = -Llibs/MLX42/build -Llibs/libft -lmlx42 -lft -Iinclude -ldl -lglfw -pthread -lm
+CFLAGS = -Wall -Wextra -Werror
+LIBFLAGS = -Llibs/MLX42/build -Llibs/libft -Llibs/libvector -lmlx42 -lft -lvector -Iinclude -ldl -lglfw -pthread -lm
 VALGRIND_ARGS = --trace-children=yes --track-origins=yes  --suppressions=mini.supp \
 	--leak-check=full --show-leak-kinds=all --quiet
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
+$(NAME): $(OBJS) libft mlx42 libvector
 	@echo "$(purple)Compiling project...$(reset)"
+	@$(CC) $(OBJS) -o $@ $(LIBFLAGS) && \
+	echo "$(purple)Project compiled. Run './$(NAME)' to start.$(reset)"
+	
+libft:
 	@echo "$(purple)Compiling Libft...$(reset)"
-	@$(MAKE) -C libs/libft > /dev/null && \
-	echo "$(purple)Compiling MLX42...$(reset)" 
+	@$(MAKE) -C libs/libft > /dev/null
+
+mlx42:
+	@echo "$(purple)Compiling MLX42...$(reset)" 
 	@cmake -B libs/MLX42/build -S libs/MLX42  > /dev/null && \
 	echo "$(purple)Building MLX42...$(reset)" && \
-	cmake --build libs/MLX42/build -j4 > /dev/null && \
-	$(CC) $(OBJS) -o $@ $(LIBFLAGS) && \
-	echo "$(purple)Project compiled. Run './$(NAME)' to start.$(reset)"
+	cmake --build libs/MLX42/build -j4 > /dev/null
+
+libvector:
+	@echo "$(purple)Compiling Libvector...$(reset)"
+	@$(MAKE) -C libs/libvector > /dev/null
 
 %.o: %.c
+	@echo "$(purple)Compiling $<...$(reset)"
 	@$(CC) $(CFLAGS) -I$(PATH_INC) -c $< -o $@
     
 valgrind: re
@@ -81,11 +92,13 @@ clean:
 	@rm -f $(OBJS)
 	@$(MAKE) -C libs/libft clean > /dev/null
 	@rm -rf libs/MLX42/build
+	@$(MAKE) -C libs/libvector clean > /dev/null
 	$(info $(yellow)All object files were removed.$(reset))
 
 fclean: clean
 	@rm -f $(NAME)
 	@$(MAKE) -C libs/libft fclean > /dev/null
+	@$(MAKE) -C libs/libvector fclean > /dev/null
 	$(info $(yellow)Executables files were removed.$(reset))
 
 re: fclean all

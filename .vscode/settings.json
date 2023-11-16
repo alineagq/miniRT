@@ -6,7 +6,10 @@
 		"memory": "c",
 		"functional": "c",
 		"tuple": "c",
-		"utility": "c"
+		"utility": "c",
+		"structs.h": "c",
+		"libft.h": "c",
+		"mlx42.h": "c"
 	},
 	"42header.email": "aqueiroz@student.42sp.org.br",
 	"42header.username": "aqueiroz"
