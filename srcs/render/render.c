@@ -6,7 +6,7 @@
 /*   By: fsuomins <fsuomins@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 10:39:08 by aqueiroz          #+#    #+#             */
-/*   Updated: 2023/11/16 22:35:56 by fsuomins         ###   ########.fr       */
+/*   Updated: 2023/11/17 20:46:32 by fsuomins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	camera_ray(t_data *scene, t_ray *ray, int u, int v)
 	worldwide.z = 1;
 	ray->origin = mat_get(scene->camera.world, m_origin);
 	ray->direction = vec_unit(mat4_mult_dir(scene->camera.world, worldwide));
-	// ray->max = INFINITY;
+	ray->max = INFINITY;
 	return (1);
 }
 
@@ -55,7 +55,7 @@ int	render(void)
 		{
 			camera_ray(scene, &ray, scene->u, scene->v);
 			// color = ray_color(&ray);
-			mlx_put_pixel(scene->mlx.image, scene->u, scene->v, 200);
+			// mlx_put_pixel(scene->mlx.image, scene->u, scene->v, rgb_to_data(color));
 			scene->u++;
 		}
 		scene->u = 0;

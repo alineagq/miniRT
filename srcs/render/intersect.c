@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   intersect.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fsuomins <fsuomins@student.42sp.org.br     +#+  +:+       +#+        */
+/*   By: fsuomins <fsuomins@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 00:12:26 by aqueiroz          #+#    #+#             */
-/*   Updated: 2023/11/16 20:39:38 by fsuomins         ###   ########.fr       */
+/*   Updated: 2023/11/16 23:10:53 by fsuomins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ static int	sphere_hit(t_object *catch, t_hit *rec, double t, int inside)
 	rec->distance = t;
 	rec->point = get_point(rec->ray.origin, rec->ray.direction, rec->distance);
 	rec->normal = vec_unit(vec_sub(rec->point, sphere->origin));
+	printf("sphere_hit\n");
 	if (inside)
 		rec->normal = vec_mult_scalar(rec->normal, -1);
 	return (1);
@@ -88,6 +89,7 @@ int	intersect(t_hit *hit)
 	t_object	*current;
 
 	current = get_data()->objects;
+	// printf("intersect\n");
 	if (hit->ray.max == 0)
 		return (0);
 	hit->aabb_hit = 0;
@@ -95,6 +97,7 @@ int	intersect(t_hit *hit)
 	{
 		if (aabb_test(hit->ray, current->volume, &hit->aabb_hit))
 		{
+			printf("intersect\n");
 			if (current->id == SPHERE)
 				sphere_intersect(current->object, hit);
 			if (current->id == PLANE)

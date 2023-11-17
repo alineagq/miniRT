@@ -6,7 +6,7 @@
 /*   By: fsuomins <fsuomins@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 10:51:16 by fsuomins          #+#    #+#             */
-/*   Updated: 2023/11/16 22:36:55 by fsuomins         ###   ########.fr       */
+/*   Updated: 2023/11/16 22:48:22 by fsuomins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,7 @@ t_color	ray_color(t_ray *ray)
 	t_hit		*rec;
 	t_vector	target;
 
-	// rec = ft_calloc(sizeof(t_hit), 1);
-	rec = NULL;
+	rec = ft_calloc(sizeof(t_hit), 1);
 	rec->ray = *ray;
 	rec->distance = INFINITY;
 	rec->ray.max = INFINITY;
