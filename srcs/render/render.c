@@ -6,7 +6,7 @@
 /*   By: fsuomins <fsuomins@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 10:39:08 by aqueiroz          #+#    #+#             */
-/*   Updated: 2023/11/14 11:09:27 by fsuomins         ###   ########.fr       */
+/*   Updated: 2023/11/16 22:35:56 by fsuomins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,38 +29,37 @@ int	camera_ray(t_data *scene, t_ray *ray, int u, int v)
 {
 	t_vector	worldwide;
 
-	worldwide.x = (2 * ((u + 0.5) / scene->mlx.image->width) - 1)
-		* scene->camera.view_range * scene->ratio;
-	worldwide.y = (1 - 2 * ((v + 0.5) / scene->mlx.image->height)
-			* scene->camera.view_range);
+	worldwide.x = ((u + 0.5) / scene->mlx.image->width)
+		* scene->camera.view_range;
+	worldwide.y = ((v + 0.5) / scene->mlx.image->height)
+			* scene->camera.view_range;
 	worldwide.z = 1;
 	ray->origin = mat_get(scene->camera.world, m_origin);
 	ray->direction = vec_unit(mat4_mult_dir(scene->camera.world, worldwide));
-	ray->max = INFINITY;
+	// ray->max = INFINITY;
 	return (1);
 }
 
 int	render(void)
 {
 	t_data	*scene;
-	t_color	color;
+	// t_color	color;
 	t_ray	ray;
 
 	scene = get_data();
 	scene->u = 0;
 	scene->v = 0;
-	while (scene->u < (int)scene->mlx.image->width)
+	while (scene->v < (int)scene->mlx.image->height)
 	{
-		while (scene->v < (int)scene->mlx.image->height)
+		while (scene->u < (int)scene->mlx.image->width)
 		{
 			camera_ray(scene, &ray, scene->u, scene->v);
-			color = ray_color(&ray);
-			if (color.r || color.g || color.b)
-				printf("color: %d %d %d\n", color.r, color.g, color.b);
-			write_color(&scene->mlx.image, scene->u, scene->v, color);
-			scene->v++;
+			// color = ray_color(&ray);
+			mlx_put_pixel(scene->mlx.image, scene->u, scene->v, 200);
+			scene->u++;
 		}
-		scene->u++;
+		scene->u = 0;
+		scene->v++;
 	}
 	return (1);
 }

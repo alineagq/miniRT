@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fsuomins <fsuomins@student.42sp.org.br     +#+  +:+       +#+        */
+/*   By: fsuomins <fsuomins@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 11:08:29 by fsuomins          #+#    #+#             */
-/*   Updated: 2023/11/13 22:04:49 by fsuomins         ###   ########.fr       */
+/*   Updated: 2023/11/16 22:19:07 by fsuomins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,18 @@
  * @param argv The arguments passed to the program.
  * @return void
  */
-static void	validate_args(int argc, char **argv)
+static int	validate_args(int argc, char **argv)
 {
 	if (argc != 2)
 		print_and_exit("Invalid number of arguments.\n", EINVAL);
 	if (!check_file_extention(argv[1], ".rt"))
 		print_and_exit("Invalid file extention.\n", ENOEXEC);
+	if (!validate_scene(argv[1]))
+	{
+		clear_objects();
+		return (1);
+	}
+	return (0);
 }
 /*
  * Prints the header of the program.
@@ -63,20 +69,10 @@ int	main(int argc, char **argv)
 {
 	print_header();
 	validate_args(argc, argv);
-	if (!validate_scene(argv[1]))
-	{
-		clear_objects();
-		return (1);
-	}
 	init_resolution();
-	// get_data()->mlx.mlx = mlx_init(800, 600, "MiniRT", 0);
-	// get_data()->mlx.image = mlx_new_image(get_data()->mlx.mlx, 800, 600);
-	// mlx_image_to_window(get_data()->mlx.mlx, get_data()->mlx.image, 0, 0);
 	build_objects();
-	render();
-	// mlx_image_to_window(get_data()->mlx.mlx, get_data()->mlx.image, 0, 0);
 	mlx_image_to_window(get_data()->mlx.mlx, get_data()->mlx.image, 0, 0);
-	// mlx_loop_hook(get_data()->mlx.mlx, render_try, NULL);
+	mlx_loop_hook(get_data()->mlx.mlx, render_try, NULL);
 	mlx_loop(get_data()->mlx.mlx);
 	clear_objects();
 	mlx_terminate(get_data()->mlx.mlx);
