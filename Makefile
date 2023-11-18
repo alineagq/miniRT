@@ -6,7 +6,7 @@
 #    By: aqueiroz <aqueiroz@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/11 12:04:54 by aqueiroz          #+#    #+#              #
-#    Updated: 2023/11/15 00:17:53 by aqueiroz         ###   ########.fr        #
+#    Updated: 2023/11/18 15:17:10 by aqueiroz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,7 +47,7 @@ FILES	= main
 
 FILES 	+= window/window
 
-FILES 	+= utils/data utils/ray utils/color utils/file utils/terminal
+FILES 	+= utils/data utils/ray utils/color utils/file utils/header
 
 SRCS = $(addprefix $(SRC_PATH)/, $(addsuffix .c, $(FILES)))
 OBJS = $(SRCS:.c=.o)

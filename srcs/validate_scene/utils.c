@@ -5,41 +5,23 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: aqueiroz <aqueiroz@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/14 15:06:01 by aqueiroz          #+#    #+#             */
-/*   Updated: 2023/11/18 18:37:21 by aqueiroz         ###   ########.fr       */
+/*   Created: 2023/11/18 15:36:58 by aqueiroz          #+#    #+#             */
+/*   Updated: 2023/11/18 15:37:34 by aqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libvector.h"
+#include "../includes/minirt.h"
 
-double	length(const t_vector *v)
+int	validate_orientation(char *str1, char *str2, char *str3)
 {
-	return (sqrt(v->x * v->x + v->y * v->y + v->z * v->z));
+	if (!str1 || !str2 || !str3)
+		return (0);
+	if (!ft_is_numeric_string(str1) || !ft_is_numeric_string(str2)
+		|| !ft_is_numeric_string(str3))
+		return (0);
+	if (ft_atof(str1) < -1.0 || ft_atof(str1) > 1.0 || ft_atof(str2) < -1.0
+		|| ft_atof(str2) > 1.0 || ft_atof(str3) < -1.0 || ft_atof(str3) > 1.0)
+		return (0);
+	return (1);
 }
 
-double	length_squared(const t_vector *v)
-{
-	return (v->x * v->x + v->y * v->y + v->z * v->z);
-}
-
-void	print_t_vector(const t_vector v)
-{
-	static int	i;
-
-	i = 0;
-	if (i == 0)
-	{
-		printf("%f %f %f\n", v.x, v.y, v.z);
-		i++;
-	}
-}
-
-t_vector	unit_vector(t_vector v)
-{
-	return (div_scalar(v, length(&v)));
-}
-
-double	dot(const t_vector u, const t_vector v)
-{
-	return (u.x * v.x + u.y * v.y + u.z * v.z);
-}

@@ -1,7 +1,0 @@
-/home/aqueiroz/Desktop/42_projects/miniRT/libs/MLX42/build/CMakeFiles/mlx42.dir
-/home/aqueiroz/Desktop/42_projects/miniRT/libs/MLX42/build/CMakeFiles/edit_cache.dir
-/home/aqueiroz/Desktop/42_projects/miniRT/libs/MLX42/build/CMakeFiles/rebuild_cache.dir
-/home/aqueiroz/Desktop/42_projects/miniRT/libs/MLX42/build/CMakeFiles/list_install_components.dir
-/home/aqueiroz/Desktop/42_projects/miniRT/libs/MLX42/build/CMakeFiles/install.dir
-/home/aqueiroz/Desktop/42_projects/miniRT/libs/MLX42/build/CMakeFiles/install/local.dir
-/home/aqueiroz/Desktop/42_projects/miniRT/libs/MLX42/build/CMakeFiles/install/strip.dir

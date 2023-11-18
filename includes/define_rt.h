@@ -6,13 +6,14 @@
 /*   By: aqueiroz <aqueiroz@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 19:48:00 by aqueiroz          #+#    #+#             */
-/*   Updated: 2023/11/14 23:06:04 by aqueiroz         ###   ########.fr       */
+/*   Updated: 2023/11/18 18:39:13 by aqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef DEFINE_RT_H
 # define DEFINE_RT_H
 
+//Colors
 # define COLOR_NO "\033[m"
 # define COLOR_RE "\033[0;31m"
 # define COLOR_RE_1 "\033[1;31m"
@@ -28,7 +29,13 @@
 # define COLOR_CY_1 "\033[1;36m"
 # define COLOR_WH "\033[0;37m"
 # define COLOR_WH_1 "\033[1;37m"
+
+//Windows
 # define ASPECT_RATIO 1.7777777777679
 # define WIDTH 1080
+
+//Math
+# define M_PI 3.14159265358979323846
+# define M_EPSILON 1e-6
 
 #endif

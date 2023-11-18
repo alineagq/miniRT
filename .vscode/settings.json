@@ -9,7 +9,9 @@
 		"utility": "c",
 		"structs.h": "c",
 		"libft.h": "c",
-		"mlx42.h": "c"
+		"mlx42.h": "c",
+		"string": "c",
+		"string_view": "c"
 	},
 	"42header.email": "aqueiroz@student.42sp.org.br",
 	"42header.username": "aqueiroz"

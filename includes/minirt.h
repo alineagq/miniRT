@@ -6,7 +6,7 @@
 /*   By: aqueiroz <aqueiroz@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 12:24:08 by aqueiroz          #+#    #+#             */
-/*   Updated: 2023/11/15 00:17:28 by aqueiroz         ###   ########.fr       */
+/*   Updated: 2023/11/18 18:37:26 by aqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,9 @@ uint32_t	rgba_to_int(uint8_t r, uint8_t g, uint8_t b, uint8_t a);
 // Validation
 int			check_file_extention(const char *str, const char *ext);
 void		print_and_exit(char *message, int exit_code);
+
+// Matrix Management
+
+t_mat4		create_identity_matrix(void);
 
 #endif
