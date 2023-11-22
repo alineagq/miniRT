@@ -6,7 +6,7 @@
 /*   By: aqueiroz <aqueiroz@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 00:13:03 by aqueiroz          #+#    #+#             */
-/*   Updated: 2023/11/21 00:10:24 by aqueiroz         ###   ########.fr       */
+/*   Updated: 2023/11/22 14:44:19 by aqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ t_vector	normalize_color(t_vector color)
 	return (normalized_color);
 }
 
-static void	fix_colors(t_vector *color)
+void	fix_colors(t_vector *color)
 {
 	if (color->x > 1)
 		color->x = 1;
@@ -45,5 +45,5 @@ int	rgb_color(t_vector color)
 	r = color.x;
 	g = color.y;
 	b = color.z;
-	return (r << 24 | g << 16 | b << 8 | 0);
+	return (r << 24 | g << 16 | b << 8 | 255);
 }

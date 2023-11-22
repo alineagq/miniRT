@@ -6,7 +6,7 @@
 /*   By: aqueiroz <aqueiroz@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 19:22:26 by aqueiroz          #+#    #+#             */
-/*   Updated: 2023/11/22 12:48:50 by aqueiroz         ###   ########.fr       */
+/*   Updated: 2023/11/22 19:46:14 by aqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ t_ray	ray_for_pixel(t_camera cam, int x, int y)
 
 uint32_t	rgba_to_int(int r, int g, int b, int a)
 {
-	return (((uint32_t)r << 24) | ((uint32_t)g << 16) | ((uint32_t)b << 8) | a);
+	return (((uint32_t)r << 24) | ((uint32_t)g << 16) | ((uint32_t)b << 8) |a);
 }
 
 void	render(void)
@@ -74,8 +74,7 @@ void	render(void)
 		{
 			ray = ray_for_pixel(get_data()->camera, x, y);
 			color = ray_color(ray);
-			color_int = rgba_to_int((int)(color.x) * 255, (int)(color.y) * 255,
-					(int)(color.z) * 255, 255);
+			color_int = rgb_color(color);
 			mlx_put_pixel(get_data()->mlx.image, x, y, color_int);
 			x++;
 		}

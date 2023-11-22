@@ -6,7 +6,7 @@
 /*   By: aqueiroz <aqueiroz@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 00:39:37 by aqueiroz          #+#    #+#             */
-/*   Updated: 2023/11/20 21:12:35 by aqueiroz         ###   ########.fr       */
+/*   Updated: 2023/11/22 19:39:47 by aqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ t_vector	get_look_up(t_vector direction)
 	return (look_up);
 }
 
-void	pŕint_matrix(t_mat4 a)
+void	print_matrix(t_mat4 a)
 {
 	int	i;
 	int	j;

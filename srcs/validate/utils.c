@@ -6,7 +6,7 @@
 /*   By: aqueiroz <aqueiroz@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 15:36:58 by aqueiroz          #+#    #+#             */
-/*   Updated: 2023/11/21 00:11:52 by aqueiroz         ###   ########.fr       */
+/*   Updated: 2023/11/22 18:40:12 by aqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,9 +66,9 @@ int	validate_color(char *line, t_vector *color)
 		free_split(split);
 		return (0);
 	}
-	color->x = ft_atoi(split[0]);
-	color->y = ft_atoi(split[1]);
-	color->z = ft_atoi(split[2]);
+	color->x = ft_atoi(split[0]) / 255.0;
+	color->y = ft_atoi(split[1]) / 255.0;
+	color->z = ft_atoi(split[2]) / 255.0;
 	free_split(split);
 	return (1);
 }

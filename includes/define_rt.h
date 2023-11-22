@@ -6,7 +6,7 @@
 /*   By: aqueiroz <aqueiroz@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 19:48:00 by aqueiroz          #+#    #+#             */
-/*   Updated: 2023/11/18 18:39:13 by aqueiroz         ###   ########.fr       */
+/*   Updated: 2023/11/22 19:40:58 by aqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@
 # define WIDTH 1080
 
 //Math
-# define M_PI 3.14159265358979323846
 # define M_EPSILON 1e-6
 
 #endif

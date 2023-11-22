@@ -6,7 +6,7 @@
 /*   By: aqueiroz <aqueiroz@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 12:24:08 by aqueiroz          #+#    #+#             */
-/*   Updated: 2023/11/21 00:12:14 by aqueiroz         ###   ########.fr       */
+/*   Updated: 2023/11/22 18:27:37 by aqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,6 +127,6 @@ t_mat4			get_inv_transform(t_hit *object);
 t_intersect		*hit(t_intersect *intersections);
 void			init_objects(void);
 void			removeDoubleSpacesAndTabs(char *str);
-void			pŕint_matrix(t_mat4 a);
+void			print_matrix(t_mat4 a);
 t_vector		normalize_color(t_vector color);
 #endif

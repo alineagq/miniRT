@@ -6,7 +6,7 @@
 /*   By: aqueiroz <aqueiroz@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 13:37:59 by aqueiroz          #+#    #+#             */
-/*   Updated: 2023/11/22 10:19:26 by aqueiroz         ###   ########.fr       */
+/*   Updated: 2023/11/22 19:59:58 by aqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,9 @@ static t_comps	prepare_computations(t_intersect *intersects, t_ray ray)
 
 	closest = hit(intersects);
 	comps.t = closest->id;
+	printf("closest->id: %f\n", closest->id);
+	printf("ray.origin: %f, %f, %f\n", ray.origin.x, ray.origin.y, ray.origin.z);
+	printf("ray.direction: %f, %f, %f\n", ray.direction.x, ray.direction.y, ray.direction.z);
 	comps.point = position(ray, closest->id);
 	comps.eyev = mul_scalar(ray.direction, -1);
 	comps.normalv = normal_at(closest->object, comps.point);

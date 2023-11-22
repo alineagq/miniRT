@@ -6,7 +6,7 @@
 /*   By: aqueiroz <aqueiroz@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 15:26:25 by aqueiroz          #+#    #+#             */
-/*   Updated: 2023/11/20 19:33:00 by aqueiroz         ###   ########.fr       */
+/*   Updated: 2023/11/22 17:41:36 by aqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int	validate_scene(char *file)
 	while (file_scene.line && file_scene.valid == 1
 		&& file_scene.line[0] != '\0')
 	{
-		removeDoubleSpacesAndTabs(file_scene.line);
+		// removeDoubleSpacesAndTabs(file_scene.line);
 		if (file_scene.line[0] == '\n')
 		{
 			free(file_scene.line);
