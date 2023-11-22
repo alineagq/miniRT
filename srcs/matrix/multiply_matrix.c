@@ -1,31 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   matrix.c                                           :+:      :+:    :+:   */
+/*   multiply_matrix.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aqueiroz <aqueiroz@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/18 16:22:22 by aqueiroz          #+#    #+#             */
-/*   Updated: 2023/11/18 16:22:50 by aqueiroz         ###   ########.fr       */
+/*   Created: 2023/11/18 23:55:03 by aqueiroz          #+#    #+#             */
+/*   Updated: 2023/11/19 12:31:15 by aqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minirt.h"
 
-t_mat4	create_identity_matrix(void)
+t_mat4	multiply_matrix(t_mat4 a, t_mat4 b)
 {
-	t_mat4	matrix;
 	int		i;
 	int		j;
+	t_mat4	c;
 
 	i = 0;
-	while (i < 4)
+	c.rows = a.rows;
+	c.cols = b.cols;
+	while (i < a.rows)
 	{
 		j = 0;
-		while (j < 4)
-			matrix.matrix[i][j++] = 0;
-		matrix.matrix[i][i] = 1;
+		while (j < b.cols)
+		{
+			c.matrix[i][j] = (a.matrix[i][0] * b.matrix[0][j]) + (a.matrix[i][1]
+					* b.matrix[1][j]) + (a.matrix[i][2] * b.matrix[2][j])
+				+ (a.matrix[i][3] * b.matrix[3][j]);
+			j++;
+		}
 		i++;
 	}
-	return (matrix);
+	return (c);
 }

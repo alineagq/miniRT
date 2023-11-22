@@ -1,22 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   errors.c                                           :+:      :+:    :+:   */
+/*   hit_cylinder.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aqueiroz <aqueiroz@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/18 15:34:06 by aqueiroz          #+#    #+#             */
-/*   Updated: 2023/11/18 21:53:56 by aqueiroz         ###   ########.fr       */
+/*   Created: 2023/11/19 13:52:20 by aqueiroz          #+#    #+#             */
+/*   Updated: 2023/11/20 14:56:49 by aqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minirt.h"
 
-int	print_line_error(char *line)
+void	hit_cylinder(t_ray ray, t_hit *obj, t_intersect **inters)
 {
-	ft_putstr_fd("Error\n", 2);
-	ft_putstr_fd("Invalid line: ", 2);
-	ft_putstr_fd(line, 2);
-	ft_putstr_fd("\n", 2);
-	return (0);
+	t_ray			tmp_ray;
+	t_inter_point	inter_p;
+	t_cylinder		*cy;
+
+	cy = (t_cylinder *)obj->object;
+	tmp_ray = transform_ray(ray, cy->invert);
+	inter_p = intersect_cylinder(tmp_ray, cy);
+	if (inter_p.hit_times != 0)
+	{
+		intersect_add_back(inters, new_intersect(inter_p.hit[0], obj));
+		intersect_add_back(inters, new_intersect(inter_p.hit[1], obj));
+	}
 }

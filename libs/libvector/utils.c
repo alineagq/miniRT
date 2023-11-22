@@ -6,7 +6,7 @@
 /*   By: aqueiroz <aqueiroz@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 15:06:01 by aqueiroz          #+#    #+#             */
-/*   Updated: 2023/11/18 18:37:21 by aqueiroz         ###   ########.fr       */
+/*   Updated: 2023/11/22 10:48:59 by aqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,14 @@ void	print_t_vector(const t_vector v)
 	}
 }
 
+t_vector	s_division(t_vector a, double n)
+{
+	return (mul_scalar(a, 1 / n));
+}
+
 t_vector	unit_vector(t_vector v)
 {
-	return (div_scalar(v, length(&v)));
+	return (s_division(v, length(&v)));
 }
 
 double	dot(const t_vector u, const t_vector v)

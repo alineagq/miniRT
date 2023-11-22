@@ -6,7 +6,7 @@
 /*   By: aqueiroz <aqueiroz@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 19:22:26 by aqueiroz          #+#    #+#             */
-/*   Updated: 2023/11/18 19:37:56 by aqueiroz         ###   ########.fr       */
+/*   Updated: 2023/11/22 12:48:50 by aqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,46 +40,45 @@ static t_vector	matr_product_to_point(t_mat4 a, t_vector b)
 
 t_ray	ray_for_pixel(t_camera cam, int x, int y)
 {
-	t_vector		pixel;
-	t_vector		origin;
-	t_vector		direction;
-	t_vector		canvas_point;
+	t_vector	pixel;
+	t_vector	origin;
+	t_vector	direction;
+	t_vector	canvas_point;
 
 	canvas_point = create_vector(get_world_x(cam, x), get_world_y(cam, y), -1);
 	pixel = matr_product_to_point(cam.viewport.inverse, canvas_point);
-	origin = matr_product_to_point(cam.viewport.inverse, create_vector(0, 0, 0));
+	origin = matr_product_to_point(cam.viewport.inverse, create_vector(0, 0,
+			0));
 	direction = unit_vector(sub_vector(pixel, origin));
-	return (create_ray(origin, direction));
+	return ((t_ray){origin, direction});
 }
 
-static void	render_world(void)
+uint32_t	rgba_to_int(int r, int g, int b, int a)
 {
-	int		x;
-	int		y;
-	t_ray	ray;
+	return (((uint32_t)r << 24) | ((uint32_t)g << 16) | ((uint32_t)b << 8) | a);
+}
+
+void	render(void)
+{
+	int			x;
+	int			y;
+	t_ray		ray;
 	t_vector	color;
+	uint32_t	color_int;
 
 	y = 0;
-	while (y < (WIDTH / ASPECT_RATIO))
+	while (y < (int)(WIDTH / ASPECT_RATIO))
 	{
 		x = 0;
 		while (x < WIDTH)
 		{
 			ray = ray_for_pixel(get_data()->camera, x, y);
-			color = color_at(ray);
-			mlx_img_pix_put(&get_data()->mlx.image, x, y, rgb_color(color));
+			color = ray_color(ray);
+			color_int = rgba_to_int((int)(color.x) * 255, (int)(color.y) * 255,
+					(int)(color.z) * 255, 255);
+			mlx_put_pixel(get_data()->mlx.image, x, y, color_int);
 			x++;
 		}
 		y++;
 	}
-}
-
-int	render(t_data data)
-{
-	t_data	*data;
-
-	data = get_data();
-	render_world();
-	mlx_put_image_to_window(data.mlx.mlx, data.mlx.image, 0, 0);
-	return (0);
 }

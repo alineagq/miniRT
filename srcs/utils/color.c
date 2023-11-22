@@ -6,13 +6,44 @@
 /*   By: aqueiroz <aqueiroz@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 00:13:03 by aqueiroz          #+#    #+#             */
-/*   Updated: 2023/11/15 00:13:45 by aqueiroz         ###   ########.fr       */
+/*   Updated: 2023/11/21 00:10:24 by aqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minirt.h"
 
-uint32_t	rgba_to_int(uint8_t r, uint8_t g, uint8_t b, uint8_t a)
+t_vector	normalize_color(t_vector color)
 {
-	return (((uint32_t)r << 24) | ((uint32_t)g << 16) | ((uint32_t)b << 8) | a);
+	t_vector	normalized_color;
+
+	normalized_color.x = color.x / 255;
+	normalized_color.y = color.y / 255;
+	normalized_color.z = color.z / 255;
+	return (normalized_color);
+}
+
+static void	fix_colors(t_vector *color)
+{
+	if (color->x > 1)
+		color->x = 1;
+	if (color->y > 1)
+		color->y = 1;
+	if (color->z > 1)
+		color->z = 1;
+}
+
+int	rgb_color(t_vector color)
+{
+	int	r;
+	int	g;
+	int	b;
+
+	fix_colors(&color);
+	color.x *= 255.999;
+	color.y *= 255.999;
+	color.z *= 255.999;
+	r = color.x;
+	g = color.y;
+	b = color.z;
+	return (r << 24 | g << 16 | b << 8 | 0);
 }

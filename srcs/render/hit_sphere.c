@@ -1,27 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   hit_sphere.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aqueiroz <aqueiroz@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/18 15:36:58 by aqueiroz          #+#    #+#             */
-/*   Updated: 2023/11/18 15:37:34 by aqueiroz         ###   ########.fr       */
+/*   Created: 2023/11/19 13:52:27 by aqueiroz          #+#    #+#             */
+/*   Updated: 2023/11/20 16:16:34 by aqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minirt.h"
 
-int	validate_orientation(char *str1, char *str2, char *str3)
+void	hit_sphere(t_ray ray, t_hit *obj, t_intersect **inters)
 {
-	if (!str1 || !str2 || !str3)
-		return (0);
-	if (!ft_is_numeric_string(str1) || !ft_is_numeric_string(str2)
-		|| !ft_is_numeric_string(str3))
-		return (0);
-	if (ft_atof(str1) < -1.0 || ft_atof(str1) > 1.0 || ft_atof(str2) < -1.0
-		|| ft_atof(str2) > 1.0 || ft_atof(str3) < -1.0 || ft_atof(str3) > 1.0)
-		return (0);
-	return (1);
-}
+	t_ray			tmp_ray;
+	t_inter_point	inter_p;
+	t_sphere		*sp;
 
+	sp = (t_sphere *)obj->object;
+	tmp_ray = transform_ray(ray, sp->invert);
+	inter_p = intersect_sphere(tmp_ray, sp);
+	if (inter_p.hit_times != 0)
+	{
+		intersect_add_back(inters, new_intersect(inter_p.hit[0], obj));
+		intersect_add_back(inters, new_intersect(inter_p.hit[1], obj));
+	}
+}

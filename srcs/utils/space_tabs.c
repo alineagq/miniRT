@@ -1,22 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   errors.c                                           :+:      :+:    :+:   */
+/*   space_tabs.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aqueiroz <aqueiroz@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/18 15:34:06 by aqueiroz          #+#    #+#             */
-/*   Updated: 2023/11/18 21:53:56 by aqueiroz         ###   ########.fr       */
+/*   Created: 2023/11/20 19:31:32 by aqueiroz          #+#    #+#             */
+/*   Updated: 2023/11/20 19:31:55 by aqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minirt.h"
 
-int	print_line_error(char *line)
+void	removeDoubleSpacesAndTabs(char *str)
 {
-	ft_putstr_fd("Error\n", 2);
-	ft_putstr_fd("Invalid line: ", 2);
-	ft_putstr_fd(line, 2);
-	ft_putstr_fd("\n", 2);
-	return (0);
+	int	len;
+
+	int i, j;
+	len = strlen(str);
+	for (i = 0, j = 0; i < len; i++)
+	{
+		if (!(str[i] == ' ' && str[i + 1] == ' ') && str[i] != '\t')
+			str[j++] = str[i];
+	}
+	str[j] = '\0';
 }

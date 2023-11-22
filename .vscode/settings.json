@@ -11,7 +11,8 @@
 		"libft.h": "c",
 		"mlx42.h": "c",
 		"string": "c",
-		"string_view": "c"
+		"string_view": "c",
+		"random": "c"
 	},
 	"42header.email": "aqueiroz@student.42sp.org.br",
 	"42header.username": "aqueiroz"

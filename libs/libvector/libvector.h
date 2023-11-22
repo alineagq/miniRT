@@ -6,7 +6,7 @@
 /*   By: aqueiroz <aqueiroz@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 14:52:57 by aqueiroz          #+#    #+#             */
-/*   Updated: 2023/11/14 23:32:04 by aqueiroz         ###   ########.fr       */
+/*   Updated: 2023/11/19 00:49:30 by aqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ t_vector	add_scalar(t_vector v, double scalar);
 t_vector	sub_scalar(t_vector v, double scalar);
 t_vector	mul_scalar(t_vector v, double scalar);
 t_vector	div_scalar(t_vector v, double scalar);
-t_vector	cross(const t_vector *u, const t_vector *v);
+t_vector	cross(const t_vector u, const t_vector v);
 void		add_eq(t_vector *v, const t_vector *u);
 void		mul_eq(t_vector *v, double t);
 void		div_eq(t_vector *v, double t);

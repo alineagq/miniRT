@@ -6,7 +6,7 @@
 #    By: aqueiroz <aqueiroz@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/11 12:04:54 by aqueiroz          #+#    #+#              #
-#    Updated: 2023/11/18 15:17:10 by aqueiroz         ###   ########.fr        #
+#    Updated: 2023/11/22 10:29:30 by aqueiroz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,9 +45,29 @@ PATH_INC = includes
 
 FILES	= main
 
-FILES 	+= window/window
+FILES	+= intersect/basics intersect/calculate_instersection
 
-FILES 	+= utils/data utils/ray utils/color utils/file utils/header
+FILES	+= matrix/identity_matrix matrix/inverse_matrix matrix/multiply_matrix \
+		matrix/convertions matrix/utils \
+		matrix/rotate matrix/transform matrix/transpose_matrix
+
+FILES	+= object/add_object object/remove_object object/clear_object \
+		object/copy_content
+
+FILES	+= validate/validate validate/ambient validate/camera validate/cylinder \
+		validate/light validate/plane validate/sphere validate/utils validate/setters
+
+FILES	+= scene/init_camera scene/view_transform scene/init_objects
+
+FILES	+= render/render render/color_at render/getters render/hit_cylinder \
+		render/hit_plane render/hit_sphere render/intersect_sphere \
+		render/intersect_cylinder render/light render/normal_at \
+		render/shade_hit render/shadow render/transform_ray
+
+FILES	+= window/window
+
+FILES 	+= utils/data utils/color utils/file utils/header utils/errors \
+		utils/get_orientation utils/space_tabs
 
 SRCS = $(addprefix $(SRC_PATH)/, $(addsuffix .c, $(FILES)))
 OBJS = $(SRCS:.c=.o)
@@ -55,7 +75,7 @@ OBJS = $(SRCS:.c=.o)
 # FLAGS
 
 CC = clang
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g
 LIBFLAGS = -Llibs/MLX42/build -Llibs/libft -Llibs/libvector -lmlx42 -lft -lvector -Iinclude -ldl -lglfw -pthread -lm
 VALGRIND_ARGS = --trace-children=yes --track-origins=yes  --suppressions=mini.supp \
 	--leak-check=full --show-leak-kinds=all --quiet
