@@ -6,7 +6,7 @@
 /*   By: aqueiroz <aqueiroz@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 01:31:20 by aqueiroz          #+#    #+#             */
-/*   Updated: 2023/11/19 01:32:12 by aqueiroz         ###   ########.fr       */
+/*   Updated: 2023/11/22 21:01:13 by aqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,18 @@ t_mat4	point_to_matrix(t_vector point)
 	a.matrix[1][0] = point.y;
 	a.matrix[2][0] = point.z;
 	a.matrix[3][0] = 1;
+	a.matrix[0][1] = 0;
+	a.matrix[1][1] = 0;
+	a.matrix[2][1] = 0;
+	a.matrix[3][1] = 0;
+	a.matrix[0][2] = 0;
+	a.matrix[1][2] = 0;
+	a.matrix[2][2] = 0;
+	a.matrix[3][2] = 0;
+	a.matrix[0][3] = 0;
+	a.matrix[1][3] = 0;
+	a.matrix[2][3] = 0;
+	a.matrix[3][3] = 0;
 	return (a);
 }
 
@@ -35,6 +47,18 @@ t_mat4	vec3_to_matrix(t_vector vec)
 	a.matrix[1][0] = vec.y;
 	a.matrix[2][0] = vec.z;
 	a.matrix[3][0] = 0;
+	a.matrix[0][1] = 0;
+	a.matrix[1][1] = 0;
+	a.matrix[2][1] = 0;
+	a.matrix[3][1] = 0;
+	a.matrix[0][2] = 0;
+	a.matrix[1][2] = 0;
+	a.matrix[2][2] = 0;
+	a.matrix[3][2] = 0;
+	a.matrix[0][3] = 0;
+	a.matrix[1][3] = 0;
+	a.matrix[2][3] = 0;
+	a.matrix[3][3] = 0;
 	return (a);
 }
 
