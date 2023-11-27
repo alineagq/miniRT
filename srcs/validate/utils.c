@@ -6,7 +6,7 @@
 /*   By: aqueiroz <aqueiroz@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 15:36:58 by aqueiroz          #+#    #+#             */
-/*   Updated: 2023/11/22 18:40:12 by aqueiroz         ###   ########.fr       */
+/*   Updated: 2023/11/27 10:07:33 by aqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,9 +66,9 @@ int	validate_color(char *line, t_vector *color)
 		free_split(split);
 		return (0);
 	}
-	color->x = ft_atoi(split[0]) / 255.0;
-	color->y = ft_atoi(split[1]) / 255.0;
-	color->z = ft_atoi(split[2]) / 255.0;
+	color->x = ft_atof(split[0]) / 255;
+	color->y = ft_atof(split[1]) / 255;
+	color->z = ft_atof(split[2]) / 255;
 	free_split(split);
 	return (1);
 }
@@ -77,10 +77,10 @@ t_material	default_material(t_vector color)
 {
 	t_material	m;
 
-	m.ambient = 0.1;
+	m.ambient = get_data()->ambient.ratio;
 	m.diffuse = 0.9;
-	m.specular = 0.9;
-	m.shininess = 200.0;
-	m.color = normalize_color(create_vector(color.x, color.y, color.z));
+	m.specular = 0;
+	m.shininess = 200;
+	m.color = create_vector(color.x, color.y, color.z);
 	return (m);
 }

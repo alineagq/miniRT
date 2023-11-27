@@ -6,25 +6,11 @@
 /*   By: aqueiroz <aqueiroz@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 00:39:37 by aqueiroz          #+#    #+#             */
-/*   Updated: 2023/11/22 19:39:47 by aqueiroz         ###   ########.fr       */
+/*   Updated: 2023/11/27 10:38:45 by aqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minirt.h"
-
-t_vector	get_look_up(t_vector direction)
-{
-	t_vector	look_up;
-	double		dot_up;
-
-	look_up = create_vector(0, 1, 0);
-	dot_up = dot(direction, look_up);
-	if (fabs(dot_up - 1) < M_EPSILON)
-		look_up = create_vector(1, 0, 0);
-	else if (fabs(dot_up - (-1)) < M_EPSILON)
-		look_up = create_vector(-1, 0, 0);
-	return (look_up);
-}
 
 void	print_matrix(t_mat4 a)
 {
@@ -42,32 +28,31 @@ void	print_matrix(t_mat4 a)
 	}
 }
 
-void	set_pixel_size(void)
-{
-	double		half_view;
-
-	get_data()->camera.fov = get_data()->camera.fov / 180 * M_PI;
-	half_view = tan(get_data()->camera.fov / 2);
-	get_data()->camera.viewport.width = half_view * ASPECT_RATIO;
-	get_data()->camera.viewport.height = half_view;
-	if (ASPECT_RATIO >= 1)
-	{
-		get_data()->camera.viewport.width = half_view;
-		get_data()->camera.viewport.height = half_view / ASPECT_RATIO;
-	}
-	get_data()->camera.viewport.pixel_size = (get_data()->camera.viewport.width * 2) / WIDTH;
-}
-
 void	init_camera(void)
 {
 	t_camera	*camera;
-	t_vector	look_up;
+	double		theta;
+	double		half_cam;
+	t_vector	axis[3];
 
 	camera = &get_data()->camera;
-	set_pixel_size();
-	look_up = get_look_up(camera->direction);
-	camera->viewport.transform = view_transform(camera->origin,
-			camera->direction, look_up);
-	camera->viewport.inverse = inverse_matrix(camera->viewport.transform);
-	
+	if (vector_is_equal(camera->direction, create_vector(0, 1, 0)))
+		camera->direction.z += 0.0001;
+	else if (vector_is_equal(camera->direction, create_vector(0, -1, 0)))
+		camera->direction.z += 0.0001;
+	theta = camera->fov * M_PI / 180;
+	half_cam = tan(theta / 2);
+	camera->viewport.view_up = create_vector(0, 1, 0);
+	camera->viewport.height = 1.175 * half_cam;
+	camera->viewport.width = camera->viewport.height * ASPECT_RATIO;
+	axis[0] = unit_vector(negate_vector(camera->direction));
+	axis[1] = unit_vector(cross(camera->viewport.view_up, axis[0]));
+	axis[2] = cross(axis[0], axis[1]);
+	camera->viewport.horizontal = mul_scalar(axis[1], camera->viewport.width);
+	camera->viewport.vertical = mul_scalar(axis[2], camera->viewport.height);
+	camera->viewport.lower_left_corner = sub_vector(sub_vector(
+				sub_vector(camera->direction,
+					div_vector(negate_vector(camera->viewport.horizontal), 2)),
+				div_vector(camera->viewport.vertical, 2)),
+			axis[0]);
 }

@@ -6,7 +6,7 @@
 /*   By: aqueiroz <aqueiroz@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 22:05:31 by aqueiroz          #+#    #+#             */
-/*   Updated: 2023/11/19 12:28:42 by aqueiroz         ###   ########.fr       */
+/*   Updated: 2023/11/27 10:02:31 by aqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,6 @@ static int	validate_light_position(char *line)
 int	validate_light(char *line)
 {
 	char	**split;
-	t_light	light;
 
 	line++;
 	while (*line == ' ')
@@ -72,7 +71,6 @@ int	validate_light(char *line)
 		return (0);
 	}
 	free_split(split);
-	light = get_data()->light;
-	light.color = color_multiply(light.color, light.ratio);
+	get_data()->light.color = create_vector(1, 1, 1);
 	return (1);
 }

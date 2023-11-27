@@ -6,7 +6,7 @@
 /*   By: aqueiroz <aqueiroz@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 22:02:42 by aqueiroz          #+#    #+#             */
-/*   Updated: 2023/11/19 21:47:45 by aqueiroz         ###   ########.fr       */
+/*   Updated: 2023/11/27 10:10:39 by aqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static int	validate_cylinder_diameter(char *line)
 		return (0);
 	}
 	data->cylinder.diameter = ft_atof(split[0]);
-	data->cylinder.radius = fabs(data->cylinder.diameter * 0.5);
+	data->cylinder.radius = data->cylinder.diameter / 2;
 	free_split(split);
 	return (1);
 }

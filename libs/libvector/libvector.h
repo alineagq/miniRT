@@ -6,7 +6,7 @@
 /*   By: aqueiroz <aqueiroz@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 14:52:57 by aqueiroz          #+#    #+#             */
-/*   Updated: 2023/11/19 00:49:30 by aqueiroz         ###   ########.fr       */
+/*   Updated: 2023/11/27 10:24:36 by aqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,5 +42,6 @@ double		length_squared(const t_vector *v);
 void		print_t_vector(const t_vector v);
 t_vector	unit_vector(t_vector v);
 double		dot(const t_vector u, const t_vector v);
+int			vector_is_equal(const t_vector u, const t_vector v);
 
 #endif

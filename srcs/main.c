@@ -6,7 +6,7 @@
 /*   By: aqueiroz <aqueiroz@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 11:08:29 by fsuomins          #+#    #+#             */
-/*   Updated: 2023/11/22 18:59:24 by aqueiroz         ###   ########.fr       */
+/*   Updated: 2023/11/27 10:15:27 by aqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,7 +136,7 @@ int	main(int argc, char **argv)
 	init_camera();
 	init_objects();
 	init_resolution();
-	print_all_data();
+	// print_all_data();
 	render();
 	window_loop();
 	clear_objects();

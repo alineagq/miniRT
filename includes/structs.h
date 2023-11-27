@@ -6,7 +6,7 @@
 /*   By: aqueiroz <aqueiroz@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 17:05:52 by fsuomins          #+#    #+#             */
-/*   Updated: 2023/11/20 21:28:54 by aqueiroz         ###   ########.fr       */
+/*   Updated: 2023/11/27 10:29:15 by aqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,9 @@ typedef struct s_sphere
 	t_vector			color;
 	t_vector			center;
 	double				radius;
+	t_material			material;
 	t_mat4				transform;
 	t_mat4				invert;
-	t_material			material;
 }						t_sphere;
 
 typedef struct s_plane
@@ -57,9 +57,9 @@ typedef struct s_plane
 	t_vector			origin;
 	t_vector			direction;
 	t_vector			color;
+	t_material			material;
 	t_mat4				transform;
 	t_mat4				invert;
-	t_material			material;
 }						t_plane;
 
 typedef struct s_cylinder
@@ -67,14 +67,16 @@ typedef struct s_cylinder
 	t_vector			origin;
 	t_vector			direction;
 	double				diameter;
+	double				radius;
+	double				height;
+	t_vector			color;
+	t_material			material;
+	double				top;
+	double				bottom;
 	double				min;
 	double				max;
-	double				height;
-	double				radius;
-	t_vector			color;
 	t_mat4				transform;
 	t_mat4				invert;
-	t_material			material;
 }						t_cylinder;
 
 typedef struct s_inter_point
@@ -96,6 +98,10 @@ typedef struct s_viewport
 	double				width;
 	double				height;
 	double				pixel_size;
+	t_vector			view_up;
+	t_vector			horizontal;
+	t_vector			vertical;
+	t_vector			lower_left_corner;
 	t_mat4				transform;
 	t_mat4				inverse;
 }						t_viewport;
