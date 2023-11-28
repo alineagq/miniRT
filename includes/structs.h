@@ -6,7 +6,7 @@
 /*   By: aqueiroz <aqueiroz@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 17:05:52 by fsuomins          #+#    #+#             */
-/*   Updated: 2023/11/27 10:29:15 by aqueiroz         ###   ########.fr       */
+/*   Updated: 2023/11/27 21:00:47 by aqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,8 @@ typedef struct s_cylinder
 	double				height;
 	t_vector			color;
 	t_material			material;
-	double				top;
-	double				bottom;
+	t_vector				top;
+	t_vector				bottom;
 	double				min;
 	double				max;
 	t_mat4				transform;

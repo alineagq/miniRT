@@ -52,7 +52,7 @@ void	init_camera(void)
 	camera->viewport.vertical = mul_scalar(axis[2], camera->viewport.height);
 	camera->viewport.lower_left_corner = sub_vector(sub_vector(
 				sub_vector(camera->direction,
-					div_vector(negate_vector(camera->viewport.horizontal), 2)),
-				div_vector(camera->viewport.vertical, 2)),
+					div_scalar(negate_vector(camera->viewport.horizontal), 2)),
+				div_scalar(camera->viewport.vertical, 2)),
 			axis[0]);
 }

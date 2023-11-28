@@ -42,9 +42,9 @@ void	init_cylinder(t_cylinder *cy)
 	cy->max = cy->height / 2;
 	cy->transform = identity_matrix();
 	cy->material = default_material(cy->color);
-	cy->top = add_vector(cy->origin, mul_vector(cy->direction, cy->height
+	cy->top = add_vector(cy->origin, mul_scalar(cy->direction, cy->height
 			/ 2.0));
-	cy->bottom = add_vector(cy->origin, mul_vector(cy->direction, -(cy->height
+	cy->bottom = add_vector(cy->origin, mul_scalar(cy->direction, -(cy->height
 				/ 2.0)));
 	radius_vector = create_vector(cy->radius, cy->radius, cy->radius);
 	transform_matrix = scaling_matrix(radius_vector);
