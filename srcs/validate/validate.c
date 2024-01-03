@@ -63,7 +63,6 @@ int	validate_scene(char *file)
 	while (file_scene.line && file_scene.valid == 1
 		&& file_scene.line[0] != '\0')
 	{
-		// removeDoubleSpacesAndTabs(file_scene.line);
 		if (file_scene.line[0] == '\n')
 		{
 			free(file_scene.line);

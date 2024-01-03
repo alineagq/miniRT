@@ -21,12 +21,12 @@ static void	apply_transformation_point(t_vector *pos, t_mat4 transformation)
 	m_point = point_to_matrix(*pos);
 	// print_matrix(m_point);
 	applied = multiply_matrix(transformation, m_point);
-	print_matrix(applied);
+	//print_matrix(applied);
 	new_pos = create_vector(applied.matrix[0][0], applied.matrix[1][0],
 		applied.matrix[2][0]);
 	// printf("new_pos: ");
 	// print_t_vector(new_pos);
-	printf("\n");
+	//printf("\n");
 	*pos = new_pos;
 }
 

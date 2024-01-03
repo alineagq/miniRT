@@ -40,10 +40,10 @@ void	render_try(void *param)
 		mlx_close_window(get_data()->mlx.mlx);
 }
 
-void	window_loop(void)
-{
-	mlx_image_to_window(get_data()->mlx.mlx, get_data()->mlx.image, 0, 0);
-	mlx_loop_hook(get_data()->mlx.mlx, render_try, NULL);
-	mlx_loop(get_data()->mlx.mlx);
-	mlx_terminate(get_data()->mlx.mlx);
-}
+// void	window_loop(void)
+// {
+// 	mlx_image_to_window(get_data()->mlx.mlx, get_data()->mlx.image, 0, 0);
+// 	mlx_loop_hook(get_data()->mlx.mlx, render_try, NULL);
+// 	mlx_loop(get_data()->mlx.mlx);
+// 	mlx_terminate(get_data()->mlx.mlx);
+// }

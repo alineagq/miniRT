@@ -35,9 +35,9 @@ static t_comps	prepare_computations(t_intersect *intersects, t_ray ray)
 
 	closest = hit(intersects);
 	comps.t = closest->id;
-	printf("closest->id: %f\n", closest->id);
-	printf("ray.origin: %f, %f, %f\n", ray.origin.x, ray.origin.y, ray.origin.z);
-	printf("ray.direction: %f, %f, %f\n", ray.direction.x, ray.direction.y, ray.direction.z);
+	//printf("closest->id: %f\n", closest->id);
+	//printf("ray.origin: %f, %f, %f\n", ray.origin.x, ray.origin.y, ray.origin.z);
+	//printf("ray.direction: %f, %f, %f\n", ray.direction.x, ray.direction.y, ray.direction.z);
 	comps.point = position(ray, closest->id);
 	comps.eyev = mul_scalar(ray.direction, -1);
 	comps.normalv = normal_at(closest->object, comps.point);
