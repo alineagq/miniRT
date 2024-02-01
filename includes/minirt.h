@@ -6,7 +6,7 @@
 /*   By: aqueiroz <aqueiroz@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 12:24:08 by aqueiroz          #+#    #+#             */
-/*   Updated: 2023/11/22 18:27:37 by aqueiroz         ###   ########.fr       */
+/*   Updated: 2024/01/29 21:35:26 by aqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@
 // Data Management
 
 t_data			*get_data(void);
+void			print_all_data(void);
 
 // Scene Management
 

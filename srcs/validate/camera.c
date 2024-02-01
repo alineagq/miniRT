@@ -6,7 +6,7 @@
 /*   By: aqueiroz <aqueiroz@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 15:35:15 by aqueiroz          #+#    #+#             */
-/*   Updated: 2023/11/27 09:58:15 by aqueiroz         ###   ########.fr       */
+/*   Updated: 2024/01/31 21:40:12 by aqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int	validate_camera_fov(char *line)
 {
-	double		fov;
+	long double		fov;
 
 	fov = ft_atof(line);
 	if (fov < 0 || fov > 180 || errno == ERANGE)
