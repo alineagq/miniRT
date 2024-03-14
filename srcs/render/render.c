@@ -6,7 +6,7 @@
 /*   By: aqueiroz <aqueiroz@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 19:22:26 by aqueiroz          #+#    #+#             */
-/*   Updated: 2023/11/27 21:20:58 by aqueiroz         ###   ########.fr       */
+/*   Updated: 2024/03/10 19:44:31 by aqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ void	render(void)
 {
 	int			x;
 	int			y;
-	t_vector	normal;
 	t_ray		ray;
+	t_vector	normal;
 	t_vector	color;
 
 	x = 0;

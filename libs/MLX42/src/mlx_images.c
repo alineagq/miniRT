@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   mlx_images.c                                       :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: W2Wizard <main@w2wizard.dev>                 +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2021/12/28 02:29:06 by W2Wizard      #+#    #+#                 */
-/*   Updated: 2023/03/30 16:36:39 by ntamayo-      ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   mlx_images.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aqueiroz <aqueiroz@student.42sp.org.br>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/12/28 02:29:06 by W2Wizard          #+#    #+#             */
+/*   Updated: 2024/03/13 20:10:51 by aqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static int8_t mlx_bind_texture(mlx_ctx_t* mlx, mlx_image_t* img)
 {
 	const GLint handle = (GLint)((mlx_image_ctx_t*)img->context)->texture;
 
-	// Attempt to bind the texture, or obtain the index if it is already bound.
+	Attempt to bind the texture, or obtain the index if it is already bound.
 	for (int8_t i = 0; i < 16; i++)
 	{
 		if (mlx->bound_textures[i] == handle)
@@ -47,7 +47,7 @@ static int8_t mlx_bind_texture(mlx_ctx_t* mlx, mlx_image_t* img)
 		}
 	}
 
-	// If no free slot was found, flush the batch and assign the texture to the first available slot
+	If no free slot was found, flush the batch and assign the texture to the first available slot
 	mlx_flush_batch(mlx);
 
 	mlx->bound_textures[0] = handle;
@@ -123,7 +123,7 @@ int32_t mlx_image_to_window(mlx_t* mlx, mlx_image_t* img, int32_t x, int32_t y)
 	MLX_NONNULL(mlx);
 	MLX_NONNULL(img);
 
-	// Allocate buffers...
+	Allocate buffers...
 	img->count++;
 	bool did_realloc;
 	mlx_instance_t* instances = mlx_grow_instances(img, &did_realloc);
@@ -135,19 +135,19 @@ int32_t mlx_image_to_window(mlx_t* mlx, mlx_image_t* img, int32_t x, int32_t y)
 		return (free(queue), mlx_error(MLX_MEMFAIL), -1);
 	}
 
-	// Set data...
+	Set data...
 	queue->image = img;
 	int32_t index = queue->instanceid = img->count - 1;
 	img->instances = instances;
 	img->instances[index].x = x;
 	img->instances[index].y = y;
 
-	// NOTE: We keep updating the Z for the convenience of the user.
-	// Always update Z depth to prevent overlapping images by default.
+	NOTE: We keep updating the Z for the convenience of the user.
+	Always update Z depth to prevent overlapping images by default.
 	img->instances[index].z = ((mlx_ctx_t*)mlx->context)->zdepth++;
 	img->instances[index].enabled = true;
 
-	// Add draw call...
+	Add draw call...
 	sort_queue = true;
 	mlx_list_t* templst;
 	if ((templst = mlx_lstnew(queue)))
@@ -190,7 +190,7 @@ mlx_image_t* mlx_new_image(mlx_t* mlx, uint32_t width, uint32_t height)
 		return ((void *)mlx_error(MLX_MEMFAIL));
 	}
 
-	// Generate OpenGL texture
+	Generate OpenGL texture
 	glGenTextures(1, &newctx->texture);
 	glBindTexture(GL_TEXTURE_2D, newctx->texture);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
@@ -208,7 +208,7 @@ void mlx_delete_image(mlx_t* mlx, mlx_image_t* image)
 
 	mlx_ctx_t* mlxctx = mlx->context;
 
-	// Delete all instances in the render queue
+	Delete all instances in the render queue
 	mlx_list_t* quelst;
 	while ((quelst = mlx_lstremove(&mlxctx->render_queue, image, &mlx_equal_inst)))
 		mlx_freen(2, quelst->content, quelst);

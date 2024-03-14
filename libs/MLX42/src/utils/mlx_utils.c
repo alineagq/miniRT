@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   mlx_utils.c                                        :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: W2Wizard <main@w2wizard.dev>                 +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2022/01/03 20:13:17 by W2Wizard      #+#    #+#                 */
-/*   Updated: 2022/11/22 10:56:09 by jvan-hal      ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   mlx_utils.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aqueiroz <aqueiroz@student.42sp.org.br>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/01/03 20:13:17 by W2Wizard          #+#    #+#             */
+/*   Updated: 2024/03/13 20:10:51 by aqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ bool mlx_getline(char** out, size_t* out_size, FILE* file)
 
 	size_t size = 0;
 	char* temp = NULL;
-	static char BUFF[GETLINE_BUFF + 1]; // Add space for '\0'
+	static char BUFF[GETLINE_BUFF + 1]; Add space for '\0'
 
 	if (*out) *out[0] = '\0';
 

@@ -6,7 +6,7 @@
 /*   By: aqueiroz <aqueiroz@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 17:05:52 by fsuomins          #+#    #+#             */
-/*   Updated: 2023/11/27 21:00:47 by aqueiroz         ###   ########.fr       */
+/*   Updated: 2024/03/14 13:32:09 by aqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,14 @@
 
 # include "enums.h"
 
+typedef struct s_hit_record {
+	t_vector	point;
+	t_vector	normal;
+	double		t;
+	int			front_face;
+	int			index;
+	int			ignore_index;
+}				t_hit_record;
 typedef struct s_material
 {
 	double				ambient;
@@ -79,6 +87,30 @@ typedef struct s_cylinder
 	t_mat4				invert;
 }						t_cylinder;
 
+typedef struct s_variation {
+	double	min;
+	double	max;	
+}				t_variation;
+
+typedef struct s_ray
+{
+	t_vector			origin;
+	t_vector			direction;
+}						t_ray;
+
+typedef struct s_hit {
+	union
+	{
+		void				*object;
+		t_sphere			*sphere;
+		t_cylinder			*cyl;
+		t_plane				*plane;
+	};
+	t_ray			*ray;
+	t_variation		t;
+	t_hit_record	*rec;
+}				t_hit;
+
 typedef struct s_inter_point
 {
 	int					hit_times;
@@ -132,12 +164,17 @@ typedef struct s_light
 typedef struct s_object
 {
 	t_shape_id			id;
-	void				*object;
+	union
+	{
+		void				*object;
+		t_sphere			*sphere;
+		t_cylinder			*cyl;
+		t_plane				*plane;
+	};
 	struct s_object		*next;
+	int					index;
 }				
 		t_object;
-
-typedef t_object		t_hit;
 
 typedef struct s_intersect
 {
@@ -158,11 +195,6 @@ typedef struct s_comps
 	t_vector			normalv;
 }						t_comps;
 
-typedef struct s_ray
-{
-	t_vector			origin;
-	t_vector			direction;
-}						t_ray;
 
 typedef struct s_parse
 {

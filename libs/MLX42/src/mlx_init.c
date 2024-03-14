@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   mlx_init.c                                         :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: W2Wizard <main@w2wizard.dev>                 +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2021/12/28 00:24:30 by W2Wizard      #+#    #+#                 */
-/*   Updated: 2023/06/08 18:16:19 by XEDGit        ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   mlx_init.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aqueiroz <aqueiroz@student.42sp.org.br>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/12/28 00:24:30 by W2Wizard          #+#    #+#             */
+/*   Updated: 2024/03/13 20:10:51 by aqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,15 +31,15 @@ static bool mlx_create_buffers(mlx_t* mlx)
 	glBindVertexArray(mlxctx->vao);
 	glBindBuffer(GL_ARRAY_BUFFER, mlxctx->vbo);
 
-	// Vertex XYZ coordinates
+	Vertex XYZ coordinates
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(vertex_t), NULL);
 	glEnableVertexAttribArray(0);
 
-	// UV Coordinates
+	UV Coordinates
 	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, sizeof(vertex_t), (void *)(sizeof(float) * 3));
 	glEnableVertexAttribArray(1);
 
-	// Texture index
+	Texture index
 	glVertexAttribIPointer(2, 1, GL_BYTE, sizeof(vertex_t), (void *)(sizeof(float) * 5));
 	glEnableVertexAttribArray(2);
 
@@ -110,7 +110,7 @@ static bool mlx_init_render(mlx_t* mlx)
 	glfwSetWindowUserPointer(mlx->window, mlx);
 	glfwSwapInterval(MLX_SWAP_INTERVAL);
 
-	// Load all OpenGL function pointers
+	Load all OpenGL function pointers
 	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
 		return (mlx_error(MLX_GLADFAIL));
 
@@ -151,9 +151,9 @@ static bool mlx_init_render(mlx_t* mlx)
 
 //= Public =//
 
-// NOTE: https://www.glfw.org/docs/3.3/group__window.html
+NOTE: https://www.glfw.org/docs/3.3/group__window.html
 
-// Default settings
+Default settings
 int32_t mlx_settings[MLX_SETTINGS_MAX] = {false, false, false, true, false};
 mlx_errno_t mlx_errno = MLX_SUCCESS;
 bool sort_queue = false;

@@ -20,20 +20,20 @@ int main(int argc, char *argv[]) {
         return 1;
     }
 
-    // Parse the scene file
+    Parse the scene file
     Scene scene;
     if (!parseScene(argv[1], &scene)) {
         fprintf(stderr, "Error parsing scene file.\n");
         return 1;
     }
 
-    // Initialize the UI
+    Initialize the UI
     initializeUI();
 
-    // Render the scene
+    Render the scene
     renderScene(&scene);
 
-    // Clean up resources
+    Clean up resources
     cleanupUI();
 
     return 0;
@@ -58,9 +58,9 @@ int parseScene(const char *filename, Scene *scene);
 #include "types.h"
 
 int parseScene(const char *filename, Scene *scene) {
-    // Implementation of scene file parsing
-    // Populate the 'scene' structure with parsed information
-    // Return 1 on success, 0 on failure
+    Implementation of scene file parsing
+    Populate the 'scene' structure with parsed information
+    Return 1 on success, 0 on failure
 }
 ```
 
@@ -72,15 +72,15 @@ int parseScene(const char *filename, Scene *scene) {
 #include "types.h"
 
 typedef struct {
-    // Geometric object structures and functions
+    Geometric object structures and functions
 } Sphere;
 
 typedef struct {
-    // Geometric object structures and functions
+    Geometric object structures and functions
 } Plane;
 
 typedef struct {
-    // Geometric object structures and functions
+    Geometric object structures and functions
 } Cylinder;
 
 #endif
@@ -91,8 +91,8 @@ typedef struct {
 #include "geometry.h"
 #include "types.h"
 
-// Implementation of geometric object handling functions
-// Include intersection calculations, resizing, translation, and rotation
+Implementation of geometric object handling functions
+Include intersection calculations, resizing, translation, and rotation
 ```
 
 ### **lighting.h:**
@@ -103,7 +103,7 @@ typedef struct {
 #include "types.h"
 
 typedef struct {
-    // Lighting structures and functions
+    Lighting structures and functions
 } Lighting;
 
 void renderScene(const Scene *scene);
@@ -116,7 +116,7 @@ void renderScene(const Scene *scene);
 #include "lighting.h"
 #include "types.h"
 
-// Implementation of lighting management and rendering functions
+Implementation of lighting management and rendering functions
 ```
 
 ### **ui.h:**
@@ -134,7 +134,7 @@ void cleanupUI(void);
 ```c
 #include "ui.h"
 
-// Implementation of user interface functions using miniLibX
+Implementation of user interface functions using miniLibX
 ```
 
 ### **types.h:**
@@ -142,10 +142,10 @@ void cleanupUI(void);
 #ifndef TYPES_H
 #define TYPES_H
 
-// Define data structures and types used throughout the program
+Define data structures and types used throughout the program
 
 typedef struct {
-    // Define Scene structure with elements specified in the Requirement Analysis
+    Define Scene structure with elements specified in the Requirement Analysis
 } Scene;
 
 #endif

@@ -6,7 +6,7 @@
 #    By: aqueiroz <aqueiroz@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/22 00:31:29 by fsuomins          #+#    #+#              #
-#    Updated: 2023/11/14 15:19:30 by aqueiroz         ###   ########.fr        #
+#    Updated: 2024/03/13 20:24:05 by aqueiroz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,7 +44,11 @@ PATH_INC = ./
 # FILES
 
 NAME = libvector.a
-FILES = getters basics scalar utils
+FILES = vector_add vector_create vector_cross vector_diff vector_div_self \
+		vector_div vector_dot vector_lenght_squared vector_lenght \
+		vector_mult vector_mult_self vector_negate_self vector_product \
+		vector_project_onto_plane vector_reflect vector_subtr \
+		vector_sum_self vector_sum vector_unit
 		
 SRCS = $(addprefix $(SRC_PATH)/, $(addsuffix .c, $(FILES)))
 OBJS := ${SRCS:.c=.o}

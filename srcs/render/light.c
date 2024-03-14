@@ -6,70 +6,89 @@
 /*   By: aqueiroz <aqueiroz@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 15:56:37 by aqueiroz          #+#    #+#             */
-/*   Updated: 2023/11/22 17:58:02 by aqueiroz         ###   ########.fr       */
+/*   Updated: 2024/03/10 20:36:22 by aqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minirt.h"
-#define DIFFUSE 1
 #define AMBIENT 0
+#define DIFFUSE 1
+#define SPECULAR 2
+#define RESULT 3
 
-static double	compute_light_dot_normal(t_light l, t_comps comps)
+t_vector	normalize(t_vector vector)
 {
+	t_vector	result;
+	double		len;
+
+	len = length(&vector);
+	if (len == 0)
+		return (vector);
+	result.x = vector.x / len;
+	result.y = vector.y / len;
+	result.z = vector.z / len;
+	return (result);
+}
+
+static void	normalize_result(t_vector *colors)
+{
+	if (fabs(colors[RESULT].x) > 1)
+		colors[RESULT].x = 1;
+	if (fabs(colors[RESULT].y) > 1)
+		colors[RESULT].y = 1;
+	if (fabs(colors[RESULT].z) > 1)
+		colors[RESULT].z = 1;
+}
+
+static t_vector	copy_and_deinit(t_vector *colors)
+{
+	t_vector	result;
+
+	result = create_vector(colors[RESULT].x, colors[RESULT].y,
+			colors[RESULT].z);
+	return (result);
+}
+
+static void	zero_diffuse_and_specular(t_vector *diffuse, t_vector *specular)
+{
+	*diffuse = create_vector(0, 0, 0);
+	*specular = create_vector(0, 0, 0);
+}
+
+t_vector	vector_reflect(t_vector v, t_vector n)
+{
+	t_vector		result;
+	const double	dot_product = 2 * (v.x * n.x + v.y * n.y + v.z * n.z);
+
+	result.x = v.x - dot_product * n.x;
+	result.y = v.y - dot_product * n.y;
+	result.z = v.z - dot_product * n.z;
+	return (result);
+}
+
+t_vector	lighting(t_material m, t_light light, t_hit *hit, int in_shadow)
+{
+	t_vector	eff_color;
 	t_vector	lightv;
-	double	light_dot_normal;
+	t_vector	reflect_v;
+	t_vector	colors[4];
+	double		lg_d_norm;
 
-	lightv = unit_vector(sub_vector(l.dir, comps.over_point));
-	light_dot_normal = dot(lightv, comps.normalv);
-	return (light_dot_normal);
-}
-
-static t_vector	compute_diffuse(t_light l, double light_dot_nrml, t_comps comps)
-{
-	t_vector		diffuse;
-	t_vector		effective_color;
-	t_material	material;
-
-	material = get_material(comps.object);
-	effective_color = mul_scalar(get_color(comps.object), l.ratio);
-	diffuse = mul_scalar(effective_color, material.diffuse * light_dot_nrml);
-	return (diffuse);
-}
-
-static t_vector	compute_ambient(t_light l, t_comps comps)
-{
-	t_vector		ambient;
-	t_vector		effective_color;
-	t_material	material;
-
-	material = get_material(comps.object);
-	effective_color = mul_scalar(get_color(comps.object), l.ratio);
-	ambient = mul_scalar(effective_color, material.ambient);
-	return (ambient);
-}
-
-static t_vector	compute_color(t_vector colors[2], t_comps comps, t_ambient amb)
-{
-	t_vector	color;
-	t_vector	amb_color;
-
-	amb_color = mul_scalar(amb.color, amb.ratio);
-	color = add_vector(colors[AMBIENT], colors[DIFFUSE]);
-	color = add_vector(color, mul_vector(get_color(comps.object), amb_color));
-	return (color);
-}
-
-t_vector	lighting(t_light light, t_comps comps, t_ambient amb, int shadow)
-{
-	t_vector		colors[2];
-	double		light_dot_normal;
-
-	colors[DIFFUSE] = (t_vector){0, 0, 0};
-	colors[AMBIENT] = compute_ambient(light, comps);
-	if (shadow)
-		return (compute_color(colors, comps, amb));
-	light_dot_normal = compute_light_dot_normal(light, comps);
-	if (light_dot_normal >= 0)
-		colors[DIFFUSE] = compute_diffuse(light, light_dot_normal, comps);
-	return (compute_color(colors, comps, amb));
+	eff_color = mul_vector(mul_scalar(m.color, light.ratio),
+			light.color);
+	lightv = normalize(sub_vector(light.origin, hit->rec->point));
+	colors[AMBIENT] = mul_scalar(eff_color, m.ambient);
+	lg_d_norm = fmax(0, dot(lightv, hit->rec->normal));
+	colors[DIFFUSE] = mul_scalar(eff_color, m.diffuse * lg_d_norm);
+	reflect_v = vector_reflect(vector_negate_self(&lightv), hit->rec->normal);
+	colors[SPECULAR] = mul_scalar(light.color, m.specular
+			* pow(dot(reflect_v, hit->ray->direction), m.shininess));
+	if (!(dot(reflect_v, hit->ray->direction) > 0))
+		colors[SPECULAR] = create_vector(0, 0, 0);
+	if (!(lg_d_norm >= 0 && !in_shadow))
+		zero_diffuse_and_specular(&colors[DIFFUSE], &colors[SPECULAR]);
+	colors[RESULT] = add_vector(add_vector(colors[DIFFUSE], colors[SPECULAR]),
+			colors[AMBIENT]);
+	normalize_result(colors);
+	return (copy_and_deinit(colors));
 }

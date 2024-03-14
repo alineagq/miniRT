@@ -9,7 +9,7 @@ In computer graphics, a shader is a type of computer program used for shading in
 
 ```glsl
 
-// Example of shader code, GLSL is similar to C but not quite.
+Example of shader code, GLSL is similar to C but not quite.
 
 #version 330 core
 

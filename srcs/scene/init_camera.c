@@ -6,7 +6,7 @@
 /*   By: aqueiroz <aqueiroz@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 00:39:37 by aqueiroz          #+#    #+#             */
-/*   Updated: 2023/11/27 10:38:45 by aqueiroz         ###   ########.fr       */
+/*   Updated: 2024/03/10 19:47:00 by aqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	init_camera(void)
 	camera->viewport.vertical = mul_scalar(axis[2], camera->viewport.height);
 	camera->viewport.lower_left_corner = sub_vector(sub_vector(
 				sub_vector(camera->direction,
-					div_scalar(negate_vector(camera->viewport.horizontal), 2)),
+					div_scalar(vector_negate_self(&camera->viewport.horizontal), 2)),
 				div_scalar(camera->viewport.vertical, 2)),
 			axis[0]);
 }

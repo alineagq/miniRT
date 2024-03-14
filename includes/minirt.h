@@ -6,7 +6,7 @@
 /*   By: aqueiroz <aqueiroz@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 12:24:08 by aqueiroz          #+#    #+#             */
-/*   Updated: 2024/01/29 21:35:26 by aqueiroz         ###   ########.fr       */
+/*   Updated: 2024/03/14 13:27:11 by aqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 # include "../libs/MLX42/include/MLX42/MLX42.h"
 # include "../libs/libft/libft.h"
 # include "../libs/libvector/libvector.h"
-# include "./define_rt.h"
-# include "./structs.h"
+# include "define_rt.h"
+# include "structs.h"
 # include <errno.h>
 # include <fcntl.h>
 # include <math.h>
@@ -45,7 +45,7 @@ void			init_resolution(void);
 void			window_loop(void);
 
 // Ray Management
-t_vector		ray_at(const t_ray *r, double t);
+t_vector		ray_at(t_ray r, double t);
 t_vector		ray_color(const t_ray r);
 t_intersect		*calculate_intersection(t_ray ray, t_hit *objects);
 
@@ -53,6 +53,7 @@ t_intersect		*calculate_intersection(t_ray ray, t_hit *objects);
 uint32_t		rgba_to_int(int r, int g, int b, int a);
 
 // Validation
+void			validate_args(int argc, char **argv);
 int				check_file_extention(const char *str, const char *ext);
 void			print_and_exit(char *message, int exit_code);
 int				validate_scene(char *file);
@@ -99,7 +100,8 @@ void			render(void);
 t_mat4			scaling_matrix(t_vector x);
 t_mat4			transform_object(t_vector translation, t_vector scale);
 t_ray			transform_ray(t_ray ray, t_mat4 transform);
-void			hit_sphere(t_ray ray, t_hit *obj, t_intersect **inters);
+int				hit_sphere(t_sphere sphere, t_ray *ray, t_variation t,
+					t_hit_record *rec);
 t_inter_point	intersect_sphere(t_ray ray, t_sphere *sphere);
 void			ft_free(void *ptr);
 t_intersect		*last_intersect(t_intersect *lst);
@@ -112,9 +114,9 @@ t_mat4			get_transform(t_hit *object);
 t_inter_point	intersect_cylinder(t_ray ray, t_cylinder *cylinder);
 void			hit_cylinder(t_ray ray, t_hit *obj, t_intersect **inters);
 int				is_shadowed(t_vector point);
-t_vector		lighting(t_light light, t_comps comps, t_ambient amb,
-					int shadow);
-t_vector		get_color(t_hit *object);
+t_vector		lighting(t_material m, t_light light, t_hit *hit,
+					int in_shadow);
+t_vector		get_color(t_object *object);
 t_material		default_material(t_vector color);
 t_mat4			get_orientation(t_vector a);
 t_mat4			rotate_x_matrix(double radians);
@@ -123,11 +125,15 @@ t_mat4			rotate_z_matrix(double radians);
 t_mat4			transform_cy_pl(t_vector a, t_vector center, t_mat4 scale);
 void			hit_plane(t_ray ray, t_hit *obj, t_intersect **inters);
 t_vector		shade_hit(t_comps comps);
-t_material		get_material(t_hit *object);
+t_material		get_material(int index);
+t_vector		normalize(t_vector vector);
 t_mat4			get_inv_transform(t_hit *object);
 t_intersect		*hit(t_intersect *intersections);
 void			init_objects(void);
 void			removeDoubleSpacesAndTabs(char *str);
 void			print_matrix(t_mat4 a);
 t_vector		normalize_color(t_vector color);
+
+// Debug
+void			print_objects(void);
 #endif

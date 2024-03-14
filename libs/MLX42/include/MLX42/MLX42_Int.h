@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   MLX42_Int.h                                        :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: W2Wizard <main@w2wizard.dev>                 +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2021/12/27 23:55:34 by W2Wizard      #+#    #+#                 */
-/*   Updated: 2022/07/21 10:46:43 by sbos          ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   MLX42_Int.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aqueiroz <aqueiroz@student.42sp.org.br>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/12/27 23:55:34 by W2Wizard          #+#    #+#             */
+/*   Updated: 2024/03/13 20:10:51 by aqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,15 +62,15 @@
 extern const char* vert_shader;
 extern const char* frag_shader;
 
-// Flag to indicate if the render queue has to be sorted.
+Flag to indicate if the render queue has to be sorted.
 extern bool sort_queue;
 
-// Settings array, use the enum 'key' to get the value.
+Settings array, use the enum 'key' to get the value.
 extern int32_t mlx_settings[MLX_SETTINGS_MAX];
 
 //= Types =//
 
-// A single vertex, identical to the layout in the shader.
+A single vertex, identical to the layout in the shader.
 typedef struct vertex
 {
 	float	x;
@@ -81,7 +81,7 @@ typedef struct vertex
 	int8_t	tex;
 }	vertex_t;
 
-// Layout for linked list.
+Layout for linked list.
 typedef struct mlx_list
 {
 	void*				content;
@@ -168,7 +168,7 @@ typedef struct mlx_hook
  * of the array of instances, since the array is realloced like a vector.
  */
 
-// MLX instance context.
+MLX instance context.
 typedef struct mlx_ctx
 {
 	GLuint			vao;
@@ -195,14 +195,14 @@ typedef struct mlx_ctx
 	vertex_t		batch_vertices[MLX_BATCH_SIZE];
 }	mlx_ctx_t;
 
-// Draw call queue entry.
+Draw call queue entry.
 typedef struct draw_queue
 {
 	mlx_image_t*	image;
 	int32_t			instanceid;
 }	draw_queue_t;
 
-// Image context.
+Image context.
 typedef struct mlx_image_ctx
 {
 	GLuint	texture;
@@ -243,7 +243,7 @@ void mlx_update_matrix(const mlx_t* mlx);
 void mlx_draw_instance(mlx_ctx_t* mlx, mlx_image_t* img, mlx_instance_t* instance);
 void mlx_flush_batch(mlx_ctx_t* mlx);
 
-// Utils Functions =//
+Utils Functions =//
 
 bool mlx_getline(char** out, size_t* out_size, FILE* file);
 uint32_t mlx_rgba_to_mono(uint32_t color);

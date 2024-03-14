@@ -6,7 +6,7 @@
 /*   By: aqueiroz <aqueiroz@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 14:23:52 by aqueiroz          #+#    #+#             */
-/*   Updated: 2023/11/27 10:14:56 by aqueiroz         ###   ########.fr       */
+/*   Updated: 2024/02/14 10:08:30 by aqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ void	init_sphere(t_sphere *sphere)
 {
 	t_vector	radius_vector;
 
-	sphere->center = create_vector(0, 0, 0);
 	sphere->material = default_material(sphere->color);
 	radius_vector = create_vector(sphere->radius, sphere->radius,
 		sphere->radius);

@@ -1,27 +1,27 @@
-// -----------------------------------------------------------------------------
-// Codam Coding College, Amsterdam @ 2022-2023 by Jelle van Kraaij.
-// See README in the root project for more information.
-// -----------------------------------------------------------------------------
+-----------------------------------------------------------------------------
+Codam Coding College, Amsterdam @ 2022-2023 by Jelle van Kraaij.
+See README in the root project for more information.
+-----------------------------------------------------------------------------
 
-// If your new to gtest follow the following documentation:
-// http://google.github.io/googletest/primer.html
+If your new to gtest follow the following documentation:
+http://google.github.io/googletest/primer.html
 
 #include "WindowFixture.hpp"
 
-// --------------------------------------------
-// Fixture for window tests
-// For every TEST_F(window, ...) the SetUp() and TearDown() functions are called
-// MLX can be accessed via the mlx variable in each test
-// For the implementation of the fixture see tests/windowFixture.hpp
-// --------------------------------------------
+--------------------------------------------
+Fixture for window tests
+For every TEST_F(window, ...) the SetUp() and TearDown() functions are called
+MLX can be accessed via the mlx variable in each test
+For the implementation of the fixture see tests/windowFixture.hpp
+--------------------------------------------
 
 TEST_F(Window, Basic)
 {
-	// Basic window is already tested in the fixture
+	Basic window is already tested in the fixture
 }
 
 
-// NOTE: This test cannot be run with a fixture because the settings need to be set before the window is created
+NOTE: This test cannot be run with a fixture because the settings need to be set before the window is created
 TEST(MWindow, Settings)
 {
 	mlx_errno = MLX_SUCCESS;
@@ -39,7 +39,7 @@ TEST(MWindow, Settings)
 	mlx_terminate(mlx);
 	ASSERT_EQ(mlx_errno, MLX_SUCCESS);
 
-	// Set all settings to default
+	Set all settings to default
 	mlx_set_setting(MLX_STRETCH_IMAGE, false);
 	mlx_set_setting(MLX_FULLSCREEN, false);
 	mlx_set_setting(MLX_MAXIMIZED, false);
@@ -99,7 +99,7 @@ static void ft_draw(void* param)
 		ASSERT_EQ(mlx_errno, MLX_SUCCESS);
 	}
 
-	// Cheap itoa lol
+	Cheap itoa lol
 	memset(buf, '\0', sizeof(buf));
 	snprintf(buf, sizeof(buf), "%d", count);
 	

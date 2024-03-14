@@ -162,15 +162,15 @@ Here are some simple examples on how to implement each one of the hooks in a sim
 
 void my_keyhook(mlx_key_data_t keydata, void* param)
 {
-	// If we PRESS the 'J' key, print "Hello".
+	If we PRESS the 'J' key, print "Hello".
 	if (keydata.key == MLX_KEY_J && keydata.action == MLX_PRESS)
 		puts("Hello ");
 
-	// If we RELEASE the 'K' key, print "World".
+	If we RELEASE the 'K' key, print "World".
 	if (keydata.key == MLX_KEY_K && keydata.action == MLX_RELEASE)
 		puts("World");
 
-	// If we HOLD the 'L' key, print "!".
+	If we HOLD the 'L' key, print "!".
 	if (keydata.key == MLX_KEY_L && keydata.action == MLX_REPEAT)
 		puts("!");
 }
@@ -201,13 +201,13 @@ int32_t	main(void)
 
 void my_scrollhook(double xdelta, double ydelta, void* param)
 {
-	// Simple up or down detection.
+	Simple up or down detection.
 	if (ydelta > 0)
 		puts("Up!");
 	else if (ydelta < 0)
 		puts("Down!");
 	
-	// Can also detect a mousewheel that goes along the X (e.g: MX Master 3)
+	Can also detect a mousewheel that goes along the X (e.g: MX Master 3)
 	if (xdelta < 0)
 		puts("Sliiiide to the left!");
 	else if (xdelta > 0)

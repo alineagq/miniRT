@@ -6,7 +6,7 @@
 /*   By: aqueiroz <aqueiroz@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 12:51:05 by aqueiroz          #+#    #+#             */
-/*   Updated: 2023/11/19 13:30:19 by aqueiroz         ###   ########.fr       */
+/*   Updated: 2024/03/10 20:16:48 by aqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,12 @@ size_t	get_obj_size(t_shape_id id)
 
 static void	set_node(t_object *new, t_shape_id id, void *content)
 {
+	static int	i = 0;
+
 	new->id = id;
 	new->object = content;
 	new->next = NULL;
+	new->index = i++;
 }
 
 void	add_object(t_shape_id id, void *content)

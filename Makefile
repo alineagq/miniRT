@@ -6,7 +6,7 @@
 #    By: aqueiroz <aqueiroz@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/11 12:04:54 by aqueiroz          #+#    #+#              #
-#    Updated: 2023/11/22 10:29:30 by aqueiroz         ###   ########.fr        #
+#    Updated: 2024/03/14 13:36:04 by aqueiroz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,7 +54,7 @@ FILES	+= matrix/identity_matrix matrix/inverse_matrix matrix/multiply_matrix \
 FILES	+= object/add_object object/remove_object object/clear_object \
 		object/copy_content
 
-FILES	+= validate/validate validate/ambient validate/camera validate/cylinder \
+FILES	+= validate/args validate/validate validate/ambient validate/camera validate/cylinder \
 		validate/light validate/plane validate/sphere validate/utils validate/setters
 
 FILES	+= scene/init_camera scene/view_transform scene/init_objects
@@ -69,12 +69,14 @@ FILES	+= window/window
 FILES 	+= utils/data utils/color utils/file utils/header utils/errors \
 		utils/get_orientation utils/space_tabs
 
+FILES	+= debug
+
 SRCS = $(addprefix $(SRC_PATH)/, $(addsuffix .c, $(FILES)))
 OBJS = $(SRCS:.c=.o)
 
 # FLAGS
 
-CC = clang
+CC = cc
 CFLAGS = -Wall -Wextra -Werror -g
 LIBFLAGS = -Llibs/MLX42/build -Llibs/libft -Llibs/libvector -lmlx42 -lft -lvector -Iinclude -ldl -lglfw -pthread -lm
 VALGRIND_ARGS = --trace-children=yes --track-origins=yes  --suppressions=mini.supp \
@@ -123,4 +125,4 @@ fclean: clean
 
 re: fclean all
 	
-.PHONY: all color clean fclean re valgrind icon
+.PHONY: all color clean fclean re valgrind

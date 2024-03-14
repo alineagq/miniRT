@@ -6,13 +6,13 @@
 /*   By: aqueiroz <aqueiroz@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 14:33:54 by aqueiroz          #+#    #+#             */
-/*   Updated: 2023/11/21 00:05:04 by aqueiroz         ###   ########.fr       */
+/*   Updated: 2024/03/13 20:10:51 by aqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minirt.h"
 
-t_vector	get_color(t_hit *object)
+t_vector	get_color(t_object *object)
 {
 	t_plane		*pl;
 	t_cylinder	*cy;
@@ -35,27 +35,23 @@ t_vector	get_color(t_hit *object)
 	}
 }
 
-t_material	get_material(t_hit *object)
+t_material	get_material(int index)
 {
-	t_plane		*pl;
-	t_cylinder	*cy;
-	t_sphere	*sp;
+	t_material		material;
+	t_object		*current;
 
-	if (object->id == SPHERE)
+	current = get_data()->objects;
+	while (current)
 	{
-		sp = (t_sphere *)object->object;
-		return (sp->material);
+		if (index == current->index && current->id == PLANE)
+			material = current->plane->material;
+		else if (index == current->index && current->id == SPHERE)
+			material = current->sphere->material;
+		else if (index == current->index && current->id == CYLINDER)
+			material = current->cyl->material;
+		current = current->next;
 	}
-	else if (object->id == CYLINDER)
-	{
-		cy = (t_cylinder *)object->object;
-		return (cy->material);
-	}
-	else
-	{
-		pl = (t_plane *)object->object;
-		return (pl->material);
-	}
+	return (material);
 }
 
 t_mat4	get_transform(t_hit *object)
