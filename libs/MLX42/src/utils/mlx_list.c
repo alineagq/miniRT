@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   mlx_list.c                                         :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: aqueiroz <aqueiroz@student.42sp.org.br>    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/28 01:53:51 by W2Wizard          #+#    #+#             */
-/*   Updated: 2024/03/13 20:10:51 by aqueiroz         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   mlx_list.c                                         :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: W2Wizard <main@w2wizard.dev>                 +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2021/12/28 01:53:51 by W2Wizard      #+#    #+#                 */
+/*   Updated: 2023/02/27 11:31:01 by W2Wizard      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,7 @@ mlx_list_t* mlx_lstremove(mlx_list_t** lst, void* value, bool (*comp)(void*, voi
 	return (lstcpy);
 }
 
-Retrieve Z value from queue.
+// Retrieve Z value from queue.
 static int32_t mlx_getzdata(mlx_list_t* entry)
 {
 	const draw_queue_t* queue = entry->content;
@@ -122,7 +122,7 @@ static int32_t mlx_getzdata(mlx_list_t* entry)
 	return (queue->image->instances[queue->instanceid].z);
 }
 
-Insert the entry back into head sorted.
+// Insert the entry back into head sorted.
 static void mlx_insertsort(mlx_list_t** head, mlx_list_t* new)
 {
 	mlx_list_t* current;
@@ -139,12 +139,12 @@ static void mlx_insertsort(mlx_list_t** head, mlx_list_t* new)
 	{
 		current = *head;
 
-		Find insertion location.
+		// Find insertion location.
 		while (current->next != NULL && mlx_getzdata(current->next) < mlx_getzdata(new))
 			current = current->next;
 		new->next = current->next;
 
-		Insert at the end
+		// Insert at the end
 		if (current->next != NULL)
 			new->next->prev = new;
 		current->next = new;
@@ -167,7 +167,7 @@ void mlx_sort_renderqueue(mlx_list_t** lst)
 	{
 		mlx_list_t* next = lstcpy->next;
 
-		Separate entry out of list and insert it back but sorted.
+		// Separate entry out of list and insert it back but sorted.
 		lstcpy->prev = lstcpy->next = NULL;
 		mlx_insertsort(&sorted, lstcpy);
 		lstcpy = next;

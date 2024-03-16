@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   vector_dot.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: etachott < etachott@student.42sp.org.br    +#+  +:+       +#+        */
+/*   By: aqueiroz <aqueiroz@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/23 19:46:32 by etachott          #+#    #+#             */
-/*   Updated: 2023/03/23 19:48:42 by etachott         ###   ########.fr       */
+/*   Created: 2024/03/15 22:28:07 by aqueiroz          #+#    #+#             */
+/*   Updated: 2024/03/15 22:30:49 by aqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.h"
+#include "libvector.h"
 
 double	vector_dot(t_vector u, t_vector v)
 {

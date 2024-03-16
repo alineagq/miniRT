@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   mlx_xpm42.c                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: aqueiroz <aqueiroz@student.42sp.org.br>    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/28 03:42:29 by W2Wizard          #+#    #+#             */
-/*   Updated: 2024/03/13 20:10:51 by aqueiroz         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   mlx_xpm42.c                                        :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: W2Wizard <main@w2wizard.dev>                 +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2021/12/28 03:42:29 by W2Wizard      #+#    #+#                 */
+/*   Updated: 2022/06/27 19:58:33 by lde-la-h      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,9 +63,9 @@ static uint8_t mlx_parse_hex_channel(char* channel)
  */
 static bool mlx_insert_xpm_entry(xpm_t* xpm, char* line, uint32_t* ctable, size_t s)
 {
-	NOTE: uintptr because windows likes to complain...
-	Verify the length of the Pixel string by checking backwards for the first
-	occurrence of a space and then check the distance by comparing with cpp.
+	// NOTE: uintptr because windows likes to complain...
+	// Verify the length of the Pixel string by checking backwards for the first
+	// occurrence of a space and then check the distance by comparing with cpp.
 	if (((uintptr_t)strrchr(line, ' ') - (uintptr_t)line) != (uint64_t)xpm->cpp)
 		return (false);
 	if (!isspace(line[xpm->cpp]) || line[xpm->cpp + 1] != '#' || !isalnum(line[xpm->cpp + 2]))
@@ -107,7 +107,7 @@ static bool mlx_read_data(xpm_t* xpm, FILE* file, uint32_t* ctable, size_t s)
 		if (line_len != xpm->texture.width * xpm->cpp)
 			return (free(line), false);
 
-		NOTE: Copy pixel by pixel as we need to retrieve the hash table.
+		// NOTE: Copy pixel by pixel as we need to retrieve the hash table.
 		for (int64_t x_xpm = 0, x_line = 0; x_xpm < xpm->texture.width; x_xpm++, x_line += xpm->cpp)
 		{
 			uint8_t* pixelstart = &xpm->texture.pixels[(y_xpm * xpm->texture.width + x_xpm) * BPP];
@@ -158,13 +158,13 @@ static bool mlx_read_xpm_header(xpm_t* xpm, FILE *file)
 	int32_t	flagc;
 	char	buffer[64] = {0};
 
-	Check file type dec...
+	// Check file type dec...
 	if (!fgets(buffer, sizeof(buffer), file))
 		return (false);
 	if (strncmp(buffer, "!XPM42\n", sizeof(buffer)) != 0)
 		return (false);
 
-	Get header info ...
+	// Get header info ...
 	if (!fgets(buffer, sizeof(buffer), file))
 		return (false);
 	flagc = sscanf(buffer, "%i %i %i %i %c\n", &xpm->texture.width, &xpm->texture.height, &xpm->color_count, &xpm->cpp, &xpm->mode);

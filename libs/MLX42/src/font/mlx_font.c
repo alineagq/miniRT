@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   mlx_font.c                                         :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: aqueiroz <aqueiroz@student.42sp.org.br>    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/22 12:01:37 by W2Wizard          #+#    #+#             */
-/*   Updated: 2024/03/13 20:10:51 by aqueiroz         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   mlx_font.c                                         :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: W2Wizard <main@w2wizard.dev>                 +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2022/02/22 12:01:37 by W2Wizard      #+#    #+#                 */
+/*   Updated: 2022/06/27 19:53:36 by lde-la-h      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,8 @@ int32_t mlx_get_texoffset(char c)
 {
     const bool _isprint = isprint(c);
 
-    NOTE: Cheesy branchless operation :D
-    +2 To skip line separator in texture
+    // NOTE: Cheesy branchless operation :D
+    // +2 To skip line separator in texture
     return (-1 * !_isprint + ((FONT_WIDTH + 2) * (c - 32)) * _isprint);
 }
 
@@ -69,7 +69,7 @@ mlx_image_t* mlx_put_string(mlx_t* mlx, const char* str, int32_t x, int32_t y)
 	if (!(strimage = mlx_new_image(mlx, len * FONT_WIDTH, FONT_HEIGHT)))
 		return (NULL);
 
-	Draw the text itself
+	// Draw the text itself
 	int32_t imgoffset = 0;
 	for (size_t i = 0; i < len; i++, imgoffset += FONT_WIDTH)
 		mlx_draw_char(strimage, mlx_get_texoffset(str[i]), imgoffset);

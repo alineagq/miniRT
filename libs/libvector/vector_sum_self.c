@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   vector_sum_self.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: guribeir <guribeir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aqueiroz <aqueiroz@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/21 19:11:37 by guribeir          #+#    #+#             */
-/*   Updated: 2023/03/22 20:55:39 by guribeir         ###   ########.fr       */
+/*   Created: 2024/03/15 22:28:39 by aqueiroz          #+#    #+#             */
+/*   Updated: 2024/03/15 22:34:05 by aqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "vector.h"
+#include "libvector.h"
 
 t_vector	vector_sum_self(t_vector *vector, t_vector *add)
 {

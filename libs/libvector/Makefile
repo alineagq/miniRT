@@ -6,7 +6,7 @@
 #    By: aqueiroz <aqueiroz@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/22 00:31:29 by fsuomins          #+#    #+#              #
-#    Updated: 2024/03/13 20:24:05 by aqueiroz         ###   ########.fr        #
+#    Updated: 2024/03/16 04:10:02 by aqueiroz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,8 +47,8 @@ NAME = libvector.a
 FILES = vector_add vector_create vector_cross vector_diff vector_div_self \
 		vector_div vector_dot vector_lenght_squared vector_lenght \
 		vector_mult vector_mult_self vector_negate_self vector_product \
-		vector_project_onto_plane vector_reflect vector_subtr \
-		vector_sum_self vector_sum vector_unit
+		vector_project vector_reflect vector_sub \
+		vector_sum_self vector_sum vector_unit vector_is_equal normalize
 		
 SRCS = $(addprefix $(SRC_PATH)/, $(addsuffix .c, $(FILES)))
 OBJS := ${SRCS:.c=.o}

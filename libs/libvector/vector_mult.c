@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   vector_mult.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: etachott < etachott@student.42sp.org.br    +#+  +:+       +#+        */
+/*   By: aqueiroz <aqueiroz@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/21 19:13:33 by guribeir          #+#    #+#             */
-/*   Updated: 2023/03/27 11:47:35 by etachott         ###   ########.fr       */
+/*   Created: 2024/03/15 22:28:20 by aqueiroz          #+#    #+#             */
+/*   Updated: 2024/03/15 22:32:22 by aqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "vector.h"
+#include "libvector.h"
 
 t_vector	vector_mult(t_vector vector, double value)
 {

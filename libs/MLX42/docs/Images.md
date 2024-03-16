@@ -56,26 +56,26 @@ static void error(void)
 
 int32_t	main(void)
 {
-	Start mlx
+	// Start mlx
 	mlx_t* mlx = mlx_init(WIDTH, HEIGHT, "Test", true);
 	if (!mlx)
         error();
 
-	Create a new image
+	// Create a new image
 	mlx_image_t* img = mlx_new_image(mlx, 512, 512);
 	if (!img)
 		error();
 
-	Set every pixel to white
+	// Set every pixel to white
 	memset(img->pixels, 255, img->width * img->height * sizeof(int32_t));
 
-	Display an instance of the image
+	// Display an instance of the image
 	if (mlx_image_to_window(mlx, img, 0, 0) < 0)
         error();
 
 	mlx_loop(mlx);
 
-	Optional, terminate will clean up any leftovers, this is just to demonstrate.
+	// Optional, terminate will clean up any leftovers, this is just to demonstrate.
 	mlx_delete_image(mlx, img);
 	mlx_terminate(mlx);
 	return (EXIT_SUCCESS);
@@ -85,7 +85,7 @@ int32_t	main(void)
 After we have put an instance of an image onto the window we can simply change the position of the image at any time
 we want it to be moved:
 ```c
-Modify the x & y position of an already existing instance.
+// Modify the x & y position of an already existing instance.
 img->instances[0].x += 5;
 img->instances[0].y += 5;
 ```
@@ -107,16 +107,16 @@ Every frame MLX will iterate over this linked list and execute a drawcall to dra
 ## Common functions
 
 ```c
-Creates a whole new image.
+// Creates a whole new image.
 mlx_image_t* mlx_new_image(mlx_t* mlx, uint16_t width, uint16_t height)
 ```
 
 ```c
-Creates a new instance/copy of an already existing image.
+// Creates a new instance/copy of an already existing image.
 void mlx_image_to_window(mlx_image_t* img, int32_t x, int32_t y)
 ```
 
 ```c
-Deletes an image and removes it from the render queue.
+// Deletes an image and removes it from the render queue.
 void mlx_delete_image(mlx* mlx, mlx_image_t* image)
 ```

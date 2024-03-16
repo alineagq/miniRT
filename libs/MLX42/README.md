@@ -236,10 +236,10 @@ Of course it's up to you to make sure that the code you write is portable. Thing
 ![MLX42](docs/assets/demo.gif)
 
 ```c
------------------------------------------------------------------------------
-Codam Coding College, Amsterdam @ 2022-2023 by W2Wizard.
-See README in the root project for more information.
------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
+// Codam Coding College, Amsterdam @ 2022-2023 by W2Wizard.
+// See README in the root project for more information.
+// -----------------------------------------------------------------------------
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -251,7 +251,7 @@ See README in the root project for more information.
 
 static mlx_image_t* image;
 
------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 
 int32_t ft_pixel(int32_t r, int32_t g, int32_t b, int32_t a)
 {
@@ -265,10 +265,10 @@ void ft_randomize(void* param)
 		for (int32_t y = 0; y < image->height; ++y)
 		{
 			uint32_t color = ft_pixel(
-				rand() % 0xFF, R
-				rand() % 0xFF, G
-				rand() % 0xFF, B
-				rand() % 0xFF  A
+				rand() % 0xFF, // R
+				rand() % 0xFF, // G
+				rand() % 0xFF, // B
+				rand() % 0xFF  // A
 			);
 			mlx_put_pixel(image, i, y, color);
 		}
@@ -291,13 +291,13 @@ void ft_hook(void* param)
 		image->instances[0].x += 5;
 }
 
------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 
 int32_t main(int32_t argc, const char* argv[])
 {
 	mlx_t* mlx;
 
-	Gotta error check this stuff
+	// Gotta error check this stuff
 	if (!(mlx = mlx_init(WIDTH, HEIGHT, "MLX42", true)))
 	{
 		puts(mlx_strerror(mlx_errno));

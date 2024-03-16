@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: aqueiroz <aqueiroz@student.42sp.org.br>    +#+  +:+       +#+         #
+#    By: fsuomins <fsuomins@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/11 12:04:54 by aqueiroz          #+#    #+#              #
-#    Updated: 2024/03/14 13:36:04 by aqueiroz         ###   ########.fr        #
+#    Updated: 2024/03/16 15:11:44 by fsuomins         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,37 +39,30 @@ _color-test:
 
 NAME = miniRT
 
-SRC_PATH = srcs
+SRC_PATH = sources
 LIB_PATH = libs
 PATH_INC = includes
 
-FILES	= main
+FILES	= main debug
 
-FILES	+= intersect/basics intersect/calculate_instersection
-
-FILES	+= matrix/identity_matrix matrix/inverse_matrix matrix/multiply_matrix \
-		matrix/convertions matrix/utils \
-		matrix/rotate matrix/transform matrix/transpose_matrix
-
-FILES	+= object/add_object object/remove_object object/clear_object \
-		object/copy_content
+FILES	+= objects/add_object objects/clear_object objects/default_material \
+		   objects/set_ambient_light
 
 FILES	+= validate/args validate/validate validate/ambient validate/camera validate/cylinder \
-		validate/light validate/plane validate/sphere validate/utils validate/setters
+		validate/light validate/plane validate/sphere validate/color validate/orientation \
+		validate/free_split
 
-FILES	+= scene/init_camera scene/view_transform scene/init_objects
+FILES 	+= utils/data utils/print_header
 
-FILES	+= render/render render/color_at render/getters render/hit_cylinder \
-		render/hit_plane render/hit_sphere render/intersect_sphere \
-		render/intersect_cylinder render/light render/normal_at \
-		render/shade_hit render/shadow render/transform_ray
+FILES 	+= window/init_resolution window/window_loop
 
-FILES	+= window/window
+FILES 	+= render/render render/camera_on render/ray_color render/ray_at
 
-FILES 	+= utils/data utils/color utils/file utils/header utils/errors \
-		utils/get_orientation utils/space_tabs
+FILES 	+= shadow/is_shadow shadow/lightning
 
-FILES	+= debug
+FILES 	+= hit/init_hit hit/hit_sphere hit/hit_plane hit/hit_cylinder \
+		hit/hittable_list_hit hit/body_or_cap hit/init_bhaskara \
+		hit/select_hit hit/set_normal_face hit/update_hit_record
 
 SRCS = $(addprefix $(SRC_PATH)/, $(addsuffix .c, $(FILES)))
 OBJS = $(SRCS:.c=.o)

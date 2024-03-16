@@ -3,20 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   vector_reflect.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: etachott < etachott@student.42sp.org.br    +#+  +:+       +#+        */
+/*   By: aqueiroz <aqueiroz@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/29 17:29:33 by etachott          #+#    #+#             */
-/*   Updated: 2023/04/24 10:00:02 by etachott         ###   ########.fr       */
+/*   Created: 2024/03/15 22:28:32 by aqueiroz          #+#    #+#             */
+/*   Updated: 2024/03/15 22:33:35 by aqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.h"
-
-// t_vector	vector_reflect(t_vector input, t_vector normal)
-// {
-// 	return (vector_diff(input, vector_mult(vector_mult(normal, 2.0),
-// 				vector_dot(input, normal))));
-// }
+#include "libvector.h"
 
 t_vector	vector_reflect(t_vector v, t_vector n)
 {

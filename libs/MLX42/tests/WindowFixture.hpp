@@ -1,7 +1,7 @@
------------------------------------------------------------------------------
-Codam Coding College, Amsterdam @ 2022-2023 by Jelle van Kraaij.
-See README in the root project for more information.
------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
+// Codam Coding College, Amsterdam @ 2022-2023 by Jelle van Kraaij.
+// See README in the root project for more information.
+// -----------------------------------------------------------------------------
 
 # pragma once
 
@@ -19,7 +19,7 @@ protected:
 
 	inline void SetUp() override
 	{
-		reset error code as it is shared between tests
+		// reset error code as it is shared between tests
 		mlx_errno = MLX_SUCCESS;
 		mlx_set_setting(MLX_HEADLESS, true);
 		ASSERT_EQ(mlx_errno, MLX_SUCCESS);

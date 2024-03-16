@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   vector_cross.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: etachott < etachott@student.42sp.org.br    +#+  +:+       +#+        */
+/*   By: aqueiroz <aqueiroz@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/10 13:14:05 by etachott          #+#    #+#             */
-/*   Updated: 2023/04/10 13:18:31 by etachott         ###   ########.fr       */
+/*   Created: 2024/03/15 22:27:49 by aqueiroz          #+#    #+#             */
+/*   Updated: 2024/03/15 22:29:40 by aqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "vector.h"
+#include "libvector.h"
 
 t_vector	vector_cross(t_vector u, t_vector v)
 {

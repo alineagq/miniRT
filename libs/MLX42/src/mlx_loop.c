@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   mlx_loop.c                                         :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: aqueiroz <aqueiroz@student.42sp.org.br>    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/28 01:24:36 by W2Wizard          #+#    #+#             */
-/*   Updated: 2024/03/13 20:10:51 by aqueiroz         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   mlx_loop.c                                         :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: W2Wizard <main@w2wizard.dev>                 +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2021/12/28 01:24:36 by W2Wizard      #+#    #+#                 */
+/*   Updated: 2023/03/28 16:34:17 by W2Wizard      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static void mlx_render_images(mlx_t* mlx)
 		mlx_sort_renderqueue(&mlxctx->render_queue);
 	}
 
-	Upload image textures to GPU
+	// Upload image textures to GPU
 	while (imglst)
 	{
 		mlx_image_t* image;
@@ -52,7 +52,7 @@ static void mlx_render_images(mlx_t* mlx)
 		imglst = imglst->next;
 	}
 
-	Execute draw calls
+	// Execute draw calls
 	mlx_list_t* render_queue = mlxctx->render_queue;
 	while (render_queue)
 	{
@@ -89,7 +89,7 @@ bool mlx_loop_hook(mlx_t* mlx, void (*f)(void*), void* param)
 	return (true);
 }
 
-glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+// glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 void mlx_loop(mlx_t* mlx)
 {
 	MLX_NONNULL(mlx);

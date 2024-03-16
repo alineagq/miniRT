@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   font.h                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: aqueiroz <aqueiroz@student.42sp.org.br>    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/22 12:42:53 by W2Wizard          #+#    #+#             */
-/*   Updated: 2024/03/13 20:10:51 by aqueiroz         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   font.h                                             :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: W2Wizard <main@w2wizard.dev>                 +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2022/02/22 12:42:53 by W2Wizard      #+#    #+#                 */
+/*   Updated: 2022/03/03 13:05:57 by lde-la-h      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # define FONT_HEIGHT 20
 # include <stdint.h>
 
-GIMP RGBA C-Source image dump (font.c)
+// GIMP RGBA C-Source image dump (font.c)
 static struct s_font
 {
 	uint32_t		width;

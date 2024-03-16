@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_is_numeric_string.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fsuomins <fsuomins@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: aqueiroz <aqueiroz@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 21:59:11 by fsuomins          #+#    #+#             */
-/*   Updated: 2023/11/07 22:00:24 by fsuomins         ###   ########.fr       */
+/*   Updated: 2024/03/16 01:16:19 by aqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

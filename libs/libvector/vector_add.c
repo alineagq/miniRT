@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   vector_add.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: etachott < etachott@student.42sp.org.br    +#+  +:+       +#+        */
+/*   By: aqueiroz <aqueiroz@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/04 18:56:15 by etachott          #+#    #+#             */
-/*   Updated: 2023/04/04 18:57:29 by etachott         ###   ########.fr       */
+/*   Created: 2024/03/15 22:19:06 by aqueiroz          #+#    #+#             */
+/*   Updated: 2024/03/15 22:38:17 by aqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.h"
+#include "libvector.h"
 
 t_vector	vector_add(t_vector vector, double value)
 {

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   vector_unit.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: guribeir <guribeir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aqueiroz <aqueiroz@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/22 19:51:39 by guribeir          #+#    #+#             */
-/*   Updated: 2023/03/23 16:50:44 by guribeir         ###   ########.fr       */
+/*   Created: 2024/03/15 22:28:52 by aqueiroz          #+#    #+#             */
+/*   Updated: 2024/03/15 22:34:33 by aqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.h"
+#include "libvector.h"
 
 t_vector	vector_unit(t_vector vector)
 {

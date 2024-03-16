@@ -15,12 +15,12 @@ IF NOT EXIST %1 GOTO fnotfound
 SET SHADERTYPE=%~x1
 SET SHADERTYPE=%SHADERTYPE:~1%
 
-echo -----------------------------------------------------------------------------
-echo Codam Coding College, Amsterdam @ <2022-2023> by W2Wizard.
-echo See README in the root project for more information.
-echo -----------------------------------------------------------------------------
+echo // -----------------------------------------------------------------------------
+echo // Codam Coding College, Amsterdam @ <2022-2023> by W2Wizard.
+echo // See README in the root project for more information.
+echo // -----------------------------------------------------------------------------
 echo.
-echo If you wish to modify this file edit the .vert or .frag file!
+echo // If you wish to modify this file edit the .vert or .frag file!
 echo.
 echo #include "MLX42/MLX42_Int.h"
 echo.

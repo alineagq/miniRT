@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vector_product.c                                   :+:      :+:    :+:   */
+/*   vector_product..c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: etachott < etachott@student.42sp.org.br    +#+  +:+       +#+        */
+/*   By: aqueiroz <aqueiroz@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/10 18:38:31 by etachott          #+#    #+#             */
-/*   Updated: 2023/04/10 18:39:38 by etachott         ###   ########.fr       */
+/*   Created: 2024/03/15 22:28:26 by aqueiroz          #+#    #+#             */
+/*   Updated: 2024/03/15 22:32:47 by aqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "vector.h"
+#include "libvector.h"
 
 t_vector	vector_product(t_vector u, t_vector v)
 {

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   vector_div.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: guribeir <guribeir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aqueiroz <aqueiroz@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/21 19:15:37 by guribeir          #+#    #+#             */
-/*   Updated: 2023/03/22 22:21:59 by guribeir         ###   ########.fr       */
+/*   Created: 2024/03/15 22:28:04 by aqueiroz          #+#    #+#             */
+/*   Updated: 2024/03/15 22:43:02 by aqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "vector.h"
+#include "libvector.h"
 
 t_vector	vector_div(t_vector vector, double value)
 {
