@@ -1,9 +1,0 @@
-/.vscode
-.vscode
-scenes
-*.o
-libs/MLX42/build
-*.a
-.gitignore
-miniRT
-mini.supp
