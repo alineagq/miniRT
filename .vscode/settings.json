@@ -1,0 +1,19 @@
+{
+	"files.associations": {
+		"float.h": "c",
+		"minirt.h": "c",
+		"array": "c",
+		"memory": "c",
+		"functional": "c",
+		"tuple": "c",
+		"utility": "c",
+		"structs.h": "c",
+		"libft.h": "c",
+		"mlx42.h": "c",
+		"string": "c",
+		"string_view": "c",
+		"random": "c"
+	},
+	"42header.email": "fsuomins@student.42sp.org.br",
+	"42header.username": "fsuomins"
+}

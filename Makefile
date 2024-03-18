@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: aqueiroz <aqueiroz@student.42.fr>          +#+  +:+       +#+         #
+#    By: fsuomins <fsuomins@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/11 12:04:54 by aqueiroz          #+#    #+#              #
-#    Updated: 2023/10/14 19:35:27 by aqueiroz         ###   ########.fr        #
+#    Updated: 2024/03/16 15:11:44 by fsuomins         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,11 +39,30 @@ _color-test:
 
 NAME = miniRT
 
-SRC_PATH = srcs
+SRC_PATH = sources
 LIB_PATH = libs
 PATH_INC = includes
 
-FILES  = 	minirt
+FILES	= main debug
+
+FILES	+= objects/add_object objects/clear_object objects/default_material \
+		   objects/set_ambient_light
+
+FILES	+= validate/args validate/validate validate/ambient validate/camera validate/cylinder \
+		validate/light validate/plane validate/sphere validate/color validate/orientation \
+		validate/free_split
+
+FILES 	+= utils/data utils/print_header
+
+FILES 	+= window/init_resolution window/window_loop
+
+FILES 	+= render/render render/camera_on render/ray_color render/ray_at
+
+FILES 	+= shadow/is_shadow shadow/lightning
+
+FILES 	+= hit/init_hit hit/hit_sphere hit/hit_plane hit/hit_cylinder \
+		hit/hittable_list_hit hit/body_or_cap hit/init_bhaskara \
+		hit/select_hit hit/set_normal_face hit/update_hit_record
 
 SRCS = $(addprefix $(SRC_PATH)/, $(addsuffix .c, $(FILES)))
 OBJS = $(SRCS:.c=.o)
@@ -51,37 +70,50 @@ OBJS = $(SRCS:.c=.o)
 # FLAGS
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -g3
-LIBFLAGS = -Llibs/MLX42/build -lmlx42 -Iinclude -ldl -lglfw -pthread -lm
+CFLAGS = -Wall -Wextra -Werror -g
+LIBFLAGS = -Llibs/MLX42/build -Llibs/libft -Llibs/libvector -lmlx42 -lft -lvector -Iinclude -ldl -lglfw -pthread -lm
+VALGRIND_ARGS = --trace-children=yes --track-origins=yes  --suppressions=mini.supp \
+	--leak-check=full --show-leak-kinds=all --quiet
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
+$(NAME): $(OBJS) libft mlx42 libvector
 	@echo "$(purple)Compiling project...$(reset)"
+	@$(CC) $(OBJS) -o $@ $(LIBFLAGS) && \
+	echo "$(purple)Project compiled. Run './$(NAME)' to start.$(reset)"
+	
+libft:
 	@echo "$(purple)Compiling Libft...$(reset)"
-	@$(MAKE) -C libs/libft > /dev/null && \
-	echo "$(purple)Compiling MLX42...$(reset)" 
+	@$(MAKE) -C libs/libft > /dev/null
+
+mlx42:
+	@echo "$(purple)Compiling MLX42...$(reset)" 
 	@cmake -B libs/MLX42/build -S libs/MLX42  > /dev/null && \
 	echo "$(purple)Building MLX42...$(reset)" && \
-	cmake --build libs/MLX42/build -j4 > /dev/null && \
-	$(CC) $(OBJS) -o $@ $(LIBFLAGS) && \
-	echo "$(purple)Project compiled. Run './$(NAME)' to start.$(reset)"
+	cmake --build libs/MLX42/build -j4 > /dev/null
+
+libvector:
+	@echo "$(purple)Compiling Libvector...$(reset)"
+	@$(MAKE) -C libs/libvector > /dev/null
 
 %.o: %.c
+	@echo "$(purple)Compiling $<...$(reset)"
 	@$(CC) $(CFLAGS) -I$(PATH_INC) -c $< -o $@
+    
+valgrind: re
+	valgrind $(VALGRIND_ARGS) ./$(NAME) $(filter-out $@,$(MAKECMDGOALS))
 
-valgrind:
-	valgrind --trace-children=yes --track-fds=yes --track-origins=yes \
-	--leak-check=full --show-leak-kinds=all --quiet ./miniRT
 clean:
 	@rm -f $(OBJS)
 	@$(MAKE) -C libs/libft clean > /dev/null
 	@rm -rf libs/MLX42/build
+	@$(MAKE) -C libs/libvector clean > /dev/null
 	$(info $(yellow)All object files were removed.$(reset))
 
 fclean: clean
 	@rm -f $(NAME)
 	@$(MAKE) -C libs/libft fclean > /dev/null
+	@$(MAKE) -C libs/libvector fclean > /dev/null
 	$(info $(yellow)Executables files were removed.$(reset))
 
 re: fclean all

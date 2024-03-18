@@ -1,39 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   free_split.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fsuomins <fsuomins@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/21 20:22:37 by aqueiroz          #+#    #+#             */
-/*   Updated: 2023/10/20 09:44:14 by fsuomins         ###   ########.fr       */
+/*   Created: 2024/03/16 00:15:45 by aqueiroz          #+#    #+#             */
+/*   Updated: 2024/03/16 15:38:19 by fsuomins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../includes/minirt.h"
 
-int	ft_atoi(const char *str)
+int	free_split(char **split)
 {
-	int	num;
-	int	negative;
+	int	i;
 
-	num = 0;
-	negative = 0;
-	while (*str == ' ' || (*str >= '\t' && *str <= '\r'))
-		str++;
-	if (*str == '-')
-	{
-		negative = 1;
-		str++;
-	}
-	else if (*str == '+')
-		str++;
-	while (*str >= '0' && *str <= '9')
-	{
-		num = num * 10 + (*str - '0');
-		str++;
-	}
-	if (negative)
-		return (-num);
-	return (num);
+	i = 0;
+	while (split[i])
+		free(split[i++]);
+	free(split);
+	return (0);
 }

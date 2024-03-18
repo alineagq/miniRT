@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: fsuomins <fsuomins@student.42sp.org.br>    +#+  +:+       +#+         #
+#    By: aqueiroz <aqueiroz@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/22 00:31:29 by fsuomins          #+#    #+#              #
-#    Updated: 2023/11/07 22:02:05 by fsuomins         ###   ########.fr        #
+#    Updated: 2024/03/16 04:10:02 by aqueiroz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,15 +43,12 @@ PATH_INC = ./
 
 # FILES
 
-NAME = libft.a
-FILES = ft_isalpha ft_isdigit ft_isalnum ft_isascii ft_isprint \
-		ft_strlen ft_memset ft_tolower ft_toupper ft_bzero \
-		ft_calloc ft_memchr ft_memcpy ft_memmove ft_strlcpy \
-		ft_tolower ft_toupper ft_strlcat ft_strchr ft_strncmp \
-		ft_strrchr ft_memcmp ft_strnstr ft_atoi ft_strdup ft_substr \
-		ft_strjoin ft_strtrim ft_split ft_itoa ft_strmapi ft_striteri \
-		ft_putchar_fd ft_islower ft_isupper ft_strtok ft_strcmp \
-		ft_putstr_fd get_next_line ft_atof ft_is_numeric_string
+NAME = libvector.a
+FILES = vector_add vector_create vector_cross vector_diff vector_div_self \
+		vector_div vector_dot vector_lenght_squared vector_lenght \
+		vector_mult vector_mult_self vector_negate_self vector_product \
+		vector_project vector_reflect vector_sub \
+		vector_sum_self vector_sum vector_unit vector_is_equal normalize
 		
 SRCS = $(addprefix $(SRC_PATH)/, $(addsuffix .c, $(FILES)))
 OBJS := ${SRCS:.c=.o}

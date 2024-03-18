@@ -1,39 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fsuomins <fsuomins@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/21 20:22:37 by aqueiroz          #+#    #+#             */
-/*   Updated: 2023/10/20 09:44:14 by fsuomins         ###   ########.fr       */
+/*   Created: 2023/10/16 11:08:29 by fsuomins          #+#    #+#             */
+/*   Updated: 2024/03/16 15:07:57 by fsuomins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../includes/minirt.h"
 
-int	ft_atoi(const char *str)
+int	main(int argc, char **argv)
 {
-	int	num;
-	int	negative;
-
-	num = 0;
-	negative = 0;
-	while (*str == ' ' || (*str >= '\t' && *str <= '\r'))
-		str++;
-	if (*str == '-')
-	{
-		negative = 1;
-		str++;
-	}
-	else if (*str == '+')
-		str++;
-	while (*str >= '0' && *str <= '9')
-	{
-		num = num * 10 + (*str - '0');
-		str++;
-	}
-	if (negative)
-		return (-num);
-	return (num);
+	print_header();
+	validate_args(argc, argv);
+	set_ambient_light();
+	init_resolution();
+	render();
+	window_loop();
+	if (DEBUG)
+		print_data();
+	clear_objects();
+	return (0);
 }

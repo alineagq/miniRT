@@ -1,0 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   vector_div_self.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aqueiroz <aqueiroz@student.42sp.org.br>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/15 22:28:01 by aqueiroz          #+#    #+#             */
+/*   Updated: 2024/03/15 22:42:53 by aqueiroz         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libvector.h"
+
+t_vector	vector_div_self(t_vector *vector, double value)
+{
+	vector->x /= value;
+	vector->y /= value;
+	vector->z /= value;
+	return (*vector);
+}

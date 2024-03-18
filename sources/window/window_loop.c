@@ -1,39 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   window_loop.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fsuomins <fsuomins@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/21 20:22:37 by aqueiroz          #+#    #+#             */
-/*   Updated: 2023/10/20 09:44:14 by fsuomins         ###   ########.fr       */
+/*   Created: 2024/03/16 02:30:34 by aqueiroz          #+#    #+#             */
+/*   Updated: 2024/03/16 15:01:49 by fsuomins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../includes/minirt.h"
 
-int	ft_atoi(const char *str)
+void	render_try(void *param)
 {
-	int	num;
-	int	negative;
+	(void)param;
+	if (mlx_is_key_down(get_data()->mlx.mlx, MLX_KEY_ESCAPE))
+		mlx_close_window(get_data()->mlx.mlx);
+}
 
-	num = 0;
-	negative = 0;
-	while (*str == ' ' || (*str >= '\t' && *str <= '\r'))
-		str++;
-	if (*str == '-')
-	{
-		negative = 1;
-		str++;
-	}
-	else if (*str == '+')
-		str++;
-	while (*str >= '0' && *str <= '9')
-	{
-		num = num * 10 + (*str - '0');
-		str++;
-	}
-	if (negative)
-		return (-num);
-	return (num);
+void	window_loop(void)
+{
+	mlx_image_to_window(get_data()->mlx.mlx, get_data()->mlx.image, 0, 0);
+	mlx_loop_hook(get_data()->mlx.mlx, render_try, NULL);
+	mlx_loop(get_data()->mlx.mlx);
+	mlx_terminate(get_data()->mlx.mlx);
 }
